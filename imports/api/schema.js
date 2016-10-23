@@ -25,7 +25,7 @@ export const resolvers = {
   Query: {
     async user(root, args, context) {
       // Only return the current user, for security
-      if (context.userId === args.id) {
+      if (context && context.userId === args.id) {
         return await Meteor.users.findOne(context.userId);
       }
     },
