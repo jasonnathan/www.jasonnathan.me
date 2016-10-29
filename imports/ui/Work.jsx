@@ -1,7 +1,6 @@
 /* global document*/
 import React from 'react';
-import {Flex, Item} from 'react-flex';
-import {Link} from 'react-router'
+import {Flex} from 'react-flex';
 import {spring, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
 import StaggeredName from './components/StaggeredName.jsx';
@@ -9,7 +8,7 @@ import MainMenu from './components/MainMenu.jsx';
 
 const popConfig = { stiffness: 360, damping: 25 };
 
-const About = () => {
+const Work = () => {
   return (
     <Motion
       role="main"
@@ -24,19 +23,19 @@ const About = () => {
           ]}
         />
         <div id="start-screen-container" style={{paddingTop:'70px'}}>
-          <StaggeredName letters="Software" />
+          <StaggeredName letters="Work" />
           <p className="block" style={{opacity: v, transform:'translate3d(${v},${v},1)'}}>
-            Addicted to software, Jason has been creating software for over 12 years.
+            A showcase of my work
           </p>
         </div>
-        <MainMenu activePath="About" />
+        <MainMenu activePath="Work" />
       </Flex>
     }
     </Motion>
   )
 }
 
-About.sceneConfig = {
+Work.sceneConfig = {
   atEnter: {
     opacity: 1
   },
@@ -54,4 +53,4 @@ About.sceneConfig = {
   }
 }
 
-export default About;
+export default Work;

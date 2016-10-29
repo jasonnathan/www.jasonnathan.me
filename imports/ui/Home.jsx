@@ -24,7 +24,7 @@ const Home = () => {
         />
         <div id="start-screen-container">
           <MediaElement
-            file="https://gravatar.com/avatar/52a2bd197cce5880c2053442b2a6a0e5?size=110"
+            file="/profile.jpg"
             dim={110}
           >
             <StaggeredName letters="Jason Nathan">
@@ -45,22 +45,18 @@ const popConfig = { stiffness: 360, damping: 25 };
 
 Home.sceneConfig = {
   atEnter: {
-    scale: 1,
     opacity: 1
   },
   atLeave: {
-    scale: spring(.5, popConfig),
     opacity: spring(0, popConfig)
   },
   atActive: {
-    scale: 1,
     opacity: 1
   },
   mapStyles(styles) {
     return {
       height:'100%',
-      opacity: styles.opacity,
-      transform: `scale3d(${styles.scale},${styles.scale},1)`
+      opacity: styles.opacity
     };
   }
 }
