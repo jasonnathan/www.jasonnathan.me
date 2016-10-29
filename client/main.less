@@ -1,5 +1,11 @@
+// @import url( 'https://fonts.googleapis.com/css?family=Abel');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
 .main-font-family {
     font-family: Abel, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.helvetica-font-family {
+    font-family: "Roboto Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 @primary-color: rgb(0,255,255);
 
@@ -14,7 +20,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #000;
+    background-color: #111;
 }
 
 body {
@@ -22,6 +28,7 @@ body {
     font-weight: 300;
     margin: auto;
     box-sizing: border-box;
+
     h1,
     h2,
     h3,
@@ -31,6 +38,7 @@ body {
         font-family: Audiowide;
         font-weight: 300;
         color: @primary-color;
+
         small {
             font-family: Abel;
             font-size: 40%;
@@ -44,36 +52,101 @@ body {
         font-weight: 100;
         margin: auto;
     }
-    [role=main]{
-      height: 100%;
-      width: 100%;
-      overflow-y: auto;
+
+    [role=main] {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
     }
+
     #react-app {
         margin: auto;
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
         box-sizing: border-box;
         position: relative;
         background-color: transparent;
         background-image: url("https://www.transparenttextures.com/patterns/fake-brick.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+        /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
     }
 }
-canvas  {
+
+canvas {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgb(0,0,0);
+    background: #111;
     z-index: -1;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.fixed-menu {
+    position: fixed;
+    background: linear-gradient( 0deg, transparent, black 40% );
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 75px;
+    .mainNav {
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        .react-flex-item {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            &.compact, &.compact > a {
+                text-align: center;
+                margin: auto;
+            }
+        }
+        a, .active{
+          display: flex;
+          font-size: 1.1rem;
+          align-items: center;
+          text-align: center;
+        }
+        img {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            max-width: 24px;
+            text-align: center;
+            margin: auto;
+            max-height: 24px;
+        }
+        a {
+            color: @primary-color;
+            text-decoration: none;
+            padding: 0.5rem 0 1rem 0;
+            display: block;
+            background: transparent;
+            text-align: center;
+            margin: auto;
+
+        }
+        .active {
+            color: rgba(255,255,255,.4);
+            text-decoration: none;
+            padding: 0.5rem 0 1rem 0;
+            display: block;
+            text-align: center;
+            margin: auto;
+        }
+    }
 }
 
 .block {
     display: block;
+}
+
+.react-flex{
+  display:flex;
 }
 
 .absolute-center {
@@ -84,10 +157,8 @@ canvas  {
     background: transparent;
     // transition: all 100ms ease-out;
     width: 100%;
-    height:80vh;
+    height: 80vh;
     text-align: center;
-    overflow-y: scroll; /* has to be scroll, not auto */
-     -webkit-overflow-scrolling: touch;
 }
 
 .centered-content {
@@ -95,8 +166,9 @@ canvas  {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    filter: sepia(100%) hue-rotate(140deg);
+    &:not(div){
+      filter: sepia(20%) hue-rotate(140deg);
+    }
 }
 
 .Avatar {
@@ -104,7 +176,6 @@ canvas  {
     border-radius: 0;
     background-color: transparent !important;
 }
-
 
 #start-screen-container {
     box-sizing: border-box;
@@ -118,32 +189,37 @@ canvas  {
     text-transform: uppercase;
     font-variant: small-caps;
     text-transform: uppercase;
-    // transition: all 500ms ease-out;
+    overflow-y: scroll;
+    /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
     opacity: 1;
-
+    .absolute-center.top-box .centered-content{
+        border-radius: 50%;
+    }
     h1 {
-        font-size:2rem;
+        font-size: 2rem;
         margin-bottom: 2rem;
         // transition: filter 375ms ease-out;
-        &:hover{
-          filter: hue-rotate(45deg);
-          cursor:default;
+        &:hover {
+            filter: hue-rotate(40deg);
+            cursor: default;
         }
+
         small {
-            opacity:1;
+            opacity: 1;
             // transition: opacity 375ms ease-in;
         }
     }
 }
 
-p{
-  // transition: opacity 375ms ease-in;
-  margin:auto 1rem;
-  font-size:.9rem;
-  text-transform: none;
-  font-variant: normal;
-  font-weight: 100;
-  color:lighten(rgb(0,255,255), 15%);
+p {
+    // transition: opacity 375ms ease-in;
+    margin: auto 1rem;
+    font-size: 0.9rem;
+    text-transform: none;
+    font-variant: normal;
+    font-weight: 100;
+    color: lighten(rgb(0,255,255), 15%);
 }
 
 .top-box {
@@ -173,27 +249,31 @@ p{
                 box-sizing: border-box;
                 font-size: 75%;
                 text-align: center;
-                background-color: transparent;
-                border:none;
+                border: none;
                 outline: none;
                 min-height: 15vh;
                 min-width: 15vh;
-                height:15vh;
+                height: 15vh;
                 width: 15vh;
                 color: @primary-color;
                 cursor: pointer;
                 margin: 0 auto;
                 position: relative;
-                span{
-                  width: 100%;
-                  height: 100%;
-                  transform: scale3d(1,1,1);
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  font-size:1.6rem;
-                  text-transform: uppercase;
-                  // transition: all .375s ease-out;
+
+                span {
+                    width: 100%;
+                    height: 100%;
+                    transform: scale3d(1,1,1);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.6rem;
+                    text-transform: uppercase;
+                    background-color: rgba(0,0,0,.3);
+                    padding:0 1rem;
+                    max-height: 50px;
+                    box-shadow: 0 0 1px 0 darken(rgba(100,200,255, .5), 20%), 0 0 3px lighten(rgba(100,200,255, .5), 10%);
+                    // box-shadow: 0 0 1px darken(rgba(100,200,255, .5), 20%);
                 }
             }
         }
@@ -208,23 +288,24 @@ p{
     .bottom-box {
         height: 100vh;
         top: 46%;
+
         .react-flex {
             height: 54vh;
+
             .react-flex-item {
                 height: 100%;
                 align-items: center;
                 justify-content: center;
                 display: flex;
-                button{
-                  min-height: 24vh;
-                  min-width: 24vh;
+
+                button {
+                    min-height: 24vh;
+                    min-width: 24vh;
                 }
             }
         }
     }
 }
-
-
 
 .keyframes(@name; @arguments) {
     @-moz-keyframes @name {
@@ -243,57 +324,60 @@ p{
     -moz-animation: @arguments;
     animation: @arguments;
 }
-
-
 /* ----------- iPhone 4 and 4S ----------- */
-
 /* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    .centered-content{
-      max-width: 60px;
-      max-height: 60px;
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    .centered-content {
+        max-width: 60px;
+        max-height: 60px;
+        &.bg-image{
+          max-width: 100%;
+          max-height: 100%;
+        }
     }
-    button{
-      font-size:.8rem !important;
+
+    button {
+        font-size: 0.8rem !important;
     }
-    h1{
-      font-size:2.5rem;
+
+    h1 {
+        font-size: 2.5rem;
     }
 }
-
 /* Portrait */
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
-    body{
-      box-sizing: border-box;
-      padding-top:6vh;
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    body {
+        box-sizing: border-box;
+        padding-top: 6vh;
+
+        #react-app {
+            height: 90%;
+        }
     }
+
     .top-box {
         top: 35% !important;
         transform: translate3d(-50%,-50%,0) !important;
     }
-    .bottom-box{
-      top: 65% !important;
-      transform: translate3d(0,-50%,0) !important;
-      .react-flex .react-flex-item, .react-flex .react-flex-item button {
-        flex-basis:50%;
-      }
+
+    .bottom-box {
+        top: 65% !important;
+        transform: translate3d(0,-40%,0) !important;
+        .react-flex .react-flex-item{
+          flex: inherit;
+
+        }
+        .react-flex .react-flex-item,
+        .react-flex .react-flex-item A {
+            flex-basis: 47%;
+            span{
+              font-size: 1.3rem !important;
+            }
+        }
     }
 }
-
 /* Landscape */
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: landscape) {
-
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
     .top-box {
         top: 40%;
         transform: translate3d(-50%,-50%,0);
@@ -305,53 +389,41 @@ p{
 
         .react-flex {
             height: 50vh;
+
             .react-flex-item {
                 height: 100%;
                 align-items: center;
                 justify-content: center;
                 display: flex;
-                button{
-                  min-height: 20vh;
-                  min-width: 20vh;
+
+                button {
+                    min-height: 20vh;
+                    min-width: 20vh;
                 }
             }
         }
     }
 }
-
 /* ----------- Galaxy S5 ----------- */
-
 /* Portrait and Landscape */
-@media screen
-  and (device-width: 360px)
-  and (device-height: 640px)
-  and (-webkit-device-pixel-ratio: 3) {
-
-}
-
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {}
 /* Portrait */
-@media screen
-  and (device-width: 360px)
-  and (device-height: 640px)
-  and (-webkit-device-pixel-ratio: 3)
-  and (orientation: portrait) {
-
-}
-
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {}
 /* Landscape */
-@media screen
-  and (max-height:500px)
-  and (orientation: landscape) {
-    .centered-content{
-      max-width: 60px !important;
-      max-height: 60px;
+@media screen and (max-height:500px) and (orientation: landscape) {
+    .centered-content {
+        max-width: 60px !important;
+        max-height: 60px;
     }
-    button{
-      font-size:.8rem !important;
+
+    button {
+        font-size: 0.8rem !important;
     }
-    h1{
-      font-size:2.5rem !important;
+
+    h1 {
+        font-size: 2.5rem !important;
     }
+
     .top-box {
         top: 35%;
         transform: translate3d(-50%,-50%,0);
@@ -363,16 +435,27 @@ p{
 
         .react-flex {
             height: 50vh;
+
             .react-flex-item {
                 height: 100%;
                 align-items: center;
                 justify-content: center;
                 display: flex;
-                button{
-                  min-height: 20vh;
-                  min-width: 20vh;
+
+                button {
+                    min-height: 20vh;
+                    min-width: 20vh;
                 }
             }
         }
     }
 }
+@media (min-width:768px) {
+    .mainNav {
+        max-width: 600px;
+        text-align: center;
+        margin: auto;
+        font-size: 1.2rem;
+    }
+}
+@import './articles.import.less';
