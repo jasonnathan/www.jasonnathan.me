@@ -5,18 +5,18 @@ export default class FadeInImage extends Component {
   constructor(props) {
     super(props);
     // set defaults if not provided
-    const {size=40, style={}} = props;
+    const {size=40, style={}, className = ""} = props;
     this.state = {
       // it seems counter-intuitive to unset default styles
       // but it works better for my use case
       style: {
         opacity: 0,
         transition: 'opacity 1s ease-in',
-        fontSize: size / 2,
         height: size,
         width: size,
         ...style
-      }
+      },
+      className: "centered-content " + className
     }
   }
 
@@ -36,7 +36,7 @@ export default class FadeInImage extends Component {
   render(){
     return (
       <img
-        className="centered-content"
+        className={this.state.className}
         role="presentation"
         key={this.props.src}
         style={this.state.style}
@@ -47,7 +47,7 @@ export default class FadeInImage extends Component {
 }
 
 FadeInImage.propTypes = {
-  size: PropTypes.number,
+  // size: PropTypes.number,
   src: PropTypes.string,
   style: PropTypes.object
 }
