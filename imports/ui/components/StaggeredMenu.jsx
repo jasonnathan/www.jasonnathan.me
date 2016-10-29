@@ -48,13 +48,13 @@ export default function StaggeredMenu() {
       route:'/about',
       title: "Find out more about what kind of work I do"
     }, {
-      label: "Contact",
-      route:'/contact',
-      title: "Get in Touch!"
-    }, {
       label: "Work",
       route:'/work',
       title: "A few examples of my past work"
+    }, {
+      label: "Contact",
+      route:'/contact',
+      title: "Get in Touch!"
     }, {
       label: "Blog",
       route:'/articles',
