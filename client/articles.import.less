@@ -1,0 +1,114 @@
+.post-list{
+  list-style: none;
+  margin: auto !important;
+  padding:0 .5rem;
+  li{
+    list-style: none;
+    margin: .5rem auto;
+    padding:0;
+    display:inline-block;
+    width:100%;
+    > article{
+      box-sizing: border-box;
+      min-height:250px;
+      height:250px;
+      position:relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .5s ease-in;
+      .bg-image{
+        position: absolute;
+        box-sizing: border-box;
+        left: 0;
+        right: 0;
+        top:0;
+        bottom:0;
+        background-size:contain;
+        transition: all .5s ease-in;
+      }
+      .post-content{
+        position: absolute;
+        display: flex;
+        padding:10px;
+        flex:1;
+        flex-wrap:no-wrap;
+        justify-content: center;
+        flex-direction: column;
+        // align-items: center;
+        box-sizing: border-box;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        height:100%;
+        width:100%;
+        z-index: 2;
+        background-color:rgba(0,0,0,.7);
+        box-shadow: 0 0 1px 0 darken(rgba(100,200,255, .5), 20%), 0 0 3px lighten(rgba(100,200,255, .5), 10%);
+        transition: all .5s ease-in;
+        h3{
+          font-size: 155%;
+          .helvetica-font-family;
+          margin: auto;
+          text-align: left;
+          color:rgba(102,245,245,.8);
+          transition: all 250ms ease-in;
+        }
+        p{
+          font-size:100%;
+          font-family: Abel;
+          text-align: center;
+          margin:auto;
+          color:lighten(rgb(0,255,255), 40%);
+          transition: all .5s ease-in;
+        }
+        h3, p{
+          text-shadow: 1px 1px 5px rgba(0,0,0,.7);
+        }
+      }
+      &:hover{
+        cursor: pointer;
+        h3{
+          transform: translate(0, 25%);
+        }
+        .bg-image{
+          filter: sepia(0%) hue-rotate(0deg) !important;
+        }
+        .post-content{
+          background-color: rgba(0,0,0,.4)
+        }
+      }
+    }
+  }
+}
+@media (min-width:768px) {
+  .post-list{
+    list-style: none;
+    margin: auto !important;
+    padding:0 .5rem;
+    li{
+      box-sizing: border-box;
+      width:50%;
+      padding:0 .5rem;
+      > div{
+        min-height: 250px;
+        .post-content{
+          padding:10px 10px;
+        }
+      }
+    }
+  }
+}
+@media (min-width:960px) {
+  .post-list{
+    li{
+      width:33%;
+      > div{
+        min-height: 300px;
+        .post-content{
+          padding:20px 30px;
+        }
+      }
+    }
+  }
+}
