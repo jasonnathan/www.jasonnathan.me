@@ -1,44 +1,48 @@
 {
-  "name": "meteor-starter-kit",
-  "private": true,
-  "scripts": {
-    "start": "meteor run"
-  },
+  "name": "dev_jasonnathan",
+  "version": "1.0.0",
+  "description": "A simple kit to start experimenting with Apollo, Meteor and React.",
+  "main": "index.js",
   "dependencies": {
-    "apollo-client": "^0.4.20",
-    "apollo-server": "^0.3.2",
-    "bcrypt": "^0.8.7",
-    "body-parser": "^1.15.2",
-    "classnames": "^2.2.5",
-    "express": "^4.14.0",
-    "graphql": "^0.7.0",
-    "graphql-tag": "^0.1.13",
-    "graphql-tools": "^0.6.6",
-    "graphql-typings": "0.0.1-beta-2",
-    "invariant": "^2.2.1",
-    "loaders.css": "^0.1.2",
-    "meteor-node-stubs": "~0.2.0",
-    "react": "^15.3.1",
-    "react-addons-pure-render-mixin": "^15.3.1",
-    "react-addons-transition-group": "^15.3.2",
-    "react-apollo": "^0.5.4",
-    "react-dom": "^15.3.1",
-    "react-flex": "^2.2.7",
-    "react-helmet": "^3.1.0",
-    "react-komposer": "^1.13.1",
-    "react-loaders": "^2.1.1",
-    "react-motion-ui-pack": "^0.10.2",
-    "react-router-transitioner": "^0.1.4",
-    "react-typist": "^1.0.2"
-  },
-  "devDependencies": {
+    "apollo-client": "^0.4.22",
+    "apollo-server": "^0.3.3",
     "babel-eslint": "^7.0.0",
+    "body-parser": "^1.15.2",
     "eslint": "^3.8.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-import-resolver-meteor": "^0.3.3",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-meteor": "^4.0.1",
-    "eslint-plugin-react": "^6.4.1"
-  }
+    "eslint-plugin-react": "^6.4.1",
+    "express": "^4.14.0",
+    "graphql": "^0.7.2",
+    "graphql-tools": "^0.6.6",
+    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-form-data": "^0.0.1",
+    "loaders.css": "^0.1.2",
+    "react-addons-transition-group": "^15.3.2",
+    "react-apollo": "^0.5.14",
+    "react-flex": "^2.2.7",
+    "react-helmet": "^3.1.0",
+    "react-loaders": "^2.1.1",
+    "react-motion-ui-pack": "^0.10.2",
+    "react-router-transitioner": "^0.1.4",
+    "react-typist": "^1.0.2",
+    "truncatise": "^0.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonnathan/jasonnathan-react.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonnathan/jasonnathan-react.com/issues"
+  },
+  "homepage": "https://github.com/jasonnathan/jasonnathan-react.com#readme"
 }
