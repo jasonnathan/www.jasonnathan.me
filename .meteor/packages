@@ -15,10 +15,12 @@ standard-minifier-js@1.2.1    # JS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.5.9              # Enable ECMAScript2015+ syntax in app code
 
-apollo@0.1.0
+apollo
 shell-server@0.2.1
 less@2.7.6
 static-html
 email@1.1.18
 fourseven:scss
 reactrouter:react-router-ssr
+mongo
+mikowals:batch-insert
