@@ -17,13 +17,15 @@ const Home = () => {
     >
       {({v}) => <Flex row alignItems="center" justifyContent="center" style={{height: '100%'}}>
         <Helmet
-          title="Jason J. Nathan"
+          title="Home | Jason J. Nathan"
           meta={[
               {"name": "description", "content": "A software engineer, writer, teacher and leader based in Singapore."}
           ]}
         />
         <div id="start-screen-container">
           <MediaElement
+            itemscope
+            itemtype="http://data-vocabulary.org/Person"
             file="/profile.jpg"
             dim={110}
           >

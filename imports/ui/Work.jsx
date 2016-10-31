@@ -17,9 +17,9 @@ const Work = () => {
     >
       {({v}) => <Flex row alignItems="center" justifyContent="center" style={{height: '100%'}}>
         <Helmet
-          title="About Jason J. Nathan"
+          title="Works | Jason J. Nathan"
           meta={[
-              {"name": "description", "content": "A software engineer, writer, teacher and team-lead based in Singapore."}
+              {"name": "description", "content": "A showcase of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP"}
           ]}
         />
         <div id="start-screen-container" style={{paddingTop:'70px'}}>

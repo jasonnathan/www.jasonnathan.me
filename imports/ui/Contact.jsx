@@ -17,9 +17,9 @@ const Contact = () => {
     >
       {({v}) => <Flex row alignItems="center" justifyContent="center" style={{height: '100%'}}>
         <Helmet
-          title="About Jason J. Nathan"
+          title="Contact | Jason J. Nathan"
           meta={[
-              {"name": "description", "content": "A software engineer, writer, teacher and team-lead based in Singapore."}
+              {"name": "description", "content": "Send me a message via chat or phone.."}
           ]}
         />
         <div id="start-screen-container" style={{paddingTop:'70px'}}>
