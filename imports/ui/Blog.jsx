@@ -1,38 +1,38 @@
 /* global document*/
 import React from 'react';
-import {Flex} from 'react-flex';
-import {spring, Motion} from 'react-motion';
+import {Flex, Item} from 'react-flex';
+import {spring} from 'react-motion';
 import Helmet from 'react-helmet';
 import StaggeredName from './components/StaggeredName.jsx';
 import MainMenu from './components/MainMenu.jsx';
 import PostsList from './components/Posts.jsx';
+import CategoriesList from './components/Categories.jsx';
 
 // Create the client as outlined above
 const popConfig = { stiffness: 360, damping: 25 };
 
 const Blog = () => {
-  return (
-    <Motion
-      role="main"
-      defaultStyle={{v: 0}}
-      style={{v: spring(1)}}
-    >
-      {({v}) => <Flex row alignItems="center" justifyContent="center" style={{height: '100%'}}>
+  return (<Flex row alignItems="flex-start" justifyContent="center" style={{height: '100%'}}>
         <Helmet
-          title="About Jason J. Nathan"
+          title="Articles | Jason J. Nathan"
           meta={[
-              {"name": "description", "content": "A software engineer, writer, teacher and team-lead based in Singapore."}
+              {"name": "description", "content": "Tutorials, Freebies and other ramblings"}
           ]}
         />
-        <div id="start-screen-container" style={{paddingTop:'80px'}}>
-          <StaggeredName letters="Articles" />
-          <PostsList />
-        </div>
-        <MainMenu activePath="Blog" />
-      </Flex>
-    }
-    </Motion>
-  )
+          <div id="start-screen-container" style={{paddingTop:'80px', height:'100vh'}}>
+            <StaggeredName letters="Articles" />
+            <Flex alignItems="flex-start">
+              <Item flex={2}><PostsList /></Item>
+              <Item column wrap alignContent="space-between" justifyContent="space-between" className="hidden-mobile" flex={1}>
+                <CategoriesList />
+              </Item>
+            </Flex>
+            <MainMenu activePath="Blog" />
+            <br />
+            <br />
+            <br />
+          </div>
+      </Flex>)
 }
 
 Blog.sceneConfig = {
@@ -52,5 +52,7 @@ Blog.sceneConfig = {
     };
   }
 }
+
+
 
 export default Blog;
