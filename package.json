@@ -28,10 +28,12 @@
     "react-loaders": "^2.1.1",
     "react-motion-ui-pack": "^0.10.2",
     "react-router-transitioner": "^0.1.4",
-    "react-typist": "^1.0.2",
+    "shortcode-insert": "^1.0.1",
     "truncatise": "^0.0.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
