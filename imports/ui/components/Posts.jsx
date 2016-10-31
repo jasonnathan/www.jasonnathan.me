@@ -2,13 +2,18 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import {spring, presets, StaggeredMotion} from 'react-motion';
 import getPosts from '/imports/api/posts-query-gql';
-import Post from './Post.jsx'
 import Loader from 'react-loaders'
+
+import Post from './Post.jsx'
 
 // MyComponent is a "presentational" or apollo-unaware component,
 // It could be a simple React class:
 const abstractPostsList = ({data}) =>{
-  return data.loading ? (<div className="centered-content"><Loader type="ball-triangle-path" /></div>): (
+  // console.log(data)
+  if(data.loading)
+      return (<div className="centered-content" style={{paddingTop:'25vh'}}><Loader type="ball-triangle-path" /></div>);
+
+  return (
     <StaggeredMotion
       defaultStyles={[...data.posts].map(() => {return {h: 0.1}})}
       styles={
