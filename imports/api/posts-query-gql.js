@@ -10,6 +10,9 @@ const getPosts = gql`{
     excerpt {
       rendered
     }
+    categories{
+      slug
+    }
     # author {
     #   id
     #   name

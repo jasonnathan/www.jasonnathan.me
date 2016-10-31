@@ -1,13 +1,15 @@
 import Author from './Author';
 import Post from './Post';
+import Category from './Category';
 import { Kind } from 'graphql/language';
-import {getPosts,getAuthor,getPostsByAuthor} from './wp-connector';
+import {getPosts,getAuthor,getPostsByAuthor,getCategoryByPost,getCategories} from './wp-connector';
 
 const RootQuery = `
   type Query {
     post(id: Int!): Post
     posts: [Post]
     author(id: Int!): Author
+    categories: [Category]
   }
 `;
 
@@ -27,6 +29,9 @@ const resolvers = {
     },
     author(_, args){
       return getAuthor(args);
+    },
+    categories(_, args){
+      return getCategories(args)
     }
   },
   Post:{
@@ -34,7 +39,8 @@ const resolvers = {
     title: ({title}) => title,
     content: ({content}) => content,
     excerpt: ({excerpt}) => excerpt,
-    author:({author}) => getAuthor(author)
+    author:({author}) => getAuthor(author),
+    categories:({id}) => getCategoryByPost(id)
   },
   Author:{
     posts(_, args){
@@ -72,4 +78,4 @@ const parseJSONLiteral = (ast) => {
 }
 
 
-export {SchemaDefinition, RootQuery, Post, Author, resolvers}
+export {SchemaDefinition, RootQuery, Post, Author, Category, resolvers}

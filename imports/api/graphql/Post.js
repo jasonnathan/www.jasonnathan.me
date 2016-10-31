@@ -1,4 +1,5 @@
 import Author from './Author';
+import Category from './Category';
 
 const Post = `
 scalar Date
@@ -22,6 +23,7 @@ type Post {
   content: RenderedString
   excerpt: RenderedString
   author: Author
+  categories: [Category]
   comment_status: String
   ping_status: String
   sticky: Boolean
@@ -36,4 +38,4 @@ type Post {
   tags: [Tag]
   featured_media: Attachment
  */
-export default () => [Post, Author];
+export default () => [Post, Author, Category];
