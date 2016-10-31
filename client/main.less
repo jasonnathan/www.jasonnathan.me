@@ -1,13 +1,14 @@
-// @import url( 'https://fonts.googleapis.com/css?family=Abel');
+@import './colors.import.less';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
-
 .main-font-family {
     font-family: Abel, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.cool-box-shadow{
+  box-shadow: 0 0 1px 0 fade(@lighter-blue, 50%), 0 0 3px fade(@blue, 50%);
 }
 .helvetica-font-family {
     font-family: "Roboto Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-@primary-color: rgb(0,255,255);
 
 body,
 html {
@@ -20,7 +21,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #111;
+    background-color: @black;
 }
 
 body {
@@ -37,7 +38,7 @@ body {
     h6 {
         font-family: Audiowide;
         font-weight: 300;
-        color: @primary-color;
+        color: @lighter-blue;
 
         small {
             font-family: Abel;
@@ -71,11 +72,22 @@ body {
     }
 }
 
+a{
+  color: fade(@lighter-blue, 70%);;
+  transition:color .25s ease-in;
+  &:hover{
+    color: @blue;
+  }
+  &:visited, &:focus{
+    color: @darkest-blue;
+  }
+}
+
 canvas {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: @black;
     z-index: -1;
     top: 0;
     left: 0;
@@ -85,7 +97,7 @@ canvas {
 
 .fixed-menu {
     position: fixed;
-    background: linear-gradient( 0deg, transparent, black 40% );
+    background: linear-gradient( 0deg, transparent, @black 40% );
     top: 0;
     left: 0;
     right: 0;
@@ -110,6 +122,10 @@ canvas {
           font-size: 1.1rem;
           align-items: center;
           text-align: center;
+          font-variant: normal;
+          font-style: normal;
+          font-weight: 100;
+          text-transform: capitalize;
         }
         img {
             display: flex;
@@ -121,7 +137,7 @@ canvas {
             max-height: 24px;
         }
         a {
-            color: @primary-color;
+            color: @cyan;
             text-decoration: none;
             padding: 0.5rem 0 1rem 0;
             display: block;
@@ -131,7 +147,7 @@ canvas {
 
         }
         .active {
-            color: rgba(255,255,255,.4);
+            color: @lightest-black;
             text-decoration: none;
             padding: 0.5rem 0 1rem 0;
             display: block;
@@ -166,9 +182,7 @@ canvas {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    &:not(div){
-      filter: sepia(20%) hue-rotate(140deg);
-    }
+    filter: sepia(100%) hue-rotate(140deg);
 }
 
 .Avatar {
@@ -180,11 +194,11 @@ canvas {
 #start-screen-container {
     box-sizing: border-box;
     width: 100%;
+    max-width:1280px;
     height: 100%;
     margin: auto;
     text-align: center;
-    // background: #222 !important;
-    color: @primary-color;
+    color: @cyan;
     font-weight: 600;
     text-transform: uppercase;
     font-variant: small-caps;
@@ -219,7 +233,7 @@ p {
     text-transform: none;
     font-variant: normal;
     font-weight: 100;
-    color: lighten(rgb(0,255,255), 15%);
+    color: @lighter-cyan;
 }
 
 .top-box {
@@ -255,7 +269,7 @@ p {
                 min-width: 15vh;
                 height: 15vh;
                 width: 15vh;
-                color: @primary-color;
+                color: @cyan;
                 cursor: pointer;
                 margin: 0 auto;
                 position: relative;
@@ -269,11 +283,11 @@ p {
                     align-items: center;
                     font-size: 1.6rem;
                     text-transform: uppercase;
-                    background-color: rgba(0,0,0,.3);
+                    background-color: rgba(0,0,0,.25);
                     padding:0 1rem;
                     max-height: 50px;
-                    box-shadow: 0 0 1px 0 darken(rgba(100,200,255, .5), 20%), 0 0 3px lighten(rgba(100,200,255, .5), 10%);
-                    // box-shadow: 0 0 1px darken(rgba(100,200,255, .5), 20%);
+                    transition: all 375ms ease-in;
+                    .cool-box-shadow;
                 }
             }
         }
