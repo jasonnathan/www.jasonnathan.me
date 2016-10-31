@@ -1,7 +1,8 @@
 /*globals fetch*/
 import 'isomorphic-fetch';
 import FormData from 'form-data';
-import Posts from '/imports/api/PostsCollection';
+
+// Posts.remove({});
 
 const url = 'https://public-api.wordpress.com/wp/v2/sites/japanatrois.wordpress.com';
 const authUrl = 'https://public-api.wordpress.com/oauth2/token';
@@ -12,6 +13,9 @@ let _headers = {
 };
 
 const authWP = () => {
+  if(_headers.Authorization)
+    return Promise.resolve(_headers);
+
   const form = new FormData();
   const { CLIENT_ID, CLIENT_SECRET,WP_USERNAME,WP_PASSWD } = process.env;
   form.append('client_id', CLIENT_ID);
@@ -23,25 +27,23 @@ const authWP = () => {
   return fetch(authUrl, {method: 'POST', compress: true, body: form})
           .then(res => res.json())
           .then(({access_token}) => {_headers.Authorization = `Bearer ${access_token}`; return _headers})
-          .catch(er => console.error(er));
 }
 const getWP = (endpoint, query) => {
-  const ep = `${url}/${endpoint}` + (query ? `?$(query)` : '');
-  return authWP().then((headers) => fetch(ep, {headers, compress: !0}).then( res => res.json() ))
+  const ep = `${url}/${endpoint}` + (query ? `?${query}` : '');
+  return authWP().then((headers) => fetch(ep, {headers, compress: !0}).then( res => {
+    const totalPosts = res.headers.get('x-wp-total');
+    if(totalPosts)
+      return res.json().then((data) =>{
+        data.totalPosts = totalPosts;
+        return Promise.resolve(data);
+      });
+    return res.json();
+  } ))
 }
 
 export const getPost = id => getWP(`posts/${id}`);
 export const getAuthor = id => getWP(`users/${id}`);
+export const getCategoryByPost = id => getWP('categories', `post=${id}`)
 export const getPostsByAuthor = id => getWP('posts', `author=${id}`);
-export const getPosts = async (id) => {
-  let _local = await Posts.find().fetch();
-  if(!_local.length){
-    return await getWP('posts' + (id ? `/${id}` : '')).then(posts => {
-      console.log("fetched from REST", posts.length);
-      Posts.batchInsert(posts);
-      return Promise.resolve(posts);
-    });
-  }
-  console.log("from DB", _local.length);
-  return Promise.resolve(_local);
-};
+export const getCategories = () => getWP(`categories`);
+export const getPosts = () => getWP('posts');
