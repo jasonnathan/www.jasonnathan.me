@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Flex, Item} from 'react-flex';
 import {Link} from 'react-router';
-import {spring, StaggeredMotion, Motion} from 'react-motion';
+import {spring, presets, StaggeredMotion, Motion} from 'react-motion';
 
 class TransitionedButton extends Component {
   constructor(props) {
@@ -12,13 +12,21 @@ class TransitionedButton extends Component {
     }
   }
 
+  getColor(v){
+    return v === .4 ? 'rgb(0,255,255)' : `rgba(151, 218, 255, ${v})`;
+  }
+
+  getBorderColour(v){
+    return `0 0 1px 0 rgba(100, 200, 255, ${v}), 0 0 3px rgba(151, 218, 255, ${v})`;
+  }
+
   handleHover(active){(this.setState({isHover: active}))}
 
   get springProps() {
-    const conf = { stiffness:300, damping:20};
+    const {wobbly} = presets;
     return {
-      defaultStyle: { scale: 1 },
-      style:{ scale: spring(this.state.isHover ? 1.1 : 1, {...conf, precision:.001}).val},
+      defaultStyle: { percent: 1 },
+      style:{ percent: spring(this.state.isHover ? 1 : 0.4, {...wobbly, precision:.1}).val},
     };
   }
 
@@ -30,7 +38,7 @@ class TransitionedButton extends Component {
             <span
               onMouseOver={() => this.handleHover(true)}
               onMouseLeave={() => this.handleHover(false)}
-              style={{transform: `scale3d(${tween.scale},${tween.scale},1)`}}
+              style={{boxShadow: this.getBorderColour(tween.percent), color: this.getColor(tween.percent)}}
             >
               {this.props.label}
             </span>
