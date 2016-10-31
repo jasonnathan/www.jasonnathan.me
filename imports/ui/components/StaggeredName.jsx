@@ -20,7 +20,7 @@ export default function StaggeredName({children, letters}){
                 transform: `scale(${style.h})`,
                 display: 'inline-block',
                 color: 'rgba(0, 255, 255, ' + style.h + ')',
-                opacity:'.8',
+                opacity:'.9',
                 textShadow: style.h === 1 ? 'none' : '0 0 ' + style.h*30 + 'px #00ffff'
               }}
             >
