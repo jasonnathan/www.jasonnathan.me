@@ -18,7 +18,7 @@ const About = () => {
     >
       {({v}) => <Flex row alignItems="center" justifyContent="center" style={{height: '100%'}}>
         <Helmet
-          title="About Jason J. Nathan"
+          title="About | Jason J. Nathan"
           meta={[
               {"name": "description", "content": "A software engineer, writer, teacher and team-lead based in Singapore."}
           ]}
