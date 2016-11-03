@@ -142,9 +142,9 @@ const renderer = () => {
   action.x += (mouse.x - action.x) * 0.07;
   action.y += (mouse.y - action.y) * 0.07;
   moveDots();
-  drawLines("rgb(0,200,255)");
-  drawJoints("rgb(0,200,255)");
-  drawDots(true, "rgb(0,200,255)", 1);
+  drawLines("rgba(0,200,255, .5)");
+  drawJoints("rgba(0,200,255, .5)");
+  drawDots(true, "rgba(0,200,255, .5)", 1);
 }
 
 
