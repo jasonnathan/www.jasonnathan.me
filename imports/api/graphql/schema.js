@@ -2,11 +2,11 @@ import Author from './Author';
 import Post from './Post';
 import Category from './Category';
 import { Kind } from 'graphql/language';
-import {getPosts,getAuthor,getPostsByAuthor,getCategoryByPost,getCategories} from './wp-connector';
+import {getPost, getPosts,getAuthor,getPostsByAuthor,getCategoryByPost,getCategories} from './wp-connector';
 
 const RootQuery = `
   type Query {
-    post(id: Int!): Post
+    post(slug: String): [Post]
     posts: [Post]
     author(id: Int!): Author
     categories: [Category]
@@ -22,7 +22,7 @@ const SchemaDefinition = `
 const resolvers = {
   Query: {
     post(_, args) {
-      return getPosts(args.id);
+      return getPost(args);
     },
     posts(_, args) {
       return getPosts();
