@@ -7,8 +7,6 @@ import Loader from 'react-loaders';
 const abstractCategoriesList = ({data}) =>{
   if(data.loading)
     return (<div className="centered-content" style={{paddingTop:'25vh'}}><Loader type="ball-triangle-path" /></div>);
-
-
   return (
     <StaggeredMotion
       defaultStyles={[...data.categories].map(() => {return {h: 0.1}})}
@@ -24,7 +22,8 @@ const abstractCategoriesList = ({data}) =>{
           return (
             <a
               key={cat.slug}
-              href={`/${cat.slug}`}
+              style={{opacity: style.h}}
+              href={`/articles/${cat.slug}`}
               dangerouslySetInnerHTML={catHTML}
             />
           )
@@ -35,7 +34,5 @@ const abstractCategoriesList = ({data}) =>{
   )
 }
 
-
 const CategoriesList = graphql(getCategories)(abstractCategoriesList);
-
 export default CategoriesList;
