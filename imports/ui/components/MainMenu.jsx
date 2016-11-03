@@ -5,11 +5,11 @@ import {Flex,Item} from 'react-flex';
 const MainMenu = ({activePath}) => {
 
   let links = [
+    {label: "Home", path: '', active: false, icon: '/Home.svg'},
     {label: "About", path: 'about', active: false, icon:null},
     {label: "Work", path: 'work', active: false, icon:null},
-    {label: "Home", path: '', active: false, icon: '/Home.svg'},
     {label: "Contact", path: 'contact', active: false, icon: null},
-    {label: "Blog", path: 'articles', active: false, icon: null},
+    // {label: "Blog", path: 'articles', active: false, icon: null},
   ].map(link => {
     if(link.label === activePath){
       link.active = true;
