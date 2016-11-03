@@ -1,3 +1,143 @@
+.article-common{
+    box-sizing: border-box;
+    min-height:250px;
+    height:250px;
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s ease-in;
+    .centered-content{
+      filter: sepia(40%) hue-rotate(140deg);
+    }
+    .bg-image{
+      position: absolute;
+      box-sizing: border-box;
+      left: 0;
+      right: 0;
+      top:0;
+      bottom:0;
+      background-size:contain;
+      transition: all .5s ease-in;
+    }
+    .post-content{
+      position: absolute;
+      display: flex;
+      padding: 1.5rem;
+      flex:1;
+      flex-wrap:no-wrap;
+      justify-content: center;
+      flex-direction: column;
+      // align-items: center;
+      box-sizing: border-box;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      height:100%;
+      width:100%;
+      z-index: 2;
+      background-color:fade(@darkest-black, 70%);
+      .cool-box-shadow;
+      transition: all .5s ease-in;
+      h3{
+        font-size: 2rem;
+        .helvetica-font-family;
+        margin: auto;
+        text-align: left;
+        color:@darker-cyan;
+        transition: all 250ms ease-in;
+        text-transform: none;
+        font-variant: normal;
+        font-style: normal;
+        text-decoration: none;
+        font-weight: 100;
+      }
+      p{
+        font-size: 1.3rem;
+        font-family: Abel;
+        text-align: center;
+        margin:auto;
+        color:fade(lighten(@lightest-blue, 4%), 70%);
+        transition: all .5s ease-in;
+      }
+      h3, p{
+        text-shadow: 1px 1px 5px @black;
+      }
+      section{
+        padding-bottom:4rem;
+        a {
+          text-decoration: none !important;
+          padding: none;
+          margin: 0;
+          background: rgba(0,0,0,1);
+          span{
+            display: block;
+            padding: 0 .5rem .3rem .5rem;
+            font-size:.8rem;
+            color: #999 !important;
+            background: rgba(0,0,0,1);
+            text-transform: uppercase;
+          }
+        }
+      }
+      #disqus_thread{
+        padding:1.5rem;
+      }
+    }
+    &:hover{
+      cursor: pointer;
+      h3{
+        transform: translate(0, 25%);
+      }
+      .bg-image{
+        filter: sepia(0%) hue-rotate(0deg) !important;
+      }
+      .post-content{
+        background-color: fade(@darkest-black, 60%);
+      }
+    }
+}
+
+.single-post{
+    .article-common;
+    min-height: 99vh !important;
+    margin-top: .5rem;
+    height: 100% !important;
+    .post-content{
+      position:relative;
+      background-color:fade(lighten(@black, 3%), 80%);
+      top:0;
+      left:0;
+      transform: none;
+      text-align: left;
+      max-width: 800px;
+      // background-color: #22201f;
+      background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+      /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+      h3{
+        padding: 2rem 1.5rem .5rem 1.5rem;;
+      }
+      p, span{
+        text-align: left;
+        padding: 2rem 1.6rem 0rem 1.6rem;
+        a > span{
+          text-decoration: none !important;
+
+        }
+      }
+    }
+    &:hover{
+      .post-content{
+        filter:none;
+        background-color:fade(lighten(@black, 3%), 80%);
+      }
+      h3{
+        transform: none;
+        cursor: default;
+      }
+    }
+}
+
 .post-list{
   list-style: none;
   margin: auto !important;
@@ -14,83 +154,7 @@
       display: block;
       text-decoration: none;
       > article{
-        box-sizing: border-box;
-        min-height:250px;
-        height:250px;
-        position:relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all .5s ease-in;
-        .centered-content{
-          filter: sepia(40%) hue-rotate(140deg);
-        }
-        .bg-image{
-          position: absolute;
-          box-sizing: border-box;
-          left: 0;
-          right: 0;
-          top:0;
-          bottom:0;
-          background-size:contain;
-          transition: all .5s ease-in;
-        }
-        .post-content{
-          position: absolute;
-          display: flex;
-          padding:10px;
-          flex:1;
-          flex-wrap:no-wrap;
-          justify-content: center;
-          flex-direction: column;
-          // align-items: center;
-          box-sizing: border-box;
-          top:50%;
-          left:50%;
-          transform: translate(-50%, -50%);
-          height:100%;
-          width:100%;
-          z-index: 2;
-          background-color:fade(@darkest-black, 70%);
-          .cool-box-shadow;
-          transition: all .5s ease-in;
-          h3{
-            font-size: 155%;
-            .helvetica-font-family;
-            margin: auto;
-            text-align: left;
-            color:@darker-cyan;
-            transition: all 250ms ease-in;
-            text-transform: none;
-            font-variant: normal;
-            font-style: normal;
-            text-decoration: none;
-            font-weight: 100;
-          }
-          p{
-            font-size:105%;
-            font-family: Abel;
-            text-align: center;
-            margin:auto;
-            color:fade(@lightest-blue, 75%);
-            transition: all .5s ease-in;
-          }
-          h3, p{
-            text-shadow: 1px 1px 5px @black;
-          }
-        }
-        &:hover{
-          cursor: pointer;
-          h3{
-            transform: translate(0, 25%);
-          }
-          .bg-image{
-            filter: sepia(0%) hue-rotate(0deg) !important;
-          }
-          .post-content{
-            background-color: fade(@darkest-black, 60%);
-          }
-        }
+        .article-common;
       }
     }
   }
@@ -120,6 +184,8 @@
     font-weight: 100;
   }
 }
+
+
 @media (min-width:768px) {
   .hidden-mobile{
     box-sizing: border-box;
