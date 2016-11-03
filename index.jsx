@@ -5,7 +5,7 @@ import {ReactRouterSSR} from 'meteor/reactrouter:react-router-ssr';
 import ReactHelmet from 'react-helmet';
 import {AppRoutes, preRender, client} from '/imports/routes.jsx';
 
-const dehydrateHook = () => client.store.getState();
+const dehydrateHook = () => client.store ? client.store.getState() : null;
 
 
 const htmlHook = html => {
@@ -15,7 +15,7 @@ const htmlHook = html => {
 
 const props = {onUpdate: () => Meteor.isClient && ga('send', 'pageview')}
 
-const clientOptions = {props, htmlHook};
-const serverOptions = { htmlHook, preRender, dehydrateHook};
+const clientOptions = {props};
+const serverOptions = {htmlHook, preRender, dehydrateHook};
 
 ReactRouterSSR.Run(AppRoutes, clientOptions, serverOptions);
