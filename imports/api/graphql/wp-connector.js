@@ -42,7 +42,14 @@ const getWP = (endpoint, query) => {
   } ))
 }
 
-export const getPost = id => getWP(`posts/${id}`);
+export const getPost = args => {
+  if(args.id){
+    return getWP(`posts/${args.id}`);
+  }
+  if(args.slug){
+    return getWP('posts', `slug=${args.slug}&context=edit`);
+  }
+}
 export const getAuthor = id => getWP(`users/${id}`);
 export const getCategoryByPost = id => getWP('categories', `post=${id}`)
 export const getPostsByAuthor = id => getWP('posts', `author=${id}`);
