@@ -2,12 +2,9 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import {spring, presets, StaggeredMotion} from 'react-motion';
 import getPosts from '/imports/api/posts-query-gql';
-import Loader from 'react-loaders'
+import Loader from 'react-loaders';
+import PostSummary from './PostSummary.jsx'
 
-import Post from './Post.jsx'
-
-// MyComponent is a "presentational" or apollo-unaware component,
-// It could be a simple React class:
 const abstractPostsList = ({data}) =>{
   // console.log(data)
   if(data.loading)
@@ -25,7 +22,7 @@ const abstractPostsList = ({data}) =>{
         {interpolatingStyles.map((style, i) => {
           return (
             <li key={data.posts[i].slug} style={{opacity: style.h}}>
-              <Post post={data.posts[i]} />
+              <PostSummary post={data.posts[i]} />
             </li>
           )
         })}
