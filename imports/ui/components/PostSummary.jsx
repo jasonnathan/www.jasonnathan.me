@@ -2,10 +2,10 @@ import React from 'react';
 import truncatise from 'truncatise';
 import FadeInImage from './FadeInImage.jsx';
 
-const Post = ({post}) => {
+const PostSummary = ({post}) => {
   const getUrl = () => {
     const cat = post.categories[0].slug;
-    return `/${cat}/${post.slug}`;
+    return `/article/${cat}/${post.slug}`;
   }
   return(
     <a href={getUrl()}>
@@ -20,4 +20,4 @@ const Post = ({post}) => {
   )
 }
 
-export default Post;
+export default PostSummary;
