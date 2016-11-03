@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Flex, Item} from 'react-flex';
 import {Link} from 'react-router';
 import {spring, presets, StaggeredMotion, Motion} from 'react-motion';
+import GlowingLine from './GlowingLine.jsx';
 
 class TransitionedButton extends Component {
   constructor(props) {
@@ -13,14 +14,34 @@ class TransitionedButton extends Component {
   }
 
   getColor(v){
-    return v === .4 ? 'rgb(0,255,255)' : `rgba(151, 218, 255, ${v})`;
+    return v === .4 ? 'rgb(0,200,200)' : `rgba(151, 218, 255, ${v})`;
   }
 
-  getBorderColour(v){
-    return `0 0 1px 0 rgba(100, 200, 255, ${v}), 0 0 3px rgba(151, 218, 255, ${v})`;
+  getScale(v){
+    return `scale3d(${v},${v},1)`;
   }
 
-  handleHover(active){(this.setState({isHover: active}))}
+  getTranslateAndWidth(isTop, scale){
+    const m = isTop ? '5%' : '-5%'
+    return {
+      width: this.isHover ? '90%' : '100%',
+      transform: `translateX(${this.isHover ? m : 0}) ` + scale
+    }
+  }
+
+  getHRStyle(v, isTop){
+    let s = this.getTranslateAndWidth(isTop, this.getScale(v));
+    s[isTop ? "top" : "bottom"] = '-2px';
+    return s;
+  }
+
+  get isHover(){
+    return this.state.isHover;
+  }
+
+  handleHover(active){
+    this.setState({isHover: active})
+  }
 
   get springProps() {
     const {wobbly} = presets;
@@ -33,15 +54,22 @@ class TransitionedButton extends Component {
   render(){
     return(
       <Motion {... this.springProps}>
-        {tween => {
+        {t => {
           return(
-            <span
-              onMouseOver={() => this.handleHover(true)}
-              onMouseLeave={() => this.handleHover(false)}
-              style={{boxShadow: this.getBorderColour(tween.percent), color: this.getColor(tween.percent)}}
-            >
-              {this.props.label}
-            </span>
+            <div>
+              <GlowingLine style={{top:'-1px'}} />
+              <span
+                onMouseOver={() => this.handleHover(true)}
+                onMouseLeave={() => this.handleHover(false)}
+                style={{
+                  color: this.getColor(t.percent),
+                  textShadow: '-1px -1px 3px rgba(0,0,0,.5)'
+                }}
+              >
+                {this.props.label}
+              </span>
+              <GlowingLine style={{bottom:'-1px'}} />
+            </div>
           )
         }}
       </Motion>
@@ -49,8 +77,36 @@ class TransitionedButton extends Component {
   }
 }
 
-export default function StaggeredMenu() {
-  const items = [
+TransitionedButton.propTypes = {
+  label: PropTypes.string
+}
+
+export default function StaggeredMenu({items}) {
+  const defaultStyles = [...items].map( () => ({s: .9, o:0.1}));
+  const style = prevStyles => prevStyles.map((_, i) => ({
+    s: spring(i === 0 ? 1 : prevStyles[i - 1].s, {precision:.1}),
+    o: spring(i === 0 ? 1 : prevStyles[i - 1].o, { precision:.01 })
+  }));
+  const menuItem = ({s,o}, i) => (
+    <Item wrap role="menuitem" key={`${i}Button`}>
+      <Link
+        role="menuitem"
+        to={items[i].route}
+        style={{ transform: `scale3d(${s}, ${s}, 1)`, opacity: o}}
+      >
+        <TransitionedButton label={items[i].label} title={items[i].title} />
+      </Link>
+    </Item>
+  )
+  return (
+    <StaggeredMotion defaultStyles={defaultStyles} styles={style}>
+      {interpolatingStyles => <Flex>{interpolatingStyles.map(menuItem)}</Flex>}
+    </StaggeredMotion>
+  );
+}
+
+StaggeredMenu.defaultProps = {
+  items: [
     {
       label: "About",
       route:'/about',
@@ -63,34 +119,19 @@ export default function StaggeredMenu() {
       label: "Contact",
       route:'/contact',
       title: "Get in Touch!"
-    }, {
-      label: "Blog",
-      route:'/articles',
-      title: "Articles, Articles, Articles!"
-    }
-  ];
-  return (
-    <StaggeredMotion
-      defaultStyles={[...items].map(() => {return {s: .9, o:0.1}})}
-      styles={prevStyles => prevStyles.map((_, i) => { return {
-        s: spring(i === 0 ? 1 : prevStyles[i - 1].s, {precision:.1}),
-        o: spring(i === 0 ? 1 : prevStyles[i - 1].o, { precision:.01 })
-      }})}
-    >
-      {interpolatingStyles => <Flex>
-        {interpolatingStyles.map(({s,o}, i) => { return(
-          <Item wrap role="menuitem" key={`${i}Button`}>
-            <Link
-              role="menuitem"
-              to={items[i].route}
-              style={{ transform: `scale3d(${s}, ${s}, 1)`, opacity: o}}
-            >
-              <TransitionedButton label={items[i].label} title={items[i].title} />
-            </Link>
-          </Item>
-        )})}
-      </Flex>
-    }
-    </StaggeredMotion>
-  );
+    },
+    // {
+    //   label: "Blog",
+    //   route:'/articles',
+    //   title: "Articles, Articles, Articles!"
+    // }
+  ]
+}
+
+StaggeredMenu.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    route: PropTypes.string,
+    title: PropTypes.string
+  }))
 }
