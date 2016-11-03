@@ -5,6 +5,7 @@ import {spring, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
 import StaggeredName from './components/StaggeredName.jsx';
 import MainMenu from './components/MainMenu.jsx';
+import { fade} from 'react-router-transitioner';
 
 const popConfig = { stiffness: 360, damping: 25 };
 
@@ -15,7 +16,7 @@ const Work = () => {
       defaultStyle={{v: 0}}
       style={{v: spring(1)}}
     >
-      {({v}) => <Flex row alignItems="center" justifyContent="center" style={{height: '100%'}}>
+      {({v}) => <Flex row alignItems="center" className="noscroll" justifyContent="center" style={{height: '100%'}}>
         <Helmet
           title="Works | Jason J. Nathan"
           meta={[
@@ -35,22 +36,6 @@ const Work = () => {
   )
 }
 
-Work.sceneConfig = {
-  atEnter: {
-    opacity: 1
-  },
-  atLeave: {
-    opacity: spring(0, popConfig)
-  },
-  atActive: {
-    opacity: 1
-  },
-  mapStyles(styles) {
-    return {
-      height:'100%',
-      opacity: styles.opacity
-    };
-  }
-}
+Work.sceneConfig = fade
 
 export default Work;
