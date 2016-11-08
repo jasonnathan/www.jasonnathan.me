@@ -1,73 +1,61 @@
 /* global document*/
-import React, {Component} from 'react';
+import React from 'react';
 import {Flex, Item} from 'react-flex';
-import {Link} from 'react-router'
-import {spring, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
-import { fade} from 'react-router-transitioner';
 import StaggeredName from './components/StaggeredName.jsx';
-import MainMenu from './components/MainMenu.jsx';
+import FadeInImage from './components/FadeInImage.jsx';
+import FlipBox from './components/FlipBox.jsx';
+import Panel from './components/Panel.jsx';
+import {person, website, facts} from './about-text';
 
-
-const popConfig = { stiffness: 360, damping: 25 };
-const paragraphs = [
-  "A burgeoning entrepreneur and service-oriented professional whose passion lies in innovation, engineering and user experiences.",
-  "Possesses over ten years of experience in Software Engineering and has an outgoing personality.",
-  "Commands an immense flair for communication skills to connect with a wide range of audiences.",
-  "Driven to be self-trained, displays enthusiasm when exploring new ideas and excels beyond paper qualifications.",
-  "A captivating and charismatic presenter of ideas and a valuable asset to his team.",
-  "A natural leader who can inspire, nurture and produce results."
-];
-
-class About extends Component{
-  constructor(props){
-    super(props);
-  }
-  componentDidMount(){
-    // if(Meteor.isClient && typeof jQuery !== undefined){
-    //   $('#start-screen-container').slimScroll({height:'100%', width:'100%'})
-    // }
-
-  }
-  render(){
-    const getTranslate = (v, t) => {
-      t = `${t*100}%`;
-      return `translateY(${t})`;
-    }
+function About(props) {
+  this.props = props;
     return (
-      <Motion
-        role="main"
-        defaultStyle={{v: 0, t:1}}
-        style={{v: spring(1, {...popConfig}), t: spring(0, {...popConfig})}}
-      >
-        {({v, t}) => <Flex row alignItems="center" className="noscroll" justifyContent="center" style={{height: '100%'}}>
-          <Helmet
-            title="About | Jason J. Nathan"
-            meta={[
-                {"name": "description", "content": "A senior software engineer, writer, teacher and team-lead based in Singapore."}
-            ]}
-          />
-          <div id="start-screen-container" style={{height: 'calc(100vh - 70px)'}}>
-            <StaggeredName letters="About" />
-            <Flex className="responsive">
-              <Item flex={1} wrap>
-                <section className="post-content" style={{opacity: v, transform:`${getTranslate(v, t)}`}}>
-                  {paragraphs.map((p, i) => <p key={i} className="block">{p}</p>)}
-                </section>
-              </Item>
-              <Item flex={1} wrap>
-
-              </Item>
-            </Flex>
-          </div>
-          <MainMenu activePath="About" />
-        </Flex>
-      }
-      </Motion>
+      <div>
+        <Helmet
+          title="About | Jason J. Nathan"
+          meta={[{
+            "name": "description",
+            "content": "A senior software engineer, writer, teacher and team-lead based in Singapore."
+          }
+          ]}
+        />
+        <div role="main">
+          <section className="content" style={{bottom:0}}>
+            <div className="scroll-y">
+              <StaggeredName letters="About" />
+              <div className="responsive">
+                <Panel header="The Person">{person.map((s, i) => (<p key={i}>{s}</p>))}</Panel>
+                <Panel header="The Website">{website.map((s, i) => (<p key={i}>{s}</p>))}</Panel>
+                {/* <Panel header="Fun Stats">
+                  <div className="responsive center">
+                  <FlipBox topLabelText="Github" numText="1.6k" bottomLabelText="commits in 365 days" />
+                  <FlipBox topLabelText="StackOverflow" numText="9%" bottomLabelText="position this year" />
+                  </div>
+                </Panel> */}
+                <Panel header="Fun Facts">
+                  <table className="list" width="100%">
+                    <tbody>
+                      {facts.map((s, i) => (
+                        <tr key={i}>
+                          <th width="40%">{s.label}</th>
+                          <td>
+                            <a href={s.link} rel="noopener noreferrer no_follow" target="_blank">
+                              <FadeInImage noFilter size="auto" style={{height:".8rem"}} src={`/brands/${s.src}`} />
+                              {s.text}
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </Panel>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
     )
 }
-}
-
-About.sceneConfig = fade
 
 export default About;
