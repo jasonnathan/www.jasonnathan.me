@@ -12,10 +12,10 @@ const abstractCategoriesList = ({data}) =>{
       defaultStyles={[...data.categories].map(() => {return {h: 0.1}})}
       styles={
         prevStyles =>
-          prevStyles.map((_, i) => {
-            return { h: spring(i === 0 ? 1 : prevStyles[i - 1].h, {...presets.stiff, precision:.1})}})}
+        prevStyles.map((_, i) => {
+          return { h: spring(i === 0 ? 1 : prevStyles[i - 1].h, {...presets.stiff, precision:.1})}})}
     >
-      {interpolatingStyles => <div className="box"><h4 className="header">Categories</h4>
+      {interpolatingStyles => <div className="box"><h4 className="heading">Categories</h4>
         {interpolatingStyles.map((style, i) => {
           let cat = data.categories[i],
               catHTML = {__html: `${cat.name} (${cat.count})`}
