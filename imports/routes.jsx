@@ -25,7 +25,7 @@ if (Meteor.isServer) {
 
 
 const BlogWithApollo = () => ( <ApolloProvider client={client}><Blog /></ApolloProvider>);
-const ArticleWithApollo = (p) => (<ApolloProvider client={client}><Article {...p} /></ApolloProvider>);
+const ArticleWithApollo = () => (<ApolloProvider client={client}><Article /></ApolloProvider>);
 
 const preRender = (req) => {
     const segments = req.originalUrl.split('/').filter(p => p),
@@ -33,12 +33,12 @@ const preRender = (req) => {
           category = segments[1],
           slug = segments[2],
           props = {
-            routeParams: {category, slug}
+            // routeParams: {category, slug}
           };
 
     switch(controller){
       case 'articles': return Promise.await(getDataFromTree(<BlogWithApollo />));
-      case 'article': return Promise.await(getDataFromTree(<ArticleWithApollo {...props} />));
+      case 'article': return Promise.await(getDataFromTree(<ArticleWithApollo />));
     }
 }
 
