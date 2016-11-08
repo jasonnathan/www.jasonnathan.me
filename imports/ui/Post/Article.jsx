@@ -11,9 +11,13 @@ const popConfig = { stiffness: 360, damping: 25 };
 
 const Article = (props) => {
   return (
-    <Flex row alignItems="flex-start" justifyContent="center" style={{height: '100%'}}>
-      <PostWithComments {...props} />
-    </Flex>
+    <div role="main">
+      <section className="content" style={{bottom:0}}>
+        <div className="scroll-y">
+          <PostWithComments {...props} />
+        </div>
+      </section>
+    </div>
   )
 }
 
