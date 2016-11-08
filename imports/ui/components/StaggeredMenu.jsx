@@ -31,12 +31,12 @@ class TransitionedButton extends Component {
 
   getHRStyle(v, isTop){
     let s = this.getTranslateAndWidth(isTop, this.getScale(v));
-    s[isTop ? "top" : "bottom"] = '-2px';
+    s[isTop ? "top" : "bottom"] = '-1px';
     return s;
   }
 
-  get isHover(){
-    return this.state.isHover;
+  getHRClassName(){
+    return this.state.isHover ? "hovering" : "";
   }
 
   handleHover(active){
@@ -56,11 +56,12 @@ class TransitionedButton extends Component {
       <Motion {... this.springProps}>
         {t => {
           return(
-            <div>
-              <GlowingLine style={{top:'-1px'}} />
+            <div
+              onMouseOver={() => this.handleHover(true)}
+              onMouseLeave={() => this.handleHover(false)}
+            >
+              <GlowingLine className={this.getHRClassName()} style={{top:'1px'}} />
               <span
-                onMouseOver={() => this.handleHover(true)}
-                onMouseLeave={() => this.handleHover(false)}
                 style={{
                   color: this.getColor(t.percent),
                   textShadow: '-1px -1px 3px rgba(0,0,0,.5)'
@@ -68,7 +69,7 @@ class TransitionedButton extends Component {
               >
                 {this.props.label}
               </span>
-              <GlowingLine style={{bottom:'-1px'}} />
+              <GlowingLine className={this.getHRClassName()} style={{bottom:'1px'}} />
             </div>
           )
         }}
@@ -120,11 +121,11 @@ StaggeredMenu.defaultProps = {
       route:'/contact',
       title: "Get in Touch!"
     },
-    // {
-    //   label: "Blog",
-    //   route:'/articles',
-    //   title: "Articles, Articles, Articles!"
-    // }
+    {
+      label: "Blog",
+      route:'/articles',
+      title: "Articles, Articles, Articles!"
+    }
   ]
 }
 
