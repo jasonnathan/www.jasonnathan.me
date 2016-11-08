@@ -1,11 +1,14 @@
 .article-common{
+    flex:1;
     box-sizing: border-box;
     min-height:250px;
-    height:250px;
+    height:300px;
+    max-width: 98vw;
+    left:1vw;
     position:relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow-x: hidden;
+    // justify-content: center;
+    // align-items: center;
     transition: all .5s ease-in;
     .centered-content{
       filter: sepia(40%) hue-rotate(140deg);
@@ -50,14 +53,15 @@
         font-variant: normal;
         font-style: normal;
         text-decoration: none;
-        font-weight: 100;
+        font-weight: 200;
       }
       p{
         font-size: 1.3rem;
-        font-family: Abel;
+        .helvetica-font-family;
+        font-weight: 200 !important;
         text-align: center;
         margin:auto;
-        color:fade(lighten(@lightest-blue, 4%), 70%);
+        color:lighten(@lightest-blue, 1%),;
         transition: all .5s ease-in;
       }
       h3, p{
@@ -81,7 +85,7 @@
         }
       }
       #disqus_thread{
-        padding:1.5rem;
+        // padding:1.5rem;
       }
     }
     &:hover{
@@ -100,8 +104,10 @@
 
 .single-post{
     .article-common;
+    box-sizing: border-box;
     min-height: 99vh !important;
     margin-top: .5rem;
+    padding:1px;
     height: 100% !important;
     .post-content{
       position:relative;
@@ -111,19 +117,29 @@
       transform: none;
       text-align: left;
       max-width: 800px;
+      padding:10px;
       // background-color: #22201f;
-      background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+      // background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
       /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
       h3{
-        padding: 2rem 1.5rem .5rem 1.5rem;;
+        padding: 2rem auto auto;
+        margin-bottom:2rem;
       }
       p, span{
         text-align: left;
-        padding: 2rem 1.6rem 0rem 1.6rem;
+        font-size:1rem;
+        line-height: 1.6rem;
+        padding: 0 0 2rem 0;
         a > span{
           text-decoration: none !important;
 
         }
+      }
+      iframe, img{
+        max-width: 290px;
+        max-height:185px;
+        margin:1rem 0;
+        padding:0;
       }
     }
     &:hover{
@@ -138,12 +154,12 @@
     }
 }
 
-.post-list{
+.responsive{
   list-style: none;
-  margin: auto !important;
-  padding:0 .5rem;
-  height:100%;
-  overflow-y: scroll;
+  margin: auto;
+  // padding:0 .5rem;
+  // height:100%;
+  // overflow-y: scroll;
   li{
     list-style: none;
     margin: .5rem auto;
@@ -167,7 +183,7 @@
 .box{
   .cool-box-shadow;
   background-color: rgba(0,0,0,.25);
-  .header{
+  .heading{
     color: @darker-cyan;
   }
   box-sizing: border-box;
@@ -185,6 +201,14 @@
   }
 }
 
+@media(min-width:640px){
+  .single-post .post-content {
+    iframe, img{
+      max-width: 100%;
+      max-height:300px;
+    }
+  }
+}
 
 @media (min-width:768px) {
   .hidden-mobile{
@@ -194,16 +218,9 @@
     min-height: 300px;
     max-width: 33vw;
   }
-  .post-list{
-    list-style: none;
+  .responsive{
     margin: auto !important;
-    padding:0 .5rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 650px;
+    // padding:0 .5rem;
     li{
       box-sizing: border-box;
       padding:0 .5rem;
