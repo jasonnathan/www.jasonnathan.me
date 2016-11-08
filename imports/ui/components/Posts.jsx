@@ -6,29 +6,18 @@ import Loader from 'react-loaders';
 import PostSummary from './PostSummary.jsx'
 
 const abstractPostsList = ({data}) =>{
-  // console.log(data)
-  if(data.loading)
-      return (<div className="centered-content" style={{paddingTop:'25vh'}}><Loader type="ball-triangle-path" /></div>);
+  const {posts, loading} = data
+  if(loading)
+      return (<div className="centered-loader" style={{paddingTop:'25vh'}}><Loader type="ball-triangle-path" /></div>);
 
   return (
-    <StaggeredMotion
-      defaultStyles={[...data.posts].map(() => {return {h: 0.1}})}
-      styles={
-        prevStyles =>
-          prevStyles.map((_, i) => {
-            return { h: spring(i === 0 ? 1 : prevStyles[i - 1].h, {...presets.stiff, precision:.1})}})}
-    >
-      {interpolatingStyles => <ul className="post-list">
-        {interpolatingStyles.map((style, i) => {
-          return (
-            <li key={data.posts[i].slug} style={{opacity: style.h}}>
-              <PostSummary post={data.posts[i]} />
-            </li>
-          )
-        })}
-      </ul>
-      }
-    </StaggeredMotion>
+    <ul className="responsive" style={{padding:0}}>
+      {posts.map((post, i) => {
+        return (
+          <li key={i}><PostSummary post={post} /></li>
+        )
+      })}
+    </ul>
   )
 }
 
