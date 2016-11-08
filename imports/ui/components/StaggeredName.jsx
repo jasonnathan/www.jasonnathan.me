@@ -50,12 +50,13 @@ export default class StaggeredName extends Component{
       >
         {interpolatingStyles => (
           <h1
+            style={{margin:'1rem auto', textAlign:'center', fontSize:'2rem'}}
             role="heading group"
             title={letters}
             label={letters}
           >
             {interpolatingStyles.map( (_,i) => this.animatingLetters(_,i))}
-            <GlowingLine />
+            <GlowingLine style={{margin:'auto'}} />
             {this.props.children}
           </h1>
         )}
