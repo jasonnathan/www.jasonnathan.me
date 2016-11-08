@@ -1,8 +1,18 @@
-/* global document*/
-import React from 'react';
-import { RouteTransition } from 'react-router-transitioner';
+import React, {PropTypes} from 'react';
+import MainMenu from './components/MainMenu.jsx';
 
-const App = ({children}) => {
-  return <RouteTransition style={{height:'100%'}}>{children}</RouteTransition>
+export default function App({children}){
+  return (
+    <section className="page">
+      <header className="fixed header"><MainMenu /></header>
+      <section className="fixed content with-header">{children}</section>
+    </section>
+  )
 }
-export default App;
+
+App.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
+}
