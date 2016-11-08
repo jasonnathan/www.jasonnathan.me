@@ -7,13 +7,15 @@ import ReactDisqusThread from './ReactDisqusThread.jsx';
 import MainMenu from '../components/MainMenu.jsx';
 import CategoriesList from '../components/Categories.jsx';
 
+let lc = 1;
+
 const abstractPostWithComments = (props) => {
   const {loading, post, error} = props.data;
   const {location} = props;
+
   if(loading)
-      return (<div className="centered-content" style={{paddingTop:'25vh'}}>
+      return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
         <Loader type="ball-triangle-path" />
-        <MainMenu />
       </div>);
 
   if (error) {
@@ -22,16 +24,13 @@ const abstractPostWithComments = (props) => {
     }
     return (<pre style={{maxWidth:'75vh'}} dangerouslySetInnerHTML={result} />)
   }
+  lc++;
+  if(!post)
+    return (<pre style={{maxWidth:'75vh'}} dangerouslySetInnerHTML={{__html:JSON.stringify(props, null, 2)}} />)
   const article = post[0];
   const getHtml = (val) => ({__html: val});
   return (
-    <div
-    id="start-screen-container"
-      style={{
-        paddingTop: '80px',
-        height: '100vh'
-      }}
-    >
+    <div className="scroll-y">
       <Flex alignItems="flex-start">
         <Item className="single-post" flex={2}>
           <article className="post-content">
@@ -42,7 +41,7 @@ const abstractPostWithComments = (props) => {
                 identifier={article.slug}
                 title={article.title.rendered}
                 url={`http://dev.jasonnathan.com/${location.pathname}`}
-            />)}
+              />)}
           </article>
         </Item>
         <Item
@@ -56,10 +55,6 @@ const abstractPostWithComments = (props) => {
           <CategoriesList />
         </Item>
       </Flex>
-      <MainMenu />
-      <br />
-      <br />
-      <br />
     </div>
   )
 }
