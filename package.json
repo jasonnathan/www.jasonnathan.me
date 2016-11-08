@@ -19,26 +19,31 @@
     "graphql": "^0.7.2",
     "graphql-tools": "^0.6.6",
     "graphql-typings": "0.0.1-beta-2",
+    "iscroll": "^5.2.0",
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-form-data": "^0.0.1",
     "loaders.css": "^0.1.2",
     "react-addons-transition-group": "^15.3.2",
     "react-apollo": "^0.5.14",
-    "react-custom-scroll": "^1.8.0",
     "react-disqus-thread": "git+https://github.com/mzabriskie/react-disqus-thread.git",
     "react-dom": "^15.3.2",
     "react-flex": "^2.2.7",
     "react-helmet": "^3.1.0",
+    "react-iscroll": "^1.1.1",
     "react-loaders": "^2.1.1",
     "react-motion-ui-pack": "^0.10.2",
+    "react-router-ssr": "git+https://github.com/thereactivestack/meteor-react-router-ssr.git",
     "react-router-transitioner": "^0.1.4",
     "react-style-proptype": "^1.2.0",
+    "react-tagcloud": "^0.6.1",
     "save": "^2.3.0",
     "shortcode-insert": "^1.0.1",
+    "tinycolor2": "^1.4.1",
     "truncatise": "^0.0.5"
   },
   "devDependencies": {
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "flow-bin": "^0.34.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
