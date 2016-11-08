@@ -1,0 +1,599 @@
+@import './colors.import.less';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+.main-font-family {
+    font-family: Abel, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.cool-box-shadow{
+  // box-shadow: 0 0 1px 0 rgba(57, 200, 255, 0.2), 0 0 3px rgba(100, 200, 255, 0.2);
+  box-shadow: 0 0 1px 0 fade(@lightest-yellow, 80%), 0 0 1px fade(@lightest-orange, 80%);
+}
+.helvetica-font-family {
+    font-family: "Roboto Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+
+::-webkit-scrollbar { width: 0 !important }
+
+body,
+html {
+    height: 100.1vh;
+    -ms-overflow-style: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: fixed;
+    // background: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width:100%;
+    height:100%;
+    background-color: @black;
+}
+
+body {
+    .main-font-family;
+    font-weight: 300;
+    margin: auto;
+    box-sizing: border-box;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: Audiowide;
+        font-weight: 300;
+        color: @lighter-blue;
+
+        small {
+            font-family: Abel;
+            font-size: 40%;
+        }
+    }
+
+    h1,
+    h2 {
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 100;
+        margin: auto;
+    }
+
+    [role=main] {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+    }
+
+    #react-app {
+        margin: auto;
+        height: 100%;
+        min-height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+        // background-color: rgba(0,0,0,.5);
+        // background-image: url("https://www.transparenttextures.com/patterns/fake-brick.png");
+        // background-image: url("http://pt.wallpapersma.com/wp-content/uploads/2013/05/Texturas-Verde.jpg");
+        // background-size: stretch;
+        // background-image: url(/bg/3.jpg);
+        // background-size: cover;
+        // background-repeat: no-repeat;
+        /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    }
+}
+
+a{
+  color: fade(@lighter-blue, 70%);;
+  // transition:color .25s ease-in;
+  &:hover{
+    color: @blue;
+  }
+  &:visited, &:focus{
+    color: @darkest-blue;
+  }
+}
+
+canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: @black;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.fixed-menu {
+    position: fixed;
+    background: linear-gradient( 0deg, transparent, fade(@black, 50%) 40% );
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 200;
+    .mainNav {
+        text-align: center;
+        margin: auto;
+        width: 100%;
+        .react-flex-item {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            &.compact, &.compact > a {
+                text-align: center;
+                margin: auto;
+            }
+        }
+        a, .active{
+          display: flex;
+          font-size: 1.1rem;
+          align-items: center;
+          text-align: center;
+          font-variant: normal;
+          font-style: normal;
+          font-weight: 100;
+          text-transform: capitalize;
+        }
+        img {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            max-width: 24px;
+            text-align: center;
+            margin: auto;
+            max-height: 24px;
+        }
+        a {
+            color: @cyan;
+            text-decoration: none;
+            padding: 0.5rem 0 1rem 0;
+            display: block;
+            background: transparent;
+            text-align: center;
+            margin: auto;
+
+        }
+        .active {
+            color: @lightest-black;
+            text-decoration: none;
+            padding: 0.5rem 0 1rem 0;
+            display: block;
+            text-align: center;
+            margin: auto;
+        }
+    }
+}
+
+.block {
+    display: block;
+}
+.glowing-line {
+    border: 0;
+    height: 1px;
+    max-width: 300px;
+    border-width: 0;
+    background-image: linear-gradient(to right, fade(@blue, 0), fade(@blue, 75%), fade(@blue, 0));
+    box-shadow: 0 0 15px rgba(0,0,0,.9);
+    margin-top:5px;
+    display: block;
+    transform: scale3d(0,0,1);
+    // transition:all 375ms ease-in;
+}
+.react-flex{
+  display:flex;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 21%;
+    left: 50%;
+    transform: translate3d(-50%,-21%,0);
+    background: transparent;
+    // transition: all 100ms ease-out;
+    width: 100%;
+    height: 80vh;
+    text-align: center;
+}
+
+.centered-content {
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    filter: sepia(100%) hue-rotate(140deg);
+}
+
+.Avatar {
+    opacity: 0.9;
+    border-radius: 0;
+    background-color: transparent !important;
+}
+ .noscroll{
+   height:100%;
+  #start-screen-container {
+      box-sizing: border-box;
+      width: 100%;
+      max-width:1280px;
+      padding-top: 40px;
+      margin: auto;
+      text-align: center;
+      color: @cyan;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      overflow-y: hidden;
+      /* has to be scroll, not auto */
+      -webkit-overflow-scrolling: touch;
+      opacity: 1;
+      > div:first-child{
+        max-width:1280px;
+      }
+      .absolute-center.top-box .centered-content{
+          border-radius: 50%;
+      }
+      h1 {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+          // transition: filter 375ms ease-out;
+          &:hover {
+              // filter: hue-rotate(40deg);
+              cursor: default;
+          }
+
+          small {
+              opacity: 1;
+              // transition: opacity 375ms ease-in;
+          }
+      }
+  }
+}
+p {
+    margin: .5rem;
+    text-shadow: none !important;
+    font-size: 1.2rem;
+    text-transform: none;
+    font-variant: normal;
+    font-weight: 100;
+    // color: @lighter-cyan;
+    color:fade(lighten(@lightest-blue, 4%), 70%);
+}
+.box-button{
+  box-sizing: border-box;
+  .cool-box-shadow;
+  // border: 2px solid fade(black, 60%);
+}
+.box-button-inner{
+  box-sizing: border-box;
+  .cool-box-shadow;
+  border: 2px solid fade(black, 60%);
+}
+.panel{
+  box-sizing: border-box;
+  padding:3rem .5rem;
+  .cool-box-shadow;
+  margin:auto 1vw 1.8rem 1vw;
+  max-width:90vw;
+  // background-color: fade(darken(@darkest-cyan, 30%), 100%);
+  background-color: fade(black, 50%);
+  border: 2px solid fade(black, 60%);
+  // background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  position: relative;
+  text-align: left;
+  header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:2rem;
+    line-height: 1rem;
+    border-bottom: 1px solid fade(black, 60%);
+    // .cool-box-shadow;
+    h4{
+      margin: auto;
+      padding: .5rem;
+      text-align: center;
+    }
+  }
+  th{
+    color: @darker-cyan;
+    box-sizing: border-box;
+    padding:0 .5rem;
+    vertical-align: middle;
+    text-transform: none;
+    font-variant: normal;
+    text-align: right;
+  }
+  td a{
+    color:#eee;
+    font-weight: 100 !important;
+    text-shadow: none;
+    text-transform: none;
+    text-decoration: none;
+    font-variant: normal;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    img{
+      height:.8rem;
+      // display: inline-flex;
+      vertical-align: middle;
+      padding:0 .5rem;
+    }
+  }
+}
+
+.top-box {
+    height: 46vh;
+    width: 100vw;
+}
+
+.bottom-box {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 54vh;
+
+    .react-flex {
+        height: 25vh;
+
+        .react-flex-item {
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            padding:0 1rem;
+            box-sizing: border-box;
+            a {
+                .main-font-family;
+                text-decoration: none;
+                box-sizing: border-box;
+                font-size: 75%;
+                text-align: center;
+                border: none;
+                outline: none;
+                min-height: 50px;
+                min-width: 15vh;
+                // height: 15vh;
+                width: 100%;
+                color: @cyan;
+                cursor: pointer;
+                margin: 0 auto;
+                position: relative;
+                // background-image: linear-gradient(to right, fade(black, 0%), fade(black, 25%), fade(black, 0%));
+                background-color: fade(lighten(@lightest-cyan, 10%), 10%);
+                border: 1px solid fade(black, 60%);
+                border-top-width: 2px;
+                border-bottom-width: 2px;
+                background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+                span {
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    min-width: 100%;
+                    min-height: 100%;
+                    transform: scale3d(1,1,1);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.6rem;
+                    text-transform: uppercase;
+                    // background-color: rgba(0,0,0,.25);
+                    padding:0 1rem;
+                    max-height: 50px;
+                    // transition: all 250ms ease-in;
+                }
+                .glowing-line{
+                  position:absolute;
+                  max-width: 100%;
+                  width: 100%;
+                  margin:auto!important;
+                  height:1px;
+                  background-image: linear-gradient(to right, fade(@lightest-cyan, 0), fade(@lightest-cyan, 30%), fade(@lightest-cyan, 0));
+                }
+            }
+        }
+    }
+}
+@media screen and (orientation: landscape) {
+    .top-box {
+        top: 46%;
+        transform: translate3d(-50%,-50%,0);
+    }
+
+    .bottom-box {
+        height: 100vh;
+        top: 46%;
+        left:0;
+        .react-flex {
+            height: 54vh;
+
+            .react-flex-item {
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+
+                button {
+                    min-height: 24vh;
+                    min-width: 24vh;
+                }
+            }
+        }
+    }
+}
+
+.keyframes(@name; @arguments) {
+    @-moz-keyframes @name {
+         @arguments();
+    }
+    @-webkit-keyframes @name {
+         @arguments();
+    }
+    @keyframes @name {
+         @arguments();
+    }
+}
+
+.animation(@arguments) {
+    -webkit-animation: @arguments;
+    -moz-animation: @arguments;
+    animation: @arguments;
+}
+/* ----------- iPhone 4 and 4S ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    .centered-content {
+        max-width: 60px;
+        max-height: 60px;
+        &.bg-image{
+          max-width: 100%;
+          max-height: 100%;
+        }
+    }
+    #start-screen-container{
+      // height:9vh !important;
+    }
+    button {
+        font-size: 0.8rem !important;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    body {
+        box-sizing: border-box;
+        padding-top: 6vh;
+
+        #react-app {
+            height: 90%;
+        }
+    }
+
+    .top-box {
+        top: 35% !important;
+        transform: translate3d(-50%,-50%,0) !important;
+    }
+
+    .bottom-box {
+        top: 65% !important;
+        transform: translate3d(0,-40%,0) !important;
+        .react-flex .react-flex-item{
+          flex: inherit;
+
+        }
+        .react-flex .react-flex-item,
+        .react-flex .react-flex-item A {
+            flex-basis: 50%;
+            span{
+              font-size: 1.3rem !important;
+            }
+        }
+    }
+}
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+    .top-box {
+        top: 40%;
+        transform: translate3d(-50%,-50%,0);
+    }
+
+    .bottom-box {
+        height: 100vh;
+        top: 46%;
+
+        .react-flex {
+            height: 50vh;
+
+            .react-flex-item {
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+
+                button {
+                    min-height: 20vh;
+                    min-width: 20vh;
+                }
+            }
+        }
+    }
+}
+/* ----------- Galaxy S5 ----------- */
+/* Portrait and Landscape */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {}
+/* Portrait */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {}
+/* Landscape */
+@media screen and (max-height:500px) and (orientation: landscape) {
+    .centered-content {
+        max-width: 60px !important;
+        max-height: 60px;
+    }
+
+    button {
+        font-size: 0.8rem !important;
+    }
+
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    .top-box {
+        top: 35%;
+        transform: translate3d(-50%,-50%,0);
+    }
+
+    .bottom-box {
+        height: 100vh;
+        top: 45%;
+
+        .react-flex {
+            height: 50vh;
+
+            .react-flex-item {
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+
+                button {
+                    min-height: 20vh;
+                    min-width: 20vh;
+                }
+            }
+        }
+    }
+}
+@media (min-width:768px) {
+    .mainNav {
+        max-width: 600px;
+        text-align: center;
+        margin: auto;
+        font-size: 1.2rem;
+    }
+}
+@media (max-width:787px){
+  .responsive {
+    > .react-flex-v2--flex-1{
+      flex:auto;
+      .panel{
+        margin:1rem auto;
+      }
+    }
+  }
+}
+// @import './articles.import.less';
