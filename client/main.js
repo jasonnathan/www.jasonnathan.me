@@ -1,10 +1,10 @@
 /*globals window, document, ga*/
 import {Meteor} from 'meteor/meteor';
-import {resize, start} from '/imports/ui/canvasAnimation';
+// import {resize, start} from '/imports/ui/canvasAnimation';
 
 Meteor.startup(() => {
-  resize();
-  setTimeout(() => start(), 3e3);
+  // resize();
+  // setTimeout(() => start(), 3e3);
 });
 
 (function(i, s, o, g, r, a, m) {
