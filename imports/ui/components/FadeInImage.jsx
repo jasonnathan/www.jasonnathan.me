@@ -5,7 +5,10 @@ export default class FadeInImage extends Component {
   constructor(props) {
     super(props);
     // set defaults if not provided
-    const {size=40, style={}, className = ""} = props;
+    const {size=40, style={}, className = "", noFilter=false} = props;
+    if(noFilter){
+      style.filter = "none";
+    }
     this.state = {
       // it seems counter-intuitive to unset default styles
       // but it works better for my use case
