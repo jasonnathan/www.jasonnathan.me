@@ -50,8 +50,9 @@ export default class StaggeredName extends Component{
       >
         {interpolatingStyles => (
           <h1
-            style={{margin:'1rem auto', textAlign:'center', fontSize:'2rem'}}
+            style={{margin:'2rem auto 3rem auto', textAlign:'center', fontSize:'2rem'}}
             role="heading group"
+            className="staggered-name"
             title={letters}
             label={letters}
           >
