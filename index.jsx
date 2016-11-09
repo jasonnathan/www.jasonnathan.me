@@ -39,9 +39,7 @@ const preRender = (req) => {
           controller = segments[0],
           category = segments[1],
           slug = segments[2],
-          props = {
-            // routeParams: {category, slug}
-          };
+          props = {slug, category};
 
     switch(controller){
       case 'articles': return Promise.await(getDataFromTree(<BlogWithApollo />));
