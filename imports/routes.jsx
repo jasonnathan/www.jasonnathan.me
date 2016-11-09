@@ -14,7 +14,10 @@ import {Promise} from 'meteor/promise';
 let opts = { ssrMode: Meteor.isServer}, client;
 
 if (Meteor.isServer) {
-  opts.networkInterface = createNetworkInterface('http://localhost:3000/graphql', {credentials: 'same-origin'});
+  opts.networkInterface = createNetworkInterface({
+    uri:'http://localhost:3000/graphql',
+    credentials: 'same-origin'
+  });
   client = new ApolloClient(opts);
 } else {
 
