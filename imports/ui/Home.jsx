@@ -1,46 +1,53 @@
 /* global document*/
-import React from 'react';
+import React, {Component} from 'react';
 import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
+import {Meteor} from 'meteor/meteor'
 import StaggeredMenu from './components/StaggeredMenu.jsx';
 import StaggeredName from './components/StaggeredName.jsx';
 import MediaElement from './components/MediaElement.jsx';
 
 
-const Home = () => {
-  return (
-    <div>
-      <Helmet
-        title="Home | Jason J. Nathan"
-        meta={[
+export default class Home extends Component{
+  constructor(){
+    super();
+  }
+
+  componentWillMount(){
+
+  }
+
+  render(){
+    return (
+      <div>
+        <Helmet
+          title="Home | Jason J. Nathan"
+          meta={[
             {"name": "description", "content": "A senior software engineer, writer, teacher and leader based in Singapore."}
-        ]}
-      />
-      <Motion
-        role="main"
-        defaultStyle={{v: -1}}
-        style={{v: spring(1, {...presets.wobbly, precision: .01})}}
-      >
-        {({v}) =>
-          <div>
-            <MediaElement
-              itemscope
-              itemtype="http://data-vocabulary.org/Person"
-              file="/profile.jpg"
-              dim={110}
-            >
+          ]}
+        />
+        <MediaElement
+          itemscope
+          itemtype="http://data-vocabulary.org/Person"
+          file="/profile.jpg"
+          dim={110}
+        >
+          <Motion
+            role="main"
+            defaultStyle={{v: -1}}
+            style={{v: spring(1, {...presets.gentle, precision: .01})}}
+          >
+            {({v}) =>
               <StaggeredName letters="Jason Nathan">
                 <small className="block" style={{opacity: v}}>
                   A Senior Web & Mobile Software Engineer based in Singapore
                 </small>
               </StaggeredName>
-            </MediaElement>
-            <nav role="navigation" className="bottom-box"><StaggeredMenu /></nav>
-          </div>
-      }
-      </Motion>
-    </div>
-  );
+            }
+          </Motion>
+        </MediaElement>
+        <nav role="navigation" className="bottom-box"><StaggeredMenu /></nav>
+      </div>
+    );
+  }
 }
-
-export default Home;
