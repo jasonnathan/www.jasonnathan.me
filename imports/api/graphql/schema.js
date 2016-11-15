@@ -6,7 +6,7 @@ import {getPost, getPosts,getAuthor,getPostsByAuthor,getCategoryByPost,getCatego
 
 const RootQuery = `
   type Query {
-    post(slug: String): [Post]
+    post(slug: String): Post
     posts: [Post]
     author(id: Int!): Author
     categories: [Category]
@@ -65,7 +65,9 @@ const parseJSONLiteral = (ast) => {
     case Kind.OBJECT: {
       const value = Object.create(null);
       ast.fields.forEach(field => {
-        value[field.name.value] = parseJSONLiteral(field.value);
+        if(!field.name)
+        console.log(field)
+        // value[field.name.value] = parseJSONLiteral(field.value);
       });
 
       return value;

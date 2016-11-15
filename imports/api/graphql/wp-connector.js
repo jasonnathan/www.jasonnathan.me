@@ -43,11 +43,12 @@ const getWP = (endpoint, query) => {
 }
 
 export const getPost = args => {
+  const then = (posts) => Promise.resolve(posts.length ? posts[0] : {});
   if(args.id){
-    return getWP(`posts/${args.id}`);
+    return getWP(`posts/${args.id}`).then(then);
   }
   if(args.slug){
-    return getWP('posts', `slug=${args.slug}&context=edit`);
+    return getWP('posts', `slug=${args.slug}&context=edit`).then(then);
   }
 }
 export const getAuthor = id => getWP(`users/${id}`);

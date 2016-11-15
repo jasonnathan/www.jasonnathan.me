@@ -17,6 +17,7 @@ const getPostBySlug = gql`
       categories {
         count
         slug
+        name
       }
     }
   }`

@@ -16,7 +16,7 @@ type Post {
   guid: RenderedString
   modified: Date
   modified_gmt: Date
-  slug: String
+  slug: ID!
   type: String
   link: String
   title: RenderedString
