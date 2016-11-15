@@ -1,15 +1,18 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { graphql } from 'react-apollo';
-import {spring, presets, StaggeredMotion} from 'react-motion';
+// import {spring, presets, StaggeredMotion} from 'react-motion';
 import getPosts from '/imports/api/posts-query-gql';
 import Loader from 'react-loaders';
 import PostSummary from './PostSummary.jsx'
 
 const abstractPostsList = ({data}) =>{
-  const {posts, loading} = data
+  const {posts, loading, error} = data
   if(loading)
       return (<div className="centered-loader" style={{paddingTop:'25vh'}}><Loader type="ball-triangle-path" /></div>);
-
+  if(error){
+    throw(error)
+  }
   return (
     <ul className="responsive" style={{padding:0}}>
       {posts.map((post, i) => {
@@ -20,8 +23,5 @@ const abstractPostsList = ({data}) =>{
     </ul>
   )
 }
-
-// We then can use `graphql` to pass the query results returned by MyQuery
-// to MyComponent as a prop (and update them as the results change)
-const PostsList = graphql(getPosts)(abstractPostsList);
+const PostsList = graphql(getPosts, {options: {ssr:Meteor.isServer}})(abstractPostsList);
 export default PostsList;
