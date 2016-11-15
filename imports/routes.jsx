@@ -1,65 +1,37 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import {Meteor} from 'meteor/meteor';
+import {Route, IndexRoute} from 'react-router';
 import {
-  App, Home, About, Work, Contact, Blog,
-  Article, PostsByCategory, PostWithComments
+  App,
+  Home,
+  About,
+  Work,
+  Skill,
+  Contact,
+  Blog,
+  Article,
+  PostsByCategory
 } from '/imports/ui/index.jsx';
-import ApolloClient, {createNetworkInterface} from 'apollo-client';
-import {ApolloProvider} from 'react-apollo';
-import {getDataFromTree} from "react-apollo/server";
-import {InjectData} from 'meteor/meteorhacks:inject-data';
-import {Promise} from 'meteor/promise';
-
-let opts = { ssrMode: Meteor.isServer}, client;
-
-if (Meteor.isServer) {
-  opts.networkInterface = createNetworkInterface({
-    uri:'http://localhost:3000/graphql',
-    credentials: 'same-origin'
-  });
-  client = new ApolloClient(opts);
-} else {
-
-  InjectData.getData("dehydrated-initial-data", (state) => {
-      client = new ApolloClient({...opts, initialState: JSON.parse(state)});
-  });
-}
 
 
-const BlogWithApollo = () => ( <ApolloProvider client={client}><Blog /></ApolloProvider>);
-const ArticleWithApollo = () => (<ApolloProvider client={client}><Article /></ApolloProvider>);
-
-const preRender = (req) => {
-    const segments = req.originalUrl.split('/').filter(p => p),
-          controller = segments[0],
-          category = segments[1],
-          slug = segments[2],
-          props = {
-            // routeParams: {category, slug}
-          };
-
-    switch(controller){
-      case 'articles': return Promise.await(getDataFromTree(<BlogWithApollo />));
-      case 'article': return Promise.await(getDataFromTree(<ArticleWithApollo />));
-    }
-}
-
-const AppRoutes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path="about" component={About} />
-    <Route path="work" component={Work} />
-    <Route path="contact" component={Contact} />
-    <Route path="articles">
-      <IndexRoute component={BlogWithApollo} />
-      <Route path=":category" component={PostsByCategory} />
+const AppRoutes = () => (
+  <Route name="App" path="/" component={App} breadcrumbIgnore>
+    <IndexRoute name="Home" component={Home} />
+    <Route name="About" path="about" component={About} />
+    <Route name="Work" path="work" breadcrumbIgnore>
+      <IndexRoute name="Skills" component={Work} />
+      <Route name="skill" path="skills/:skill" component={Skill} breadcrumbName=":skill" />
     </Route>
-    <Route path="article">
-      <Route path=":category/:slug" component={ArticleWithApollo} />
+    <Route name="Contact" path="contact" component={Contact} />
+    <Route name="Articles" path="articles" breadcrumbIgnore>
+      <IndexRoute name="Articles" component={Blog} />
+      <Route name="Posts By Category" path=":category" component={PostsByCategory} breadcrumbName=":category" />
+    </Route>
+    <Route name="Article" path="article" breadcrumbName="Articles" breadCrumbLink="/articles" breadcrumbIgnore>
+      <Route name="Posts By Category" path=":category" component={Article} breadcrumbName=":category">
+        <Route path=":slug" component={Article} breadcrumbName=":slug" />
+      </Route>
     </Route>
   </Route>
 );
 
-
-export  {AppRoutes, preRender, client};
+export default AppRoutes;
