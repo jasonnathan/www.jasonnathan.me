@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="201px" height="201px" viewBox="0 0 201 201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>DiagBorder</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.3359375 52.4568313 30.5270092 0.464967005 169.190112 0.464967005 200.335937 54.1010075 200.335937 200.464967 0.461111334 200.464967"></polygon>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="200" height="200" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-opacity="0.5" stroke-linecap="square" fill-opacity="0.5">
+        <use id="DiagBorder" stroke="#68A0BF" mask="url(#mask-2)" stroke-width="2" fill="#014A72" xlink:href="#path-1"></use>
+    </g>
+</svg>
