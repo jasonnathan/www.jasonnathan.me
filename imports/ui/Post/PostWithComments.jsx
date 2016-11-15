@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import {graphql} from 'react-apollo';
 import {Flex, Item} from 'react-flex';
 import Loader from 'react-loaders';
-import {Link, locationShape} from 'react-router';
+import {Link} from 'react-router';
 import entities from 'entities';
 import getPostBySlug from '/imports/api/post-by-slug-gql';
 import ReactDisqusThread from './ReactDisqusThread.jsx';
@@ -80,10 +80,6 @@ const abstractPostWithComments = (props) => {
       </div>
     </div>
   )
-}
-
-abstractPostWithComments.propTypes = {
-  location: PropTypes.shape(locationShape)
 }
 
 const PostWithComments = graphql(getPostBySlug, {
