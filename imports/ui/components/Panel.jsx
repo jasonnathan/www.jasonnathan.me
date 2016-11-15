@@ -5,9 +5,7 @@ import tinycolor from 'tinycolor2'
 const panelStyles = {
   padding:'.5rem',
   boxSizing:"border-box",
-  backgroundColor: 'rgba(100,100,100,.5)',
-  border: '2px solid rgba(0,0,0,.5)',
-  boxShadow: `0 0 1px 0 ${tinycolor(lightestBlue).setAlpha(.8).toRgbString()}, 0 0 1px ${tinycolor(lightestCyan).setAlpha(.8).toRgbString()}`
+  backgroundImage:"url(/brands/skill-bg.svg)",
 }
 
 const panelHeaderStyles = {
