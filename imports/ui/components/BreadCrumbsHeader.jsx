@@ -29,10 +29,11 @@ export default class Header extends Component{
 
   render(){
     const {routes, params, resolver, crumbs, lastCrumbResolver} = this.props;
+    const back = routes[1].breadCrumbLink || "/" + routes[1].path;
     return (
       <header className="header breadcrumb-container" style={{display:"flex"}}>
         <Motion {...this.motionProps()}>{({t}) => (
-          <Link to="/work" style={this.style(t)} className="back-button" />
+          <Link to={back} style={this.style(t)} className="back-button" />
         )}</Motion>
         <Breadcrumbs
           routes={routes}
