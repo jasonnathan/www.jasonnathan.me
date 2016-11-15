@@ -2,8 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import {spring, StaggeredMotion} from 'react-motion';
 import GlowingLine from './GlowingLine.jsx';
 
-const popConfig = { stiffness: 360, damping: 25 };
-
 export default class StaggeredName extends Component{
   constructor(props){
     super(props);
@@ -37,7 +35,7 @@ export default class StaggeredName extends Component{
 
   springProps(prevStyles){
     return prevStyles.map((_, i) => ({
-      h: spring(i === 0 ? 1 : prevStyles[i - 1].h, { ...popConfig})
+      h: spring(i === 0 ? 1 : prevStyles[i - 1].h, {stiffness: 650, damping: 40, precision:.1})
     }));
   }
 
