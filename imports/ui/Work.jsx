@@ -1,10 +1,11 @@
 /* global document*/
 import React from 'react';
 import {Flex, Item} from 'react-flex';
-import {spring, Motion} from 'react-motion';
+import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
 import StaggeredName from './components/StaggeredName.jsx';
 import SkillCloud from './components/SkillCloud.jsx';
+import Page from './components/Page.jsx';
 
 export default function Work(props){
   return (
@@ -12,14 +13,30 @@ export default function Work(props){
       <Helmet
         title="Works | Jason J. Nathan"
         meta={[
-          {"name": "description", "content": "A showcase of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP"}
+          {"name": "description", "content": "A collection of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP"}
         ]}
       />
-      <div role="main">
+      <div role="main" style={{height:"100%"}}>
         <section className="content" style={{bottom:0}}>
           <div className="scroll-y">
-            <StaggeredName letters="Work" />
+            <Motion
+              role="main"
+              defaultStyle={{v: -1}}
+              style={{v: spring(1, {...presets.gentle, precision: .01})}}
+            >
+              {({v}) =>
+                <StaggeredName letters="Work">
+                  <small className="block" style={{opacity: v}}>
+                    Click on the modules | frameworks | languages etc to see work I have done with it.
+                  </small>
+                </StaggeredName>
+              }
+            </Motion>
             <SkillCloud />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
         </section>
       </div>
