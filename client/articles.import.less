@@ -37,7 +37,6 @@
       transform: translate(-50%, -50%);
       height:99.80%;
       width:99.80%;
-      border: 1px solid rgba(0,0,0,.8);
       z-index: 2;
       background-color:fade(@darkest-black, 70%);
       .cool-box-shadow;
@@ -97,9 +96,6 @@
       .bg-image{
         filter: sepia(0%) hue-rotate(0deg) !important;
       }
-      .post-content{
-        background-color: fade(@darkest-black, 60%);
-      }
     }
 }
 
@@ -107,28 +103,23 @@
     .article-common;
     box-sizing: border-box;
     min-height: 99vh !important;
-    margin-top: .5rem;
+    margin-top: 1rem;
     padding:1px;
     height: 100% !important;
     .post-content{
-      // position:relative;
-      background-color:fade(lighten(@black, 3%), 80%);
-      // top:0;
-      // left:0;
+      box-shadow: none;
+      border:none;
+      background-color:transparent;
       transform: none;
       text-align: left;
-      max-width: 800px;
       padding:10px;
-      // background-color: #22201f;
-      // background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
-      /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
       h3{
         padding: 2rem auto auto;
         margin-bottom:2rem;
       }
       p, span{
         text-align: left;
-        font-size:1rem;
+        font-size:1.1rem;
         line-height: 1.6rem;
         padding: 0 0 2rem 0;
         a > span{
@@ -218,16 +209,13 @@
   .hidden-mobile{
     box-sizing: border-box;
     display: flex;
-    padding:0.5rem 1rem 1rem 1rem;
+    padding:0.5rem 1px 1rem 1rem;
     min-height: 300px;
     max-width: 33%;
   }
   .responsive{
-    margin: auto !important;
-    // padding:0 .5rem;
     li{
       box-sizing: border-box;
-      padding:0 .5rem;
       > article{
         min-height: 350px;
         .post-content{
