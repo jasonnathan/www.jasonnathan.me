@@ -54,7 +54,7 @@ class TransitionedButton extends Component {
   render(){
     return(
       <Motion {... this.springProps}>
-        {t => {
+        {({percent}) => {
           return(
             <div
               onMouseOver={() => this.handleHover(true)}
@@ -63,7 +63,7 @@ class TransitionedButton extends Component {
               <GlowingLine className={this.getHRClassName()} style={{top:'1px'}} />
               <span
                 style={{
-                  color: this.getColor(t.percent),
+                  color: this.getColor(percent),
                   textShadow: '-1px -1px 3px rgba(0,0,0,.5)'
                 }}
               >
