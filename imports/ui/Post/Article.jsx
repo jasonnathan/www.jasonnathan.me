@@ -1,44 +1,17 @@
 /* global document*/
-import React from 'react';
-import {Flex} from 'react-flex';
-import {spring} from 'react-motion';
-import Loader from 'react-loaders';
-import MainMenu from '../components/MainMenu.jsx';
+import React, {PropTypes} from 'react';
 import PostWithComments from './PostWithComments.jsx';
 
-// Create the client as outlined above
-const popConfig = { stiffness: 360, damping: 25 };
-
-const Article = (props) => {
+export default function Article(props){
   return (
-    <div role="main">
+    <div role="main" style={{position:"fixed", top:0, left:0, width:"100vw", height:"100vh", background:"#222"}}>
       <section className="content" style={{bottom:0}}>
-        <div className="scroll-y">
-          <PostWithComments {...props} />
-        </div>
+        <PostWithComments {...props} />
       </section>
     </div>
   )
 }
 
-Article.sceneConfig = {
-  atEnter: {
-    opacity: 1
-  },
-  atLeave: {
-    opacity: spring(0.1, popConfig)
-  },
-  atActive: {
-    opacity: 1
-  },
-  mapStyles(styles) {
-    return {
-      height:'100%',
-      opacity: styles.opacity
-    };
-  }
-}
-
-
-
-export default Article;
+// Article.propTypes = {
+//   params: PropTypes.object.isRequired
+// }
