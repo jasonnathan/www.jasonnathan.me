@@ -1,10 +1,10 @@
 /* global document*/
 import React from 'react';
-import {Flex, Item} from 'react-flex';
 import Helmet from 'react-helmet';
+import {spring, presets, Motion} from 'react-motion';
 import StaggeredName from './components/StaggeredName.jsx';
 import FadeInImage from './components/FadeInImage.jsx';
-import FlipBox from './components/FlipBox.jsx';
+// import FlipBox from '../components/FlipBox.jsx';
 import Panel from './components/Panel.jsx';
 import {person, website, facts} from './about-text';
 
@@ -23,7 +23,19 @@ function About(props) {
         <div role="main">
           <section className="content" style={{bottom:0}}>
             <div className="scroll-y">
-              <StaggeredName letters="About" />
+              <Motion
+                role="main"
+                defaultStyle={{v: -1}}
+                style={{v: spring(1, {...presets.gentle, precision: .01})}}
+              >
+                {({v}) =>
+                  <StaggeredName letters="About">
+                    <small className="block" style={{opacity: v}}>
+                      A brief introduction about this website and to who I am.
+                    </small>
+                  </StaggeredName>
+                }
+              </Motion>
               <div className="responsive">
                 <Panel header="The Person">{person.map((s, i) => (<p key={i}>{s}</p>))}</Panel>
                 <Panel header="The Website">{website.map((s, i) => (<p key={i}>{s}</p>))}</Panel>
@@ -51,6 +63,10 @@ function About(props) {
                   </table>
                 </Panel>
               </div>
+              <br />
+              <br />
+              <br />
+              <br />
             </div>
           </section>
         </div>
