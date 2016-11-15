@@ -6,16 +6,8 @@
   "dependencies": {
     "apollo-client": "^0.5.2",
     "apollo-server": "^0.3.3",
-    "babel-eslint": "^7.0.0",
     "body-parser": "^1.15.2",
     "entities": "^1.1.1",
-    "eslint": "^3.8.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-import-resolver-meteor": "^0.3.3",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-meteor": "^4.0.1",
-    "eslint-plugin-react": "^6.4.1",
     "express": "^4.14.0",
     "graphql": "^0.7.2",
     "graphql-server-express": "^0.4.3",
@@ -47,7 +39,16 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "flow-bin": "^0.34.0"
+    "eslint-plugin-graphql": "^0.2.7",
+    "flow-bin": "^0.34.0",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-import-resolver-meteor": "^0.3.3",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-meteor": "^4.0.1",
+    "eslint-plugin-react": "^6.4.1",
+    "babel-eslint": "^7.0.0"    
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
