@@ -1,5 +1,5 @@
 /* global document*/
-import React, {PropTypes} from 'react';
+import React from 'react';
 import PostWithComments from './PostWithComments.jsx';
 
 export default function Article(props){
@@ -11,7 +11,3 @@ export default function Article(props){
     </div>
   )
 }
-
-// Article.propTypes = {
-//   params: PropTypes.object.isRequired
-// }
