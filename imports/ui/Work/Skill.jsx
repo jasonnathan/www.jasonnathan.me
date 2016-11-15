@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import {Motion, presets, spring} from 'react-motion';
+// import {Motion, presets, spring} from 'react-motion';
 import {SkillsData, skurl} from '/imports/api/data/skills-data';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
 import FooterTransition from '../components/FooterTransition.jsx';
@@ -49,9 +49,7 @@ export default class Skill extends Component{
           </section>
         </aside> */}
         <div className="content with-breadcrumbs with-footer">
-          <div className="scroll-y">
-
-          </div>
+          <div className="scroll-y" />
         </div>
         <FooterTransition>
           <ul className="bottom-tabs" style={{minWidth:`${(projs.length * 154)}px`}}>
