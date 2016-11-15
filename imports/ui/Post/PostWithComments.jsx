@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Meteor} from 'meteor/meteor';
 import {graphql} from 'react-apollo';
 import {Flex, Item} from 'react-flex';
 import Loader from 'react-loaders';
-import {Link} from 'react-router';
+import {Link, locationShape} from 'react-router';
 import entities from 'entities';
 import getPostBySlug from '/imports/api/post-by-slug-gql';
 import ReactDisqusThread from './ReactDisqusThread.jsx';
@@ -34,7 +34,7 @@ const abstractPostWithComments = (props) => {
   const {loading, post, error} = props.data;
   const {location} = props;
   const {routes, params} = props;
-  const getHtml = (val) => ({__html: val});
+  const toHtml = (val) => ({__html: val});
 
   if(loading)
     return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
@@ -56,8 +56,8 @@ const abstractPostWithComments = (props) => {
           <Flex alignItems="flex-start" className="responsive">
             <Item className="single-post" flex={2}>
               <article className="post-content">
-                <header><h3 dangerouslySetInnerHTML={getHtml(post.title.rendered)} /></header>
-                <section dangerouslySetInnerHTML={getHtml(post.content.rendered)} />
+                <header><h3 dangerouslySetInnerHTML={toHtml(post.title.rendered)} /></header>
+                <section dangerouslySetInnerHTML={toHtml(post.content.rendered)} />
                 <ReactDisqusThread
                   identifier={post.slug}
                   title={post.title.rendered}
@@ -80,6 +80,10 @@ const abstractPostWithComments = (props) => {
       </div>
     </div>
   )
+}
+
+abstractPostWithComments.propTypes = {
+  location: PropTypes.shape(locationShape)
 }
 
 const PostWithComments = graphql(getPostBySlug, {
