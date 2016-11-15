@@ -1,41 +1,41 @@
 /* global document*/
 import React from 'react';
 import {Flex} from 'react-flex';
-import {spring, Motion} from 'react-motion';
+import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
 import StaggeredName from './components/StaggeredName.jsx';
-import MainMenu from './components/MainMenu.jsx';
-import { fade} from 'react-router-transitioner';
-
-const popConfig = { stiffness: 360, damping: 25 };
 
 const Contact = () => {
   return (
-    <Motion
-      role="main"
-      defaultStyle={{v: 0}}
-      style={{v: spring(1)}}
-    >
-      {({v}) => <Flex row alignItems="center" className="noscroll" justifyContent="center" style={{height: '100%'}}>
-        <Helmet
-          title="Contact | Jason J. Nathan"
-          meta={[
-              {"name": "description", "content": "Send me a message via chat or phone.."}
-          ]}
-        />
-        <div id="start-screen-container" style={{paddingTop:'70px'}}>
-          <StaggeredName letters="Contact" />
-          <p className="block" style={{opacity: v, transform:'translate3d(${v},${v},1)'}}>
-            A showcase of my work
-          </p>
-        </div>
-        <MainMenu activePath="Contact" />
-      </Flex>
-    }
-    </Motion>
+    <Flex row alignItems="center" className="noscroll" justifyContent="center" style={{height: '100%'}}>
+      <Helmet
+        title="Works | Jason J. Nathan"
+        meta={[
+          {"name": "description", "content": "A collection of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP"}
+        ]}
+      />
+      <div role="main">
+        <section className="content" style={{bottom:0}}>
+          <div className="scroll-y">
+            <Motion
+              role="main"
+              defaultStyle={{v: -1}}
+              style={{v: spring(1, {...presets.gentle, precision: .01})}}
+            >
+              {({v}) =>
+                <StaggeredName letters="Contact">
+                  <small className="block" style={{opacity: v}}>
+                    Contact forms are boring. Let&apos;s try something a little more real-time.
+                  </small>
+                </StaggeredName>
+              }
+            </Motion>
+          </div>
+        </section>
+      </div>
+    </Flex>
   )
 }
 
-Contact.sceneConfig = fade
 
 export default Contact;
