@@ -7,23 +7,22 @@ import MainMenu from './components/MainMenu.jsx';
 import PostsList from './components/Posts.jsx';
 import CategoriesList from './components/Categories.jsx';
 
-// Create the client as outlined above
-const popConfig = { stiffness: 360, damping: 25 };
-
-const Blog = () => {
+const Blog = (props) => {
   return (<div>
     <Helmet
       title="Articles | Jason J. Nathan"
       meta={[
-        {"name": "description", "content": "Tutorials, Freebies and other ramblings"}
+        {"name": "description", "content": "Engineering Journal, Guides, Freebies and other musings"}
       ]}
     />
     <div role="main">
       <section className="content" style={{bottom:0}}>
         <div className="scroll-y">
-          <StaggeredName letters="All Articles" />
-          <Flex alignItems="flex-start">
-            <Item flex={2}><PostsList /></Item>
+          <StaggeredName letters="All Articles">
+            <small>Engineering Journal, Guides, Freebies and other musings</small>
+          </StaggeredName>
+          <Flex alignItems="flex-start" className="posts-container responsive">
+            <Item flex={2}><PostsList {...props} /></Item>
             <Item column wrap alignContent="space-between" justifyContent="space-between" className="hidden-mobile" flex={1}>
               <CategoriesList />
             </Item>
