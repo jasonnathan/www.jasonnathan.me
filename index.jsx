@@ -8,14 +8,20 @@ import ApolloClient, {createNetworkInterface} from 'apollo-client';
 import {ApolloProvider} from 'react-apollo';
 import {getDataFromTree} from "react-apollo/server";
 
+// const url = process.env.NODE_ENV === 'production' ? "dev.jasonnathan.com" : "localhost"
+let url = "localhost";
+if(Meteor.isClient && process.env.NODE_ENV === 'production'){
+  url = "dev.jasonnathan.com";
+}
+
 let opts = {
   ssrMode: Meteor.isServer,
-  networkInterface: createNetworkInterface({credentials: 'same-origin', uri: 'http://localhost:3000/graphql'})
-}, client, initialState;
+  networkInterface: createNetworkInterface({credentials: 'same-origin', uri: `http://${url}:3000/graphql`})
+}, client, initialState, history;
 
 
 const rehydrateHook = state => initialState = state;
-
+const historyHook = newHistory => history = newHistory;
 // the dumbest thing, to put wrapperHook in clientOptions, infering it only runs on the client
 const wrapperHook = app => {
   opts.initialState = initialState;
@@ -31,7 +37,7 @@ const htmlHook = html => {
 
 // const props = {onUpdate: () => Meteor.isClient && ga('send', 'pageview')}
 
-const clientOptions = {wrapperHook, rehydrateHook};
-const serverOptions = {htmlHook, preRender, dehydrateHook};
+const clientOptions = {historyHook, wrapperHook, rehydrateHook};
+const serverOptions = {historyHook, htmlHook, preRender, dehydrateHook};
 
 ReactRouterSSR.Run(AppRoutes(), clientOptions, serverOptions);
