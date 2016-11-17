@@ -50,10 +50,10 @@ function About(props) {
                     <tbody>
                       {facts.map((s, i) => (
                         <tr key={i}>
-                          <th width="40%">{s.label}</th>
-                          <td>
+                          <th width="40%" style={{textAlign:"right"}}>{s.label}</th>
+                          <td style={{textAlign:"left"}}>
                             <a href={s.link} rel="noopener noreferrer no_follow" target="_blank">
-                              <FadeInImage noFilter size="auto" style={{height:".8rem"}} src={`/brands/${s.src}`} />
+                              <FadeInImage noFilter size="auto" style={{height:".8rem", display:"inline-block", padding:"0 .5rem"}} src={`/brands/${s.src}`} />
                               {s.text}
                             </a>
                           </td>
