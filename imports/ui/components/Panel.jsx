@@ -7,7 +7,7 @@ const panelStyles = {
   marginRight:'1px',
   boxSizing:"border-box",
   textShadow:"-1px -1px 0 rgba(0,0,0,.5)",
-  backgroundImage:"url(/brands/skill-bg.svg)",
+  backgroundImage:"url(/skill-bg.svg)",
 }
 
 const panelHeaderStyles = {
