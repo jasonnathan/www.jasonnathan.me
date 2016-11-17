@@ -23,18 +23,36 @@ export default class Header extends Component{
     }
   }
 
+  /**
+   * The style also indents the text off screen for the sole benefit of screen-readers
+   */
   style(t){
-    return {transform: `translate3d(${t}%, 0, 0)`};
+    return {transform: `translate3d(${t}%, 0, 0)`, textIndent:'-9999em'};
   }
 
   render(){
-    const {routes, params, resolver, crumbs, lastCrumbResolver} = this.props;
-    const back = routes[1].breadCrumbLink || "/" + routes[1].path;
+    const {routes, params, resolver, crumbs, lastCrumbResolver, goBack} = this.props;
+    /*
+    * globally, the first route [0] is ignored but this can be written in a
+    * more defensive way
+    */
+    const backPath = routes[1].breadCrumbLink || `/${routes[1].path}`;
+    const backName = routes[1].breadCrumbName || routes[1].name;
     return (
       <header className="header breadcrumb-container" style={{display:"flex"}}>
+        {/* Animation for back button slide in */}
         <Motion {...this.motionProps()}>{({t}) => (
-          <Link to={back} style={this.style(t)} className="back-button" />
+          <a
+            href={backPath}
+            onClick={e => {e.preventDefault();goBack()}}
+            title={`Back to ${backName}`}
+            style={this.style(t)}
+            className="back-button"
+          >
+            Back to {backName}
+          </a>
         )}</Motion>
+        {/*Original breadcrumbs component*/}
         <Breadcrumbs
           routes={routes}
           params={params}

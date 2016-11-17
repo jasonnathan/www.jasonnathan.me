@@ -33,7 +33,7 @@ const lastCrumbIsString = (link, key, text, index, routes) => {
 const abstractPostWithComments = (props) => {
   const {loading, post, error} = props.data;
   const {location} = props;
-  const {routes, params} = props;
+  const {routes, params, router} = props;
   const toHtml = (val) => ({__html: val});
 
   if(loading)
@@ -50,7 +50,14 @@ const abstractPostWithComments = (props) => {
 
   return (
     <div role="main">
-      <BreadCrumbsHeader routes={routes} params={params} resolver={postResolver} crumbs={crumbs} lastCrumbResolver={lastCrumbIsString} />
+      <BreadCrumbsHeader
+        routes={routes}
+        params={params}
+        goBack={router.goBack}
+        resolver={postResolver}
+        crumbs={crumbs}
+        lastCrumbResolver={lastCrumbIsString}
+      />
       <div className="content with-breadcrumbs">
         <div className="scroll-y">
           <Flex alignItems="flex-start" className="responsive">
@@ -83,15 +90,13 @@ const abstractPostWithComments = (props) => {
 }
 
 const PostWithComments = graphql(getPostBySlug, {
-  options: (ownProps) => {
-    if(!ownProps.params)
-      return {};
+  options: ({params}) => {
+    let opts = {ssr: true};
+    if(!params)
+      return opts;
 
     return {
-      variables: {
-        slug: ownProps.params.slug
-      },
-      ssr: Meteor.isServer
+      ...opts, variables: { slug: params.slug }
     }
   }
 })(abstractPostWithComments);
