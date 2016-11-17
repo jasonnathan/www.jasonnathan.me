@@ -4,7 +4,9 @@ import tinycolor from 'tinycolor2'
 
 const panelStyles = {
   padding:'.5rem',
+  marginRight:'1px',
   boxSizing:"border-box",
+  textShadow:"-1px -1px 0 rgba(0,0,0,.5)",
   backgroundImage:"url(/brands/skill-bg.svg)",
 }
 
