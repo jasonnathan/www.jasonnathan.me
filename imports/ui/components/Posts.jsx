@@ -23,5 +23,5 @@ const abstractPostsList = ({data}) =>{
     </ul>
   )
 }
-const PostsList = graphql(getPosts, {options: {ssr:Meteor.isServer}})(abstractPostsList);
+const PostsList = graphql(getPosts, {options: {ssr: true}})(abstractPostsList);
 export default PostsList;
