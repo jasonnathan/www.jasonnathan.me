@@ -1,8 +1,11 @@
+import { Kind } from 'graphql/language';
 import Author from './Author';
 import Post from './Post';
 import Category from './Category';
-import { Kind } from 'graphql/language';
+import Project from './Project';
+import Skill from './Skill'
 import {getPost, getPosts,getAuthor,getPostsByAuthor,getCategoryByPost,getCategories} from './wp-connector';
+import {getSkills, getProjects} from './mongo-connector';
 
 const RootQuery = `
   type Query {
