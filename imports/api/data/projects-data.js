@@ -1,10 +1,13 @@
 const Projects = [
-  {name: "RealtAsia", tags:['knockout', 'javascript', 'aws', 'php', 'kohana', 'socketio', 'digitalocean', 'mysql', 'mongodb']},
-  {name: "Project M", tags:['sailsjs', 'mongodb', 'git', 'javascript', 'aws', 'less']},
-  {name: "Heardable", tags:['php', 'd3', 'meteor', 'javascript', 'nodejs', 'aws', 'digitalocean', 'less', 'mocha', 'mongodb', 'git', 'mysql']},
-  {name: "Private Property SG", tags:['php', 'codeigniter', 'javascript']},
-  {name: "Bella Feed Timer", tags:['redux', 'reactjs', 'javascript', 'cordova', 'meteor', 'mocha']},
-  {name: "RTA Market Report", tags:['d3', 'javascript', 'neo4j', 'mongodb']},
-  {name: "Upscore", tags:['meteor', 'javascript', 'mongodb', 'mocha', 'digitalocean', 'aws']},
-  {name: "Jason Nathan", tags:['javascript', 'reactjs', 'redux', 'apollostack', 'meteor', 'digitalocean', 'mocha', 'graphql']},
+  {"name":"RealtAsia","skills":["aws","digitalocean", "git", "javascript","knockout","kohana","mongodb","mysql","php","socketio"]},
+  {"name":"Project M","skills":["aws","git","javascript","less","mongodb","sailsjs"]},
+  {"name":"Heardable","skills":["aws","d3","digitalocean","git","javascript","less","meteor","mocha","mongodb","mysql","nodejs","php"]},
+  {"name":"Private Property SG","skills":["codeigniter","javascript","php"]},
+  {"name":"Bella Feed Timer","skills":["cordova","javascript","less","meteor","mocha","reactjs","redux"]},
+  {"name":"RTA Market Report","skills":["d3","javascript","mongodb","neo4j"]},
+  {"name":"Upscore","skills":["aws","digitalocean","javascript","less","meteor","mocha","mongodb"]},
+  {"name":"Jason Nathan","skills":["apollostack","digitalocean","graphql","javascript","less","meteor","mocha","reactjs","redux"]},
+  {"name":"Docviser","skills":["cordova","digitalocean","javascript","less","meteor","mocha","reactjs","strider"]}
 ];
+
+export default Projects;
