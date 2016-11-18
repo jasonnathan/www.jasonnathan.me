@@ -12,7 +12,9 @@ const SkillsData = [
     Add a little data with <a href="/work/skills/graphql">GraphQL</a>,
     a central state management tool like <a href="/work/skills/redux">Redux</a>
     and you have all you need to build complex data-driven user experiences on top of any back-end you prefer.
-  `, projects:[{name: 'DocViser', path:skurl('reactjs/docviser')}, {name:'Bella Feed Timer', path: skurl('reactjs/bella-feed-timer')}] },
+  `,
+  overviewImg: '/screenshots/jasonnathan-work-iphone5.png',
+  projects:[{name: 'DocViser', path:skurl('reactjs/docviser')}, {name:'Bella Feed Timer', path: skurl('reactjs/bella-feed-timer')}] },
   {to: skurl('d3'), src: skimg('d3.svg'), title: "D3", count:6, category: "UI Frameworks", overview:"" },
   {to: skurl('knockout'), src: skimg('knockout.svg'), title: "Knockout Projects", count:6, category: "UI Frameworks", overview:"" },
   // {to: skurl('handlebars'), src: skimg('handlebars.svg'), title: "Handlebars Projects", count:6, category: "UI Frameworks" },
