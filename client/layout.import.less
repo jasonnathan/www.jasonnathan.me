@@ -9,11 +9,6 @@ body { margin: 0; -webkit-text-size-adjust: 100%; color:#eee;
   max-height:100vh;
   width:100vw;
   position: absolute;
-  // background-image: url(http://wall-papers.info/images/black-gradient-wallpaper/black-gradient-wallpaper-2.jpg);
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // position:relative;
-  // background-color: fade(black, 90%)
 }
 .header, .footer, .content{
   position:absolute; width: 100%; left:0;
@@ -28,6 +23,8 @@ body { margin: 0; -webkit-text-size-adjust: 100%; color:#eee;
   bottom:0;
   [role=main]{
     height: 100vh;
+    background-size: cover !important;
+    background-position:50% -50% !important;
   }
   &.with-footer{
     bottom:@footer-height;
@@ -147,8 +144,16 @@ h4{margin:0;}
   align-items: flex-start;
   margin:auto;
 }
+.bottom-box{
+  > .react-flex > div {
+    min-width: 50%;
+  }
+}
 .bottom-tabs li a {
   font-size: .8rem;
+  // text-shadow:-1px -1px 1px black !important;
+  // color:@orange !important;
+  // font-family:Audiowide;
 }
 /**
  * Width starting from 640px onwards
@@ -235,8 +240,17 @@ h4{margin:0;}
     padding: 0 10vw;
     column-width: 190px;
   }
+  .bottom-box{
+    margin:auto;
+    > .react-flex {
+      margin:auto;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
+    }
+  }
   .bottom-tabs li a {
-    font-size: 1rem;
+    // font-size: 1rem;
   }
 }
 
