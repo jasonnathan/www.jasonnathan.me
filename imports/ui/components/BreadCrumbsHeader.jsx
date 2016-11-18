@@ -31,15 +31,16 @@ export default class Header extends Component{
   }
 
   render(){
-    const {routes, params, resolver, crumbs, lastCrumbResolver, goBack} = this.props;
+    const {routes, params, resolver, crumbs, lastCrumbResolver, goBack, style={}} = this.props;
     /*
     * globally, the first route [0] is ignored but this can be written in a
     * more defensive way
     */
     const backPath = routes[1].breadCrumbLink || `/${routes[1].path}`;
     const backName = routes[1].breadCrumbName || routes[1].name;
+    const _s ={...style, display:"flex"}
     return (
-      <header className="header breadcrumb-container" style={{display:"flex"}}>
+      <header className="header breadcrumb-container" style={_s}>
         {/* Animation for back button slide in */}
         <Motion {...this.motionProps()}>{({t}) => (
           <a
