@@ -47,14 +47,16 @@ export default class Skill extends Component{
     const {routes, params} = this.props;
     const skill = skillItem(params.skill);
     const projs = skill.projects;
+    const bgImg = `url(${skill.overviewImg})` || "#222"
     return (
-      <div role="main" style={{position:"fixed", top:0, left:0, width:"100vw", height:"100%", bottom:0, background:"#222"}}>
+      <div role="main" style={{position:"fixed", top:0, left:0, width:"100vw", height:"100%", bottom:0, background:bgImg}}>
         <BreadCrumbsHeader
           routes={routes}
           params={params}
           goBack={this.props.router.goBack}
           resolver={skillResolver}
           crumbs={skill.title}
+          style={{background:"#111"}}
           lastCrumbResolver={lastCrumbIsString}
         />
         <div className="content with-breadcrumbs with-footer">
@@ -76,7 +78,7 @@ export default class Skill extends Component{
         </div>
         <FooterTransition>
           <ul className="bottom-tabs" style={{maxWidth:`${(projs.length + 1) * 170}px`}}>
-            <li><Link to={skill.to} activeClassName="active">Overview</Link></li>
+            <li><Link to={skill.to} activeClassName="selected">Overview</Link></li>
             {projs.map(p => (
               <li key={p.path}><Link activeClassName="selected" to={p.path}>{p.name}</Link></li>
             ))}
