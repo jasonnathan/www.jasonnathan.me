@@ -5,11 +5,22 @@
     <desc>Created with Sketch.</desc>
     <defs>
         <polygon id="path-1" points="0.3359375 52.4568313 30.5270092 0.464967005 169.190112 0.464967005 200.335937 54.1010075 200.335937 200.464967 0.461111334 200.464967"></polygon>
-        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="200" height="200" fill="white">
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="10" operator="erode" in="SourceAlpha" result="shadowSpreadInner1"></feMorphology>
+            <feGaussianBlur stdDeviation="50" in="shadowSpreadInner1" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.047087585   0 0 0 0 0.047087585   0 0 0 0 0.047087585  0 0 0 0.764634284 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="200" height="200" fill="white">
             <use xlink:href="#path-1"></use>
         </mask>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-opacity="0.782495471" stroke-linecap="square" fill-opacity="0.318642437">
-        <use id="DiagBorderHover" stroke="#64C8FF" mask="url(#mask-2)" stroke-width="2" fill="#00FFFF" xlink:href="#path-1"></use>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DiagBorderHover">
+            <use fill-opacity="0.49535779" fill="#FFC400" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use stroke-opacity="0.782495471" stroke="#FFB564" mask="url(#mask-3)" stroke-width="2" stroke-linecap="square" xlink:href="#path-1"></use>
+        </g>
     </g>
 </svg>
