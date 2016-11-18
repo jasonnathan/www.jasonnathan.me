@@ -4,7 +4,7 @@ import Post from './Post';
 import Category from './Category';
 import Project from './Project';
 import Skill from './Skill'
-import {getPost, getPosts,getAuthor,getPostsByAuthor,getCategoryByPost,getCategories} from './wp-connector';
+import {getPost, getPosts,getAuthor,getPostsByAuthor,getCategoryById,getCategories} from './wp-connector';
 import {getSkills, getProjects} from './mongo-connector';
 
 const RootQuery = `
@@ -43,7 +43,7 @@ const resolvers = {
     content: ({content}) => content,
     excerpt: ({excerpt}) => excerpt,
     author:({author}) => getAuthor(author),
-    categories:({id}) => getCategoryByPost(id)
+    categories:({categories}) => Promise.await(categories.map(id => getCategoryById(id)))
   },
   Author:{
     posts(_, args){
