@@ -13,7 +13,7 @@ export default class FadeInImage extends Component {
       // it seems counter-intuitive to unset default styles
       // but it works better for my use case
       style: {
-        opacity: 0,
+        opacity: 0.2,
         transition: 'opacity 1s ease-in',
         height: size,
         width: size,
