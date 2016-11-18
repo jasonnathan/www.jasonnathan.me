@@ -19,7 +19,9 @@ const AppRoutes = () => (
     <Route name="About" path="about" component={About} />
     <Route name="Work" path="work" breadcrumbIgnore>
       <IndexRoute name="Skills" component={Work} />
-      <Route name="skill" path="skills/:skill" component={Skill} breadcrumbName=":skill" />
+      <Route name="skill" path=":skill" component={Skill} breadcrumbName=":skill">
+        <Route name="project" path=":project" component={Skill} breadcrumbName=":project" />
+      </Route>
     </Route>
     <Route name="Contact" path="contact" component={Contact} />
     <Route name="Articles" path="articles" breadcrumbIgnore>
