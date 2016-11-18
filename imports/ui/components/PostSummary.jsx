@@ -8,6 +8,7 @@ import FadeInImage from './FadeInImage.jsx';
 
 const PostSummary = ({post, client}) => {
   const getUrl = () => {
+    // console.log(post.categories)
     const cat = post.categories[0].slug;
     return `/article/${cat}/${post.slug}`;
   }
@@ -24,7 +25,7 @@ const PostSummary = ({post, client}) => {
         <FadeInImage size="100%" className="bg-image" src={post.featured_media_url} />
         <div className="post-content">
           <h3 role="heading" id={`#${post.slug}`} dangerouslySetInnerHTML={{__html: post.title.rendered}} />
-          <p dangerouslySetInnerHTML={{__html: truncatise(post.excerpt.rendered, {TruncateLength:30})}} />
+          <p dangerouslySetInnerHTML={{__html: truncatise(post.excerpt.rendered, {TruncateLength:40})}} />
         </div>
       </article>
     </a>
