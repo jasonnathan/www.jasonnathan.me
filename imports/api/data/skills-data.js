@@ -1,17 +1,17 @@
-const skurl = (path) => `/work/skills/${path}`;
+const skurl = (path) => `/work/${path}`;
 const skimg = (path) => `/brands/${path}`;
 
 const SkillsData = [
   {to: skurl('reactjs'), src: skimg('reactjs.svg'), title: "ReactJS", count:1, category:"UI Frameworks", overview:`
     I have only recently started to work with ReactJS and have come to really enjoy it. ES6 & JSX are wonderful to write in
     and React's Component level abstraction is refreshing. <br />
-    More than that, server generated markup with all content preloaded is very hard to resist.
+    More than that, server generated markup with all content preloaded is exactly what I've been looking for in a modern UI framework.
     You still get all the CSS/JS animations baked in on the client and your markup is not littered with bizzare attributes.
     This site is written with React and serves as an example: <br />
     If you cURLed this URL, you'd see the generated markup does not differ from what is in the browser. <br />
     Add a little data with <a href="/work/skills/graphql">GraphQL</a>,
     a central state management tool like <a href="/work/skills/redux">Redux</a>
-    and you have all you need to build complex data-driven user experiences that is driven by any back-end you prefer.
+    and you have all you need to build complex data-driven user experiences on top of any back-end you prefer.
   `, projects:[{name: 'DocViser', path:skurl('reactjs/docviser')}, {name:'Bella Feed Timer', path: skurl('reactjs/bella-feed-timer')}] },
   {to: skurl('d3'), src: skimg('d3.svg'), title: "D3", count:6, category: "UI Frameworks", overview:"" },
   {to: skurl('knockout'), src: skimg('knockout.svg'), title: "Knockout Projects", count:6, category: "UI Frameworks", overview:"" },
