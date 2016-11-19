@@ -23,8 +23,9 @@ body { margin: 0; -webkit-text-size-adjust: 100%; color:#eee;
   bottom:0;
   [role=main]{
     height: 100vh;
-    background-size: cover !important;
-    background-position:50% -50% !important;
+    // background-size: cover !important;
+    // background-position:0% -50% !important;
+    // background-repeat: no-repeat !important;
   }
   &.with-footer{
     bottom:@footer-height;
@@ -47,7 +48,7 @@ body { margin: 0; -webkit-text-size-adjust: 100%; color:#eee;
     top:@header-height;
     left:50%;
     width:100%;
-    transform:translateX(-50%);
+    transform:translate3d(-50%,0,0);
   }
 }
 @sidebar-header-height: @header-height - 10px;
@@ -60,8 +61,8 @@ body { margin: 0; -webkit-text-size-adjust: 100%; color:#eee;
   position: absolute;
 }
 .scroll-y, .scroll-x{-webkit-overflow-scrolling: touch;}
-.scroll-y{overflow-y:auto;height:100%}
-.scroll-x{overflow-x:auto;min-width:100%}
+.scroll-y{overflow-y:auto;overflow-x:hidden;height:100%}
+.scroll-x{overflow-x:auto;overflow-y:hidden;min-width:100%}
 .react-flex.responsive{
   flex-basis:100%;
 }
