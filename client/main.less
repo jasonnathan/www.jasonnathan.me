@@ -75,6 +75,12 @@ body {
         margin: auto;
     }
 }
+[role=main]{
+  transition: background-image 150ms ease-out;
+}
+.content{
+  transition: all 100ms ease-in;
+}
 .header.breadcrumb-container{
   height:@header-height;
   .breadcrumbs{
@@ -85,8 +91,10 @@ body {
       white-space: nowrap;
       text-overflow: ellipsis;
       height: 40px;
-      line-height: 40px;
       font-size: 1.17em !important;
+      span{
+        line-height: 30px !important;
+      }
     }
   }
   .back-button{
@@ -195,6 +203,7 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
+  bottom:0;
   li{
     display: flex;
     height: 100%;
@@ -203,11 +212,13 @@ body {
     justify-content: center;
     box-sizing: border-box;
     flex: 1;
+    padding-top:10px;
     margin: auto;
     transition: all 200ms ease-out;
     text-align: center;
     min-width: 150px;
     max-width: 250px;
+    // max-height: 50px;
     a{
       transition: all 250ms ease-out;
       background-image: url(/DiagBorder.svg);
@@ -224,7 +235,7 @@ body {
       color: white;
       &.selected{
         background-image: url(/DiagBorderHover.svg);
-        transform: translate3d(0, 0, 0) scale(1.1);
+        transform: translate3d(0, 0, 0) scale(1.15);
       }
     }
   }
@@ -242,15 +253,16 @@ a{
 .single-post.skill-description{
   max-width: 800px;
   padding:2rem;
-  margin:auto;
+  margin:1rem auto auto auto;
   position: relative;
   min-height:auto !important;
-  background-image: radial-gradient(fade(black, 90%) 0%, rgba(0,0,0,0) 70%);
-  // margin: auto 20%;
+  background-color: fade(black, 45%);
   p{
     line-height: 1.5;
     font-size: 1.2rem;
-    color:darken(white, 15%);
+    // color:@lightest-blue;
+    // text-shadow: 0px 0px .5rem fade(black, 95%);
+    // color:darken(white, 15%);
     // background-color: fade(black, 30%);
 
   }
