@@ -9,37 +9,43 @@ const SkillsData = [
     You still get all the CSS/JS animations baked in on the client and your markup is not littered with bizzare attributes.
     This site is written with React and serves as an example: <br />
     If you cURLed this URL, you'd see the generated markup does not differ from what is in the browser. <br />
-    Add a little data with <a href="/work/skills/graphql">GraphQL</a>,
-    a central state management tool like <a href="/work/skills/redux">Redux</a>
+    Add a little data with <a href="/work/graphql">GraphQL</a>,
+    a central state management tool like <a href="/work/redux">Redux</a>
     and you have all you need to build complex data-driven user experiences on top of any back-end you prefer.
   `,
   overviewImg: '/screenshots/jasonnathan-work-iphone5.png',
-  projects:[{name: 'DocViser', path:skurl('reactjs/docviser')}, {name:'Bella Feed Timer', path: skurl('reactjs/bella-feed-timer')}] },
+  projects:[
+    {name: 'DocViser', path:skurl('reactjs/docviser'), overviewImg:'/screenshots/docviser.png',overview:`
+      DocViser is startup focused on creating a new mobile medical platform for doctors and patients. I joined the team as their primary
+      technology consultant to help with their software architecture and resource aquisition. <br />
+      They had a simple, straight-forward UI and React was the perfect toolkit for the job. I helped to build a
+      quick prototype based on their initial design and had it tested on both Android and iOS devices as a proof of concept <br />
+      They have since moved ahead and is currently actively developing their product. <br />
+      DocViser's architecture is built with <a href="/work/mongodb">MongoDB</a> as their primary storage with their
+      core servers hosted on <a href="/work/digitalocean">Digital Ocean</a>.
+    `}
+  ]},
   {to: skurl('d3'), src: skimg('d3.svg'), title: "D3", count:6, category: "UI Frameworks", overview:"" },
   {to: skurl('knockout'), src: skimg('knockout.svg'), title: "Knockout Projects", count:6, category: "UI Frameworks", overview:"" },
   // {to: skurl('handlebars'), src: skimg('handlebars.svg'), title: "Handlebars Projects", count:6, category: "UI Frameworks" },
   // {to: skurl('jquery'), src: skimg('jquery.svg'), title: "jQuery Projects", count:6, category: "UI Frameworks" },
-  {to: skurl('less'), src: skimg('less.svg'), title: "LESS", count:6, category: "UI Frameworks", overview:"" },
-  {to: skurl('javascript'), src: skimg('JS.svg'), title: "JavaScript Projects", count:3, category:"Languages", overview:"" },
-  {to: skurl('php'), src: skimg('php.svg'), title: "PHP Projects", count:3, category:"Languages", overview:"" },
+  {to: skurl('less'), src: skimg('less.svg'), title: "LESS", count:6, category: "UI Frameworks", overview:"",projects:[] },
+  {to: skurl('javascript'), src: skimg('JS.svg'), title: "JavaScript Projects", count:3, category:"Languages", overview:"",projects:[] },
+  {to: skurl('php'), src: skimg('php.svg'), title: "PHP Projects", count:3, category:"Languages", overview:"",projects:[] },
   // {to: skurl('perl'), src: skimg('perl-logo.svg'), title: "Perl Projects", count:3, category:"Languages" },
-  {to: skurl('nodejs'), src: skimg('nodejs-light.svg'), title: "NodeJS", count:6, category: "Server Frameworks", overview:"" },
-  {to: skurl('codeigniter'), src: skimg('codeigniter.svg'), title: "Codeigniter PHP", count:6, category: "Server Frameworks", overview:"" },
-  {to: skurl('kohana'), src: skimg('kohana.svg'), title: "Kohana PHP", count:6, category: "Server Frameworks", overview:"" },
-  // {to: skurl('xampp'), src: skimg('xampp.svg'), title: "XAMPP Projects", count:5, category: "Server Frameworks" },
-  {to: skurl('meteor'), src: skimg('meteor-light.svg'), title: "Meteor Projects", count:5, category: "FullStack Frameworks", overview:"" },
-  {to: skurl('sailsjs'), src: skimg('sailsjs-light.svg'), title: "SailsJS Projects", count:5, category: "FullStack Frameworks", overview:"" },
-  {to: skurl('cordova'), src: skimg('cordova.svg'), title: "Cordova Projects", count:5, category: "FullStack Frameworks", overview:"" },
-  {to: skurl('aws'), src: skimg('aws.svg'), title: "AWS", count:1, category: "IAAS", overview:"" },
-  {to: skurl('digitalocean'), src: skimg('digitalocean.svg'), title: "Digital Ocean", count:1, category: "IAAS", overview:"" },
-  // {to: skurl('eslint'), src: skimg('eslint.svg'), title: "ESlint Projects", count:6, category: "ToolKits" },
-  // {to: skurl('react-router'), src: skimg('react-router-light.svg'), title: " React Router Projects", count:6, category: "ToolKits" },
-  {to: skurl('graphql'), src: skimg('graphql.svg'), title: "GraphQL", count:6, category: "Data Frameworks", overview:"" },
+  {to: skurl('nodejs'), src: skimg('nodejs-light.svg'), title: "NodeJS", count:6, category: "Server Frameworks", overview:"",projects:[] },
+  {to: skurl('codeigniter'), src: skimg('codeigniter.svg'), title: "Codeigniter PHP", count:6, category: "Server Frameworks", overview:"",projects:[] },
+  {to: skurl('kohana'), src: skimg('kohana.svg'), title: "Kohana PHP", count:6, category: "Server Frameworks", overview:"",projects:[] },
+  {to: skurl('meteor'), src: skimg('meteor-light.svg'), title: "Meteor Projects", count:5, category: "FullStack Frameworks", overview:"",projects:[] },
+  {to: skurl('sailsjs'), src: skimg('sailsjs-light.svg'), title: "SailsJS Projects", count:5, category: "FullStack Frameworks", overview:"",projects:[] },
+  {to: skurl('cordova'), src: skimg('cordova.svg'), title: "Cordova Projects", count:5, category: "FullStack Frameworks", overview:"",projects:[] },
+  {to: skurl('aws'), src: skimg('aws.svg'), title: "AWS", count:1, category: "IAAS", overview:"",projects:[] },
+  {to: skurl('digitalocean'), src: skimg('digitalocean.svg'), title: "Digital Ocean", count:1, category: "IAAS", overview:"",projects:[] },
+  {to: skurl('graphql'), src: skimg('graphql.svg'), title: "GraphQL", count:6, category: "Data Frameworks", overview:"",projects:[] },
   {to: skurl('socketio'), src: skimg('socketio.svg'), title: "Socket IO", count:6, category: "Data Frameworks", overview:"" },
   {to: skurl('apollostack'), src: skimg('apollo-word.svg'), title: "Apollo Projects", count:6, category: "Data Frameworks", overview:"" },
   {to: skurl('redux'), src: skimg('redux-light.svg'), title: "Redux Projects", count:1, category: "Data Frameworks", overview:"" },
   {to: skurl('mocha'), src: skimg('mocha.svg'), title: "Mocha Testing", count:6, category: "Testing & Integration", overview:"" },
-  // {to: skurl('jasmine'), src: skimg('jasmine.svg'), title: "Jasmine Projects", count:6, category: "Testing & Integration" },
   {to: skurl('jenkins'), src: skimg('jenkins.svg'), title: "Jenkins CI", count:6, category: "Testing & Integration", overview:"" },
   {to: skurl('strider'), src: skimg('strider-cd.svg'), title: "Strider CD Projects", count:6, category: "Testing & Integration", overview:"" },
   {to: skurl('git'), src: skimg('git.svg'), title: "GIT", count:6, category: "Version Control", overview:"" },
