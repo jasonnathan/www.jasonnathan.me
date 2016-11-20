@@ -31,11 +31,11 @@ const authWP = () => {
   .then(res => res.json())
   .then(({access_token}) => ({Authorization:`Bearer ${access_token}`}))
 }
-const getWP = (endpoint, query='') => {
-  const ep = `${url}/${endpoint}`;
+const getWP = (endpoint, query) => {
+  let ep = `${url}/${endpoint}`;
+  ep += query ? `?${query}` : '';
   return authWP()
   .then(headers => fetch(ep, {
-    body:query,
     headers,
     compress: !0
   })
@@ -58,11 +58,13 @@ export const getPost = args => {
   const then = (posts) => Promise.resolve(posts.length
     ? posts[0]
     : {});
+
+  console.log(args)
   if (args.id) {
     return getWP(`posts/${args.id}`).then(then);
   }
   if (args.slug) {
-    return getWP('posts', `slug=${args.slug}&context=edit`).then(then);
+    return getWP('posts', `slug=${args.slug}`).then(then);
   }
 }
 export const getAuthor = id => getWP(`users/${id}`);
