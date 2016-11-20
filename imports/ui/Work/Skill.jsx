@@ -90,7 +90,6 @@ export default class Skill extends Component{
       // transform: `translate3d(${pos}%,0,0)`,
       // opacity
     }
-    console.log(idx, ret);
     return ret;
   }
 
