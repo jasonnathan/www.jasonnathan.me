@@ -24,18 +24,16 @@ const postResolver = (key, text) => {
 };
 
 const lastCrumbIsString = (link, key, text, index, routes) => {
+  link = link.split("/").map(l => l === 'article' ? 'articles' : l).join("/");
   if (index === routes.length -1) {
     return <span key={key}>{text}</span>;
   }
+
   return <Link to={link} key={key}>{text}</Link>;
 }
 
-const abstractPostWithComments = (props) => {
-  const {loading, post, error} = props.data;
-  const {location} = props;
-  const {routes, params, router} = props;
+const abstractPostWithComments = ({data:{loading, post, error}, location, routes, params, router}) => {
   const toHtml = (val) => ({__html: val});
-
   if(loading)
     return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
       <Loader type="ball-triangle-path" />
@@ -68,7 +66,7 @@ const abstractPostWithComments = (props) => {
                 <ReactDisqusThread
                   identifier={post.slug}
                   title={post.title.rendered}
-                  url={`http://dev.jasonnathan.com/${location.pathname}`}
+                  url={`https://dev.jasonnathan.com/${location.pathname}`}
                 />
               </article>
             </Item>
