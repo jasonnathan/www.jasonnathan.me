@@ -6,7 +6,6 @@ const getCategories = gql`{
     name
     slug
     count
-
   }
 }`
 
