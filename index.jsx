@@ -8,21 +8,23 @@ import ApolloClient, {createNetworkInterface} from 'apollo-client';
 import {ApolloProvider} from 'react-apollo';
 import {getDataFromTree} from "react-apollo/server";
 
-// const url = process.env.NODE_ENV === 'production' ? "dev.jasonnathan.com" : "localhost"
-let url = "localhost";
+let url = "http://localhost:3000";
 if(Meteor.isClient && process.env.NODE_ENV === 'production'){
-  url = "dev.jasonnathan.com";
+  url = "https://dev.jasonnathan.com";
 }
 
 let opts = {
   ssrMode: Meteor.isServer,
-  networkInterface: createNetworkInterface({credentials: 'same-origin', uri: `http://${url}:3000/graphql`})
+  networkInterface: createNetworkInterface({
+    credentials: 'same-origin', uri: `${url}/graphql`
+  })
 }, client, initialState, history;
 
 
 const rehydrateHook = state => initialState = state;
 const historyHook = newHistory => history = newHistory;
-// the dumbest thing, to put wrapperHook in clientOptions, infering it only runs on the client
+// the dumbest thing, to put wrapperHook in clientOptions, inferring it only
+// runs on the client
 const wrapperHook = app => {
   opts.initialState = initialState;
   client = new ApolloClient(opts);
@@ -31,8 +33,9 @@ const wrapperHook = app => {
 const preRender = (req, res, app) => Promise.await(getDataFromTree(app));
 const dehydrateHook = () => ({apollo:{data:client.store.getState().apollo.data}})
 const htmlHook = html => {
-  const head = ReactHelmet.rewind();
-  return html.replace('<head>', '<head>' + head.title + head.base + head.meta + head.link + head.script);
+  const h = ReactHelmet.rewind();
+  return html
+    .replace('<head>', '<head>' + h.title + h.base + h.meta + h.link + h.script);
 }
 
 // const props = {onUpdate: () => Meteor.isClient && ga('send', 'pageview')}
