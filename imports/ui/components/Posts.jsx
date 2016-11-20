@@ -1,13 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { graphql } from 'react-apollo';
-// import {spring, presets, StaggeredMotion} from 'react-motion';
 import getPosts from '/imports/api/posts-query-gql';
 import Loader from 'react-loaders';
 import PostSummary from './PostSummary.jsx'
 
-const abstractPostsList = ({data}) =>{
-  const {posts, loading, error} = data
+const abstractPostsList = ({data:{posts, loading, error}, params}) =>{
   if(loading)
       return (<div className="centered-loader" style={{paddingTop:'25vh'}}><Loader type="ball-triangle-path" /></div>);
   if(error){
@@ -23,5 +21,11 @@ const abstractPostsList = ({data}) =>{
     </ul>
   )
 }
-const PostsList = graphql(getPosts, {options: {ssr: true}})(abstractPostsList);
+const PostsList = graphql(getPosts, {options: ({params:{category}}) => {
+  let _opts = {ssr: true};
+  if(category){
+    _opts.variables = {category}
+  }
+  return _opts;
+}})(abstractPostsList);
 export default PostsList;

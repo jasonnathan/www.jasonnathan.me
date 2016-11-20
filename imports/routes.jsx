@@ -26,7 +26,7 @@ const AppRoutes = () => (
     <Route name="Contact" path="contact" component={Contact} />
     <Route name="Articles" path="articles" breadcrumbIgnore>
       <IndexRoute name="Articles" component={Blog} />
-      <Route name="Posts By Category" path=":category" component={PostsByCategory} breadcrumbName=":category" />
+      <Route name="Posts By Category" path=":category" component={Blog} breadcrumbName=":category" />
     </Route>
     <Route name="Article" path="article" breadcrumbName="Articles" breadCrumbLink="/articles" breadcrumbIgnore>
       <Route name="Posts By Category" path=":category" component={Article} breadcrumbName=":category">

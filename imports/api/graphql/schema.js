@@ -10,7 +10,7 @@ import {getSkills, getProjects} from './mongo-connector';
 const RootQuery = `
   type Query {
     post(slug: String): Post
-    posts: [Post]
+    posts(category: String): [Post]
     author(id: Int!): Author
     categories: [Category]
   }
@@ -28,7 +28,7 @@ const resolvers = {
       return getPost(args);
     },
     posts(_, args) {
-      return getPosts();
+      return getPosts(args);
     },
     author(_, args){
       return getAuthor(args);
@@ -68,8 +68,8 @@ const parseJSONLiteral = (ast) => {
     case Kind.OBJECT: {
       const value = Object.create(null);
       ast.fields.forEach(field => {
-        if(!field.name)
-        console.log(field)
+//        if(!field.name)
+//        console.log(field)
         // value[field.name.value] = parseJSONLiteral(field.value);
       });
 

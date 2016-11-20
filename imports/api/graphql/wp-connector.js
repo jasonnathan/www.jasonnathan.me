@@ -14,8 +14,9 @@ let _headers = {
 };
 
 const authWP = () => {
+  const then = (h) => Promise.resolve(h);
   if (_headers.Authorization)
-    return Promise.resolve(_headers);
+    return then(_headers);
 
   const {CLIENT_ID, CLIENT_SECRET, WP_USERNAME, WP_PASSWD} = process.env;
   const form = {
@@ -29,7 +30,7 @@ const authWP = () => {
     body: querystring.stringify(form)
   })
   .then(res => res.json())
-  .then(({access_token}) => ({Authorization:`Bearer ${access_token}`}))
+  .then(({access_token}) => then({Authorization:`Bearer ${access_token}`}))
 }
 const getWP = (endpoint, query) => {
   let ep = `${url}/${endpoint}`;
@@ -59,7 +60,6 @@ export const getPost = args => {
     ? posts[0]
     : {});
 
-  console.log(args)
   if (args.id) {
     return getWP(`posts/${args.id}`).then(then);
   }
@@ -68,7 +68,14 @@ export const getPost = args => {
   }
 }
 export const getAuthor = id => getWP(`users/${id}`);
-export const getCategoryById = id => getWP(`categories/${id}`,)
+export const getCategoryById = id => getWP(`categories/${id}`);
 export const getPostsByAuthor = id => getWP('posts', `author=${id}`);
 export const getCategories = () => getWP(`categories`);
-export const getPosts = () => getWP('posts');
+export const getPosts = ({category}) => {
+  let catId = null;
+  if(category){
+    const cats = Promise.await(getWP('categories',`slug=${category.toLowerCase()}`));
+    catId = cats.length ? cats[0].id : null;
+  }
+  return getWP('posts', catId ? `categories=${catId}` : null);
+};
