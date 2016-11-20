@@ -87,8 +87,8 @@ export default class Skill extends Component{
 
     pos = (-base * (ci-idx)) -50;
     ret = {
-      // transform: `translate3d(${pos}%,0,0)`,
-      // opacity
+      transform: `translate3d(${pos}%,0,0)`,
+      opacity
     }
     return ret;
   }
