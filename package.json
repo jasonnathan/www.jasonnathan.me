@@ -19,6 +19,7 @@
     "isomorphic-fetch": "^2.2.1",
     "isomorphic-form-data": "^0.0.1",
     "loaders.css": "^0.1.2",
+    "meteor-node-stubs": "^0.2.4",
     "react-addons-css-transition-group": "^15.3.2",
     "react-addons-transition-group": "^15.3.2",
     "react-apollo": "^0.6.0",
@@ -35,6 +36,7 @@
     "react-tagcloud": "^0.6.1",
     "save": "^2.3.0",
     "shortcode-insert": "^1.0.1",
+    "shortcode-parser": "git+https://github.com/jasonnathan/shortcode-parser.git",
     "tinycolor2": "^1.4.1",
     "truncatise": "^0.0.5"
   },
