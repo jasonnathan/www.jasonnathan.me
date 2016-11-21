@@ -20,3 +20,9 @@ promise@0.8.8
 apollo
 jasonnathan:react-router-ssr
 static-html
+nicolaslopezj:apollo-accounts
+accounts-github
+accounts-google
+mongo
+accounts-base
+accounts-password
