@@ -125,7 +125,7 @@ h4{margin:0;}
     line-height: @header-height;
     h1.staggered-name{
       margin:auto !important;
-      max-height:45px;
+      max-height:@header-height;
       line-height: 25px;
       max-width: 100%;
     }
@@ -202,7 +202,7 @@ h4{margin:0;}
     }
   }
   .header.breadcrumb-container{
-    height:60px;
+    height: @header-height + 10px;
     .breadcrumbs{
       margin-left:5px;
       overflow: hidden;
@@ -210,15 +210,19 @@ h4{margin:0;}
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      height:50px;
+      height:@header-height + 10px;
       display: flex;
       align-items: center;
       h1.staggered-name{
-        transform: translateX(-39px);
+        transform: translateX(-20px);
+        font-size: 1.8rem;
+        span{
+          font-size: 1.4rem;
+        }
       }
     }
     .back-button{
-      max-width:78px; height: 50px; line-height:50px;
+      max-width:78px; height: @header-height + 10px; line-height:@header-height + 10px;
     }
   }
   .tag-cloud{

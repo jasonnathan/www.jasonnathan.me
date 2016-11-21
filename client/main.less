@@ -82,7 +82,6 @@ body {
   transition: all 100ms ease-in;
 }
 .header.breadcrumb-container{
-  height:@header-height;
   .breadcrumbs{
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -90,7 +89,6 @@ body {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      height: 40px;
       font-size: 1.17em !important;
       span{
         line-height: 30px !important;
@@ -254,14 +252,13 @@ a{
   max-width: 800px;
   padding:2rem;
   margin:1rem auto auto auto;
-  height:auto !important;
+  min-height: 100%;
   position: relative;
-  min-height:auto !important;
   background-color: fade(black, 45%);
   p{
     line-height: 1.5;
     font-size: 1.2rem;
-    // color:@lightest-blue;
+    color:@lightest-blue;
     // text-shadow: 0px 0px .5rem fade(black, 95%);
     // color:darken(white, 15%);
     // background-color: fade(black, 30%);
