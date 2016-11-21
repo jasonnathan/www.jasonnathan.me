@@ -3,6 +3,7 @@ import React from 'react';
 import {Flex, Item} from 'react-flex';
 import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
+import Loader from 'react-loaders';
 import StaggeredName from './components/StaggeredName.jsx';
 import SkillCloud from './components/SkillCloud.jsx';
 import Page from './components/Page.jsx';
@@ -27,7 +28,7 @@ export default function Work(props){
               {({v}) =>
                 <StaggeredName letters="Work">
                   <small className="block" style={{opacity: v}}>
-                    Click on the modules | frameworks | languages etc to see work I have done with it.
+                    Click on the modules | frameworks | languages etc to see work done.
                   </small>
                 </StaggeredName>
               }

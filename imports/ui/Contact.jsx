@@ -11,7 +11,7 @@ const Contact = () => {
       <Helmet
         title="Works | Jason J. Nathan"
         meta={[
-          {"name": "description", "content": "A collection of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP"}
+          {"name": "description", "content": "Contact me for freelance projects, work or just for a chat"}
         ]}
       />
       <div role="main">
@@ -25,7 +25,7 @@ const Contact = () => {
               {({v}) =>
                 <StaggeredName letters="Contact">
                   <small className="block" style={{opacity: v}}>
-                    Contact forms are boring. Let&apos;s try something a little more real-time.
+                    Contact me for freelance projects, work or just for a chat.
                   </small>
                 </StaggeredName>
               }
