@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import {Link, IndexLink} from 'react-router';
+import {graphql} from 'react-apollo';
 import {StaggeredMotion, spring} from 'react-motion';
-import {SkillsData, skurl} from '/imports/api/data/skills-data';
+import Loader from 'react-loaders';
+import {skurl} from '/imports/api/data/skills-data';
+import getSkill from '/imports/api/skill-by-to-gql';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
 import FooterTransition from '../components/FooterTransition.jsx';
 import StaggeredName from '../components/StaggeredName.jsx'
+
 
 const skillItem = skill => SkillsData.find(a => a.to === skurl(skill));
 
@@ -17,7 +21,7 @@ const lastCrumbIsString = (link, key, text, index, routes) => {
   return <Link to={link} key={key}>{text}</Link>;
 }
 
-export default class Skill extends Component{
+class abstractSkill extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -27,7 +31,7 @@ export default class Skill extends Component{
 
   getContainerStyles(skill){
     const ci = this.state.currentIndex;
-    let img = ci === 0 ? skill.overviewImg : skill.projects[ci-1].overviewImg;
+    let img = ci === 0 ? skill.featuredImage : skill.projects[ci-1].featuredImage;
     let _s = {
       position:"fixed",
       top:0,
@@ -94,30 +98,35 @@ export default class Skill extends Component{
   }
 
   render(){
-    const {routes, params} = this.props;
-    const skill = skillItem(params.skill);
-    const projs = skill.projects;
+    const {data:{loading, skill, error}, routes, params} = this.props;
+    if(loading)
+      return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
+        <Loader type="ball-triangle-path" />
+      </div>);
+
+    const projs = skill ? skill.projects : [];
+
     return (
       <div role="main" style={this.getContainerStyles(skill)}>
         <BreadCrumbsHeader
-          routes={routes}
-          params={params}
-          goBack={this.props.router.goBack}
-          resolver={skillResolver}
-          crumbs={skill.title}
-          style={{background:"#111"}}
-          lastCrumbResolver={lastCrumbIsString}
+            routes={routes}
+            params={params}
+            goBack={this.props.router.goBack}
+            resolver={skillResolver}
+            crumbs={skill.title}
+            style={{background:"#111"}}
+            lastCrumbResolver={lastCrumbIsString}
         />
         <div style={this.computePositionStyles(0)} className="content with-breadcrumbs with-footer">
           <div className="scroll-y">
-            {this.state.currentIndex === 0 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(skill.overview))}>
+            {this.state.currentIndex === 0 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(skill.description))}>
               {interpolatedStyles =>
-                <article className="single-post skill-description" style={{backgroundImage:"url(/skill-bg.svg)", backgroundSize:"cover"}}>
+                <article className="single-post skill-description" style={{backgroundImage:"url(/skill-bg.svg)"}}>
                   {interpolatedStyles.map((style, i) => (
                     <p
                       key={i}
                       style={this.staggeredStyle(style)}
-                      dangerouslySetInnerHTML={{__html: this.splitOnBreak(skill.overview)[i]}}
+                      dangerouslySetInnerHTML={{__html: this.splitOnBreak(skill.description)[i]}}
                     />
                   ))}
                 </article>
@@ -126,16 +135,16 @@ export default class Skill extends Component{
           </div>
         </div>
         {projs.map((p, i) => (
-          <div key={i+1} style={this.computePositionStyles(i+1)} className="content with-breadcrumbs with-footer">
+          <div key={p.to} style={this.computePositionStyles(i+1)} className="content with-breadcrumbs with-footer">
             <div className="scroll-y">
-              {this.state.currentIndex === i+1 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(p.overview))}>
+              {this.state.currentIndex === i+1 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(p.description))}>
                 {interpolatedStyles =>
                   <article className="single-post skill-description" style={{backgroundImage:"url(/skill-bg.svg)", backgroundSize:"cover"}}>
-                    {interpolatedStyles.map((style, i) => (
+                    {interpolatedStyles.map((style, x) => (
                       <p
-                        key={i}
+                        key={x}
                         style={this.staggeredStyle(style)}
-                        dangerouslySetInnerHTML={{__html: this.splitOnBreak(p.overview)[i]}}
+                        dangerouslySetInnerHTML={{__html: this.splitOnBreak(p.description)[x]}}
                       />
                     ))}
                   </article>
@@ -152,9 +161,9 @@ export default class Skill extends Component{
               </a>
             </li>
             {projs.map((p, i) => (
-              <li key={p.path}>
-                <a className={this.isSelected(i+1)} onClick={(e) => this.navigateToProj(e,p, i+1)} href={p.path}>
-                  {p.name}
+              <li key={p.to}>
+                <a className={this.isSelected(i+1)} onClick={(e) => this.navigateToProj(e,p, i+1)} href={p.to}>
+                  {p.title}
                 </a>
               </li>
             ))}
@@ -164,3 +173,16 @@ export default class Skill extends Component{
     )
   }
 }
+
+const Skill = graphql(getSkill, {
+  options: ({params}) => {
+    let opts = {ssr: true};
+    if(!params)
+      return opts;
+
+    return {
+      ...opts, variables: { to: skurl(params.skill) }
+    }
+  }
+})(abstractSkill);
+export default Skill;

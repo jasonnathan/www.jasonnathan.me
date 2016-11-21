@@ -10,13 +10,12 @@ const totalSkills = (sd) => sd.length,
   <h2 style="text-align:center">WORK IN PROGRESS</h2>
   <br /> Development for this website <a target="_blank" href="https://github.com/jasonnathan/jasonnathan-react.com/commit/e563cce22f79f261e06cd155524603974bb4da6a">
     began ${daysPast} days ago</a>. The <a href="https://github.com/jasonnathan/jasonnathan-react.com/commit/db81b68dc10aa7f50b4dc73988a55dc14db605d7" target="_blank">
-  first article was written ${contentPast} days ago</a>.<br />
-  Content is being uploaded everyday, please be patient. Thus far, ${completedSkills(sd)} out of ${totalSkills(sd)} Overviews, covering 4 Project write-ups on the Work page have been completed.<br />
-  <ul>
+  first article was written ${contentPast} days ago</a>.
+  <br />Content is being uploaded everyday, please be patient. Thus far, ${completedSkills(sd)} out of ${totalSkills(sd)} Overviews, covering 4 Project write-ups on the Work page have been completed.
+  <br /><ul>
     <li><a href="/work/reactjs">ReactJS</a></li>
     <li><a href="/work/php">PHP</a></li>
-  </ul>
-<br />
+  </ul><br />
 `;
 
 const _SkillsData = [
@@ -103,7 +102,7 @@ const _SkillsData = [
     category: "Languages",
     overview: `
     I started Web Programming with Perl in the late 90s and then moved to PHP which was already getting better support and growing into into a
-    larger eco-system. <br />In the early days, PHP didn't have a great reputation and most servers were written in ASP.
+    larger eco-system. <br />In the early days, PHP didn't have a great reputation and many servers were written in ASP/Perl instead.
     My first PHP programs were simple scripts run by CRONs. <br />My first PHP web project was privateproperty.com.sg, initially
     written in plain PHP and then rebuilt with <a href="/work/codeigniter">Codeigniter</a>
     and Wordpress (for the property blog). <br />Eventually, I created RealtAsia with <a href="/work/kohana">Kohana</a> which was a

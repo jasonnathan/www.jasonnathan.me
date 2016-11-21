@@ -2,9 +2,6 @@
 import 'isomorphic-fetch';
 import querystring from 'querystring';
 
-// Posts.remove({});
-
-// const url = 'https://public-api.wordpress.com/wp/v2/sites/japanatrois.wordpress.com';
 const url = 'https://public-api.wordpress.com/wp/v2/sites/jasonnathan.wordpress.com';
 const authUrl = 'https://public-api.wordpress.com/oauth2/token';
 let _headers = {
@@ -15,8 +12,7 @@ let _headers = {
 
 const authWP = () => {
   const then = (h) => Promise.resolve(h);
-  if (_headers.Authorization)
-    return then(_headers);
+  if (_headers.Authorization) return then(_headers);
 
   const {CLIENT_ID, CLIENT_SECRET, WP_USERNAME, WP_PASSWD} = process.env;
   const form = {
@@ -49,13 +45,9 @@ const getWP = (endpoint, query) => {
       });
     return res.json();
   }))
-  // .then(data => {
-  //   console.log(data)
-  //   return Promise.resolve(data);
-  // })
 }
 
-export const getPost = args => {
+export const post = (_, args) => {
   const then = (posts) => Promise.resolve(posts.length
     ? posts[0]
     : {});
@@ -67,11 +59,7 @@ export const getPost = args => {
     return getWP('posts', `slug=${args.slug}`).then(then);
   }
 }
-export const getAuthor = id => getWP(`users/${id}`);
-export const getCategoryById = id => getWP(`categories/${id}`);
-export const getPostsByAuthor = id => getWP('posts', `author=${id}`);
-export const getCategories = () => getWP(`categories`);
-export const getPosts = ({category}) => {
+export const posts = (_, {category}) => {
   let catId = null;
   if(category){
     const cats = Promise.await(getWP('categories',`slug=${category.toLowerCase()}`));
@@ -79,3 +67,7 @@ export const getPosts = ({category}) => {
   }
   return getWP('posts', catId ? `categories=${catId}` : null);
 };
+export const categories = () => getWP(`categories`);
+export const author = (_, id) => getWP(`users/${id}`);
+export const getCategoryById = id => getWP(`categories/${id}`);
+export const getPostsByAuthor = id => getWP('posts', `author=${id}`);
