@@ -5,7 +5,7 @@ import {spring, presets, StaggeredMotion} from 'react-motion';
 import getCategories from '/imports/api/categories-query-gql';
 import Loader from 'react-loaders';
 
-const abstractCategoriesList = ({data:{loading, categories}, location:{pathname}}) =>{
+const abstractCategoriesList = ({data:{loading, categories}}) =>{
   if(loading)
     return (<div className="centered-content" style={{transform:'translateY(-50%)', top:"50%"}}><Loader type="ball-triangle-path" /></div>);
 

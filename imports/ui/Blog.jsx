@@ -30,7 +30,7 @@ const Blog = (props) => {
           <Flex alignItems="flex-start" className="posts-container responsive">
             <Item flex={2}><PostsList {...props} /></Item>
             <Item column wrap alignContent="space-between" justifyContent="space-between" className="hidden-mobile" flex={1}>
-              <CategoriesList location={props.location} />
+              <CategoriesList />
             </Item>
           </Flex>
         </div>
