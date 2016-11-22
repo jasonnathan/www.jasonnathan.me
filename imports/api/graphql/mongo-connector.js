@@ -14,32 +14,8 @@ export function skill(_, args, context){
   const {to} = args;
   return Posts.findOne({to: to});
 }
-export function me(_, args, context){
-  let {userId} = context ? context : {
-      userId: null
-    };
-  if (userId) {
-    return Meteor.users.findOne(userId);
-  }
-}
 
-export function updateProfile(root, args, context){
-  let {userId} = context ? context : {
-        userId: null
-      },
-    user = Meteor.users.findOne(userId) || {},
-    profile = Object.assign({}, {
-      ...user.profile,
-      ...args
-    });
-  Meteor.users.update(user._id, {
-    $set: {
-      profile: profile
-    }
-  });
-  return {success: true};
-}
-export function insertSkill(root, args, context) {
+export function insertSkill(_, args, context) {
   let {userId} = context ? context : {
       userId: null
     };
@@ -49,7 +25,7 @@ export function insertSkill(root, args, context) {
   }
   throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
 }
-export function deleteSkill(root, args, context) {
+export function deleteSkill(_, args, context) {
   let {userId} = context ? context : {
       userId: null
     };
@@ -58,7 +34,7 @@ export function deleteSkill(root, args, context) {
   }
   throw new Meteor.Error("permission-denied", "Insufficient rights for this action.");
 }
-export function updateSkill(root, args, context) {
+export function updateSkill(_, args, context) {
   let {userId} = context ? context : {
       userId: null
     };

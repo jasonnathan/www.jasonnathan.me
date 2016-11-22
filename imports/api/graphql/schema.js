@@ -1,6 +1,4 @@
 import { Kind } from 'graphql/language';
-import { SchemaMutations, SchemaTypes } from 'meteor/nicolaslopezj:apollo-accounts';
-import {Resolvers} from 'meteor/nicolaslopezj:apollo-accounts';
 import Author from './Author';
 import Post from './Post';
 import Category from './Category';
@@ -8,17 +6,12 @@ import Project from './Project';
 import Skill from './Skill'
 
 import {post, posts,author,categories,getPostsByAuthor,getCategoryById} from './wp-connector';
-import {me, skills,skill,updateProfile,insertSkill,deleteSkill,updateSkill} from './mongo-connector';
+import {skills,skill,insertSkill,deleteSkill,updateSkill} from './mongo-connector';
 
-const RootQuery = `${SchemaTypes}
-  type Email {
-    address: String
-    verified: Boolean
-  }
-  type UserProfile {
-    firstname: String
-    lastname: String
-    name: String
+const RootQuery = `
+  type SuccessResponse {
+    # True if it succeeded
+    success: Boolean
   }
   type Skill {
     _id: ID
@@ -32,13 +25,7 @@ const RootQuery = `${SchemaTypes}
     featuredImage: String
     projects: [Skill]
   }
-  type User {
-    _id: ID
-    emails: [Email]
-    profile: UserProfile
-  }
   type Query {
-    me: User
     post(slug: String): Post
     posts(category: String): [Post]
     author(id: Int!): Author
@@ -47,12 +34,6 @@ const RootQuery = `${SchemaTypes}
     skills: [Skill]
   }
   type Mutation {
-    ${SchemaMutations}
-    updateProfile(
-      firstname: String
-      lastname: String
-      name: String
-    ): SuccessResponse
     insertSkill(
       title: String
       slug: String
@@ -77,7 +58,6 @@ const SchemaDefinition = `
 
 const resolvers = {
   Query: {
-    me,
     skill,
     skills,
     post,
@@ -86,8 +66,6 @@ const resolvers = {
     categories
   },
   Mutation:{
-    ...Resolvers,
-    updateProfile,
     insertSkill,
     deleteSkill,
     updateSkill

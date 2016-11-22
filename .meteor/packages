@@ -18,11 +18,10 @@ email@1.1.18
 fourseven:scss
 promise@0.8.8
 apollo
+mongo
 jasonnathan:react-router-ssr
 static-html
-nicolaslopezj:apollo-accounts
 accounts-github
 accounts-google
-mongo
 accounts-base
 accounts-password
