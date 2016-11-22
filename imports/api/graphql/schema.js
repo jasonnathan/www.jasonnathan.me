@@ -97,7 +97,7 @@ const resolvers = {
     title: ({title}) => title,
     content: ({content}) => content,
     excerpt: ({excerpt}) => excerpt,
-    author:({author}) => getAuthor(author),
+    author,
     categories:({categories}) => Promise.await(categories.map(id => getCategoryById(id)))
   },
   Author:{
