@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 
 const getPosts = gql`
-  query _headers($category: String){
+  query getPosts($category: String){
     posts(category: $category) {
       id
       slug
