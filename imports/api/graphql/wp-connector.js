@@ -68,6 +68,6 @@ export const posts = (_, {category}) => {
   return getWP('posts', catId ? `categories=${catId}` : null);
 };
 export const categories = () => getWP(`categories`);
-export const author = (_, id) => getWP(`users/${id}`);
+export const author = ({author}) => getWP(`users/${author}`);
 export const getCategoryById = id => getWP(`categories/${id}`);
 export const getPostsByAuthor = id => getWP('posts', `author=${id}`);
