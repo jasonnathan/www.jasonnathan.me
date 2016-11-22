@@ -132,11 +132,11 @@ const _SkillsData = [
         to: skurl('php/Heardable'),
         title: "Heardable",
         featuredImage: "/screenshots/heardable-summary-desktop.png",
-        description: `Heardable's legacy application was very much a working prototype with a huge codebase. However,
+        description: `Heardable's legacy application was very much a working prototype however,
           it was not scalable and increasing the number of daily <i>"Brand Scans"</i> would send App and DB servers spiking out of control.<br />
-          The core business logic was sound and desperately needed to be abstracted out. The first step was refactor how modules were instantiated and the cleanup began with top-down approach, bringing down
+          The core business logic was sound and desperately needed to be abstracted out. The first step was to refactor how modules were instantiated and the cleanup began with top-down approach, bringing down
           concurrent database connections to under 50 from a whopping 2k+ initially.<br /> Then began the slow & tedious task of abstracting, testing and decoupling core business modules.<br /> When the core API was finally working predictably, the next step was to move out the <a href="/work/mysql">MySQL</a> servers on <a href="/work/aws">Amazon RDS</a>
-          to MariaDB servers hosted on <a href="/work/digitalocean">Digital Ocean</a>.<br />The PHP API servers were also moved out to Digital Ocean, cutting latency and saving over 2/3 thirds of the monthly infrastructure costs even after upscaling daiy brands scans by 10X`
+          to MariaDB servers hosted on <a href="/work/digitalocean">Digital Ocean</a>.<br />The PHP API servers were also moved out to Digital Ocean, cutting latency and saving over 2/3 thirds of the monthly infrastructure cost3 even after upscaling daily brands scans by 10X`
       }
     ]
   }, {
