@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import ScaledInImage from './ScaledInImage.jsx'
+import FadeInImage from './FadeInImage.jsx'
 
 const MediaElement = ({
   children,
@@ -7,7 +7,7 @@ const MediaElement = ({
   dim = 40
 }) => (
   <div className="absolute-center top-box">
-    <ScaledInImage className="Avatar" src={file} size={dim} /> {children}
+    <FadeInImage className="Avatar" src={file} size={dim} /> {children}
   </div>
 )
 
