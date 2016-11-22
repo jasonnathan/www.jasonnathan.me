@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {Meteor} from 'meteor/meteor';
 import {graphql} from 'react-apollo';
+import Helmet from 'react-helmet';
 import {Flex, Item} from 'react-flex';
 import Loader from 'react-loaders';
 import {Link} from 'react-router';
@@ -9,7 +10,6 @@ import getPostBySlug from '/imports/api/post-by-slug-gql';
 import ReactDisqusThread from './ReactDisqusThread.jsx';
 import CategoriesList from '../components/Categories.jsx';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
-
 
 const postResolver = (key, text) => {
   return props => {
@@ -55,6 +55,12 @@ const abstractPostWithComments = ({data:{loading, post, error}, location, routes
         resolver={postResolver}
         crumbs={crumbs}
         lastCrumbResolver={lastCrumbIsString}
+      />
+      <Helmet
+        title={`${post.title.rendered}`}
+        meta={[
+          {"name": "description", "content": `${post.content.rendered}`}
+        ]}
       />
       <div className="content with-breadcrumbs">
         <div className="scroll-y">

@@ -3,6 +3,7 @@ import {Link, IndexLink} from 'react-router';
 import {graphql} from 'react-apollo';
 import {StaggeredMotion, spring} from 'react-motion';
 import Loader from 'react-loaders';
+import Helmet from 'react-helmet';
 import {skurl} from '/imports/api/data/skills-data';
 import getSkill from '/imports/api/skill-by-to-gql';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
@@ -32,7 +33,9 @@ class abstractSkill extends Component{
   getContainerStyles(skill){
     const ci = this.state.currentIndex;
     let img = ci === 0 ? skill.featuredImage : skill.projects[ci-1].featuredImage;
-    let _s = {
+    console.log(img);
+    img = img || '/bg/11.jpg';
+    return {
       position:"fixed",
       top:0,
       left:0,
@@ -41,16 +44,9 @@ class abstractSkill extends Component{
       bottom:0,
       backgroundSize:"cover",
       backgroundRepeat: "no-repeat",
-      backgroundPosition:"50% 50%"
+      backgroundPosition:"50% 50%",
+      backgroundImage: `url(${img})`
     }
-
-    if(img){
-      _s.backgroundImage = `url(${img})`;
-    }else{
-      _s.backgroundColor = "#222"
-    }
-
-    return _s;
   }
 
   splitOnBreak(content){
@@ -117,11 +113,17 @@ class abstractSkill extends Component{
             style={{background:"#111"}}
             lastCrumbResolver={lastCrumbIsString}
         />
+        <Helmet
+          title={`Work with ${skill.title} | Singapore`}
+          meta={[
+            {"name": "description", "content": `Have a look at stuff I've done with ${skill.title}`}
+          ]}
+        />
         <div style={this.computePositionStyles(0)} className="content with-breadcrumbs with-footer">
           <div className="scroll-y">
             {this.state.currentIndex === 0 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(skill.description))}>
               {interpolatedStyles =>
-                <article className="single-post skill-description" style={{backgroundImage:"url(/skill-bg.svg)"}}>
+                <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)"}}>
                   {interpolatedStyles.map((style, i) => (
                     <p
                       key={i}
@@ -139,7 +141,7 @@ class abstractSkill extends Component{
             <div className="scroll-y">
               {this.state.currentIndex === i+1 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(p.description))}>
                 {interpolatedStyles =>
-                  <article className="single-post skill-description" style={{backgroundImage:"url(/skill-bg.svg)", backgroundSize:"cover"}}>
+                  <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)", backgroundSize:"cover"}}>
                     {interpolatedStyles.map((style, x) => (
                       <p
                         key={x}
