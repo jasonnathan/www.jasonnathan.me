@@ -17,12 +17,6 @@
     background-image: url(/skill-bg.svg);
     background-size: cover;
     background-repeat: no-repeat;
-    // background-image:radial-gradient(
-    //     ellipse at center,
-    //     fade(white, 30%),
-    //     fade(white, 5%)
-    // );
-    // border: 1px fade(white, 10%) solid;
     box-sizing: border-box;
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
@@ -31,11 +25,6 @@
     transition: background-position-y 350ms ease-out;
     &:hover{
       background-position-y: 35%;
-      // background-image:radial-gradient(
-      //     ellipse at center,
-      //     fade(white, 0%),
-      //     fade(white, 50%)
-      // );
     }
   }
 }
@@ -76,7 +65,7 @@ body {
     }
 }
 [role=main]{
-  transition: background-image 1s ease-out;
+  transition: background-image 200ms ease-out;
 }
 .content{
   transition: all 100ms ease-in;
@@ -212,13 +201,13 @@ body {
     flex: 1;
     padding-top:3px;
     margin: auto;
-    transition: all 200ms ease-out;
+    transition: all 200ms ease-in;
     text-align: center;
     min-width: 150px;
     max-width: 250px;
     // max-height: 50px;
     a{
-      transition: all 250ms ease-out;
+      transition: all 250ms ease-in;
       background-image: url(/DiagBorder.svg);
       background-size: 100%, 100%;
       display: block;
@@ -258,7 +247,7 @@ a{
   background-size: cover;
   // position: relative;
   // overflow:hidden;
-  background-color: fade(black, 45%);
+  background-image: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 50%,rgba(0,0,0,0) 100%) !important;
   p{
     line-height: 1.5;
     font-size: 1.2rem;
