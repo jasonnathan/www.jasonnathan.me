@@ -14,7 +14,7 @@
   > a{
     display: inline-block;
     width:100%;
-    background-image: url(/skill-bg.svg);
+    // background-image: url(/skill-bg-checked.svg);
     background-size: cover;
     background-repeat: no-repeat;
     box-sizing: border-box;
@@ -258,6 +258,73 @@ a{
 
   }
 }
+.accounts-ui{
+  .field {
+    margin:1rem;
+    label{
+      position: absolute;
+      clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+      clip: rect(1px, 1px, 1px, 1px);
+    }
+    input{
+      padding: 8px 5px;
+      line-height: 16px;
+      font-size: 1.1rem;
+      width: 100%;
+      max-width:300px;
+      box-sizing: border-box;
+      background: fade(@darkest-cyan, 15%);
+      border-color: fade(@blue, 50%);
+      border-width: 1px;
+      color: @cyan;
+      text-align: center;
+      font-family: Audiowide;
+      letter-spacing: 1px;
+      &:focus{
+        outline:none;
+      }
+    }
+  }
+  .buttons {
+    text-align: center;
+    margin:1rem;
+    button{
+      color:@lightest-blue;
+      background-color: fade(@cyan, 50%);
+      border: 1px solid @cyan;
+      padding: 5px 10px;
+      font-size: 1.1rem;
+      width: 100%;
+      max-width:300px;
+      box-sizing: border-box;
+      transition: all 250ms ease-in;
+      font-family: Audiowide;
+      font-variant: small-caps;
+      &:focus, &:active{
+        background-color: fade(@blue, 50%);
+        border: 1px solid @blue;
+        outline: @lighter-blue;
+      }
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid @cyan;
+  -webkit-text-fill-color: @cyan;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 canvas {
     position: absolute;
     width: 100%;
