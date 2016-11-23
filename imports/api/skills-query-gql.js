@@ -8,6 +8,7 @@ const getSkills = gql`
     to
     icon
     title
+    featuredImage
   }
 }`
 export default getSkills;
