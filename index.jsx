@@ -18,11 +18,12 @@ let opts = {
     ssrMode: Meteor.isServer,
     networkInterface: createNetworkInterface({credentials: 'same-origin', uri: `${url}/graphql`}),
     dataIdFromObject: (result) => {
-      if (result._id && result.__typename) {
-        const dataId = result.__typename + result._id;
-        return dataId;
+      if(result.__typename){
+        const id = result._id || result.slug || result.id;
+        if(id){
+          return result.__typename + id
+        }
       }
-
       return null;
     }
   },
