@@ -2,17 +2,10 @@ import { Kind } from 'graphql/language';
 import Author from './Author';
 import Post from './Post';
 import Category from './Category';
-import Project from './Project';
-import Skill from './Skill'
-
 import {post, posts,author,categories,getPostsByAuthor,getCategoryById} from './wp-connector';
 import {skills,skill,insertSkill,deleteSkill,updateSkill} from './mongo-connector';
 
-const RootQuery = `
-  type SuccessResponse {
-    # True if it succeeded
-    success: Boolean
-  }
+const Skill = `
   type Skill {
     _id: ID
     to: String
@@ -24,8 +17,28 @@ const RootQuery = `
     description: String
     featuredImage: String
     projects: [Skill]
+  }`;
+
+const User = `
+  type User {
+    emails: [Email]
+    username: String
+    _id: String
+  }`;
+
+const RootQuery = `
+  type SuccessResponse {
+    # True if it succeeded
+    success: Boolean
   }
+  type Email {
+    address: String
+    verified: Boolean
+  }
+  ${User}
+  ${Skill}
   type Query {
+    user(id: String!): User
     post(slug: String): Post
     posts(category: String): [Post]
     author(id: Int!): Author
@@ -58,6 +71,12 @@ const SchemaDefinition = `
 
 const resolvers = {
   Query: {
+    user(root, args, context) {
+      // Only return the current user, for security
+      if (context && context.userId === args.id) {
+        return context.user;
+      }
+    },
     skill,
     skills,
     post,
@@ -69,6 +88,9 @@ const resolvers = {
     insertSkill,
     deleteSkill,
     updateSkill
+  },
+  User: {
+    emails: ({emails}) => emails
   },
   Post:{
     guid: ({guid}) => guid.rendered,
@@ -109,4 +131,4 @@ const parseJSONLiteral = (ast) => {
 }
 
 
-export {SchemaDefinition, RootQuery, Post, Author, Category, resolvers}
+export {SchemaDefinition, RootQuery, User, Post, Author, Category, Skill, resolvers}
