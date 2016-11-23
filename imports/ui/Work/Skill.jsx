@@ -33,8 +33,7 @@ class abstractSkill extends Component{
   getContainerStyles(skill){
     const ci = this.state.currentIndex;
     let img = ci === 0 ? skill.featuredImage : skill.projects[ci-1].featuredImage;
-    console.log(img);
-    img = img || '/bg/11.jpg';
+    img = img || '/screenshots/work-in-progress.jpg';
     return {
       position:"fixed",
       top:0,
@@ -100,7 +99,13 @@ class abstractSkill extends Component{
         <Loader type="ball-triangle-path" />
       </div>);
 
-    const projs = skill ? skill.projects : [];
+    const description = skill.description || `<h2 style="text-align:center">WORK IN PROGRESS</h2>
+      <br /> Development for this website <a target="_blank" href="https://github.com/jasonnathan/jasonnathan-react.com/commit/e563cce22f79f261e06cd155524603974bb4da6a">
+        began ${daysPast} days ago</a>. The <a href="https://github.com/jasonnathan/jasonnathan-react.com/commit/db81b68dc10aa7f50b4dc73988a55dc14db605d7" target="_blank">
+      first article was written ${contentPast} days ago</a>.
+      <br />Content is being uploaded everyday, please be patient.<br />In the meantime, look out for items that are marked &check;`;
+
+    const projs = skill.projects;
 
     return (
       <div role="main" style={this.getContainerStyles(skill)}>
@@ -121,14 +126,14 @@ class abstractSkill extends Component{
         />
         <div style={this.computePositionStyles(0)} className="content with-breadcrumbs with-footer">
           <div className="scroll-y">
-            {this.state.currentIndex === 0 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(skill.description))}>
+            {this.state.currentIndex === 0 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(description))}>
               {interpolatedStyles =>
                 <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)"}}>
                   {interpolatedStyles.map((style, i) => (
                     <p
                       key={i}
                       style={this.staggeredStyle(style)}
-                      dangerouslySetInnerHTML={{__html: this.splitOnBreak(skill.description)[i]}}
+                      dangerouslySetInnerHTML={{__html: this.splitOnBreak(description)[i]}}
                     />
                   ))}
                 </article>
@@ -136,7 +141,7 @@ class abstractSkill extends Component{
             </StaggeredMotion>}
           </div>
         </div>
-        {projs.map((p, i) => (
+        {projs.length && projs.map((p, i) => (
           <div key={p.to} style={this.computePositionStyles(i+1)} className="content with-breadcrumbs with-footer">
             <div className="scroll-y">
               {this.state.currentIndex === i+1 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(p.description))}>
@@ -175,6 +180,10 @@ class abstractSkill extends Component{
     )
   }
 }
+
+const daysPast = Math.round(Math.abs(new Date() - new Date("2016-10-24")) / 8.64e7);
+const contentPast = Math.round(Math.abs(new Date() - new Date("2016-11-17")) / 8.64e7);
+
 
 const Skill = graphql(getSkill, {
   options: ({params}) => {
