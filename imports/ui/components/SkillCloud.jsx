@@ -21,8 +21,12 @@ export default function SkillCloud(props){
     shuffle: false,
     tags: props.data.skills || [],
     renderer: function Tag(tag){
+      const url = tag.featuredImage ? '/skill-bg-checked.svg' : '/skill-bg.svg';
+      const _s = {
+        backgroundImage: `url(${url})`
+      }
       return (
-        <Link key={tag._id} to={tag.to} title={tag.title}>
+        <Link key={tag._id} to={tag.to} title={tag.title} style={_s}>
           <FadeInImage size="100%" src={tag.icon} />
         </Link>
       )
