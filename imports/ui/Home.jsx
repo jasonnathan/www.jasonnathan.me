@@ -46,7 +46,12 @@ export default class Home extends Component{
             }
           </Motion>
         </MediaElement>
-        <nav role="navigation" className="bottom-box"><StaggeredMenu /></nav>
+        <nav role="navigation" className="bottom-box">
+          <StaggeredMenu />
+          <h6 style={{margin:"auto", textAlign:"center"}}>
+            <a href="/area51">Area 51</a>
+          </h6>
+        </nav>
       </div>
     );
   }

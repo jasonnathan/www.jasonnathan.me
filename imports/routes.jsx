@@ -9,7 +9,8 @@ import {
   Contact,
   Blog,
   Article,
-  PostsByCategory
+  PostsByCategory,
+  Login
 } from '/imports/ui/index.jsx';
 
 
@@ -33,6 +34,7 @@ const AppRoutes = () => (
         <Route path=":slug" component={Article} breadcrumbName=":slug" />
       </Route>
     </Route>
+    <Route name="Area51" path="area51" component={Login} />
   </Route>
 );
 
