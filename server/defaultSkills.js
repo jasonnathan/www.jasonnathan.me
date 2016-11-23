@@ -1,7 +1,7 @@
 const skurl = (path) => `/work/${path}`;
 const skimg = (path) => `/brands/${path}`;
 
-const featuredImage = '/screenshots/work-in-progress.jpg';
+const featuredImage = null;
 const daysPast = Math.round(Math.abs(new Date() - new Date("2016-10-24")) / 8.64e7);
 const contentPast = Math.round(Math.abs(new Date() - new Date("2016-11-17")) / 8.64e7);
 const totalSkills = sd => sd.length,
@@ -93,6 +93,7 @@ const _SkillsData = [
     icon: skimg('php.svg'),
     title: "PHP Projects",
     category: "Languages",
+    featuredImage: '/screenshots/php.jpg',
     description: `I started Web Programming with Perl in the late 90s and then moved to PHP which was already getting better support and growing into into a
       larger eco-system. <br />In the early days, PHP didn't have a great reputation and many servers were written in ASP/Perl instead.
       My first PHP programs were simple scripts run by CRONs. <br />My first PHP web project was privateproperty.com.sg, initially
@@ -136,7 +137,7 @@ const _SkillsData = [
           it was not scalable and increasing the number of daily <i>"Brand Scans"</i> would send App and DB servers spiking out of control.<br />
           The core business logic was sound and desperately needed to be abstracted out. The first step was to refactor how modules were instantiated and the cleanup began with top-down approach, bringing down
           concurrent database connections to under 50 from a whopping 2k+ initially.<br /> Then began the slow & tedious task of abstracting, testing and decoupling core business modules.<br /> When the core API was finally working predictably, the next step was to move out the <a href="/work/mysql">MySQL</a> servers on <a href="/work/aws">Amazon RDS</a>
-          to MariaDB servers hosted on <a href="/work/digitalocean">Digital Ocean</a>.<br />The PHP API servers were also moved out to Digital Ocean, cutting latency and saving over 2/3 thirds of the monthly infrastructure cost3 even after upscaling daily brands scans by 10X`
+          to MariaDB servers hosted on <a href="/work/digitalocean">Digital Ocean</a>.<br />The PHP API servers were also moved out to Digital Ocean, cutting latency and saving over 2/3 thirds of the monthly infrastructure cost even after upscaling daily brands scans by 10X`
       }
     ]
   }, {
@@ -306,14 +307,16 @@ const computedOverview = overview(_SkillsData);
 
 const useDefaultOrClean = (d) => {
   d = d || computedOverview;
-  return d.replace(/(\r\n|\n|\r)/gm,'').replace(/ +/g, ' ').trim();
+  return cleanIfString(d);
 };
 
+const cleanIfString = (d) => d ? d.replace(/(\r\n|\n|\r)/gm,'').replace(/ +/g, ' ').trim() : d;
+
 const SkillsData = _SkillsData.map(s => {
-  s.description = useDefaultOrClean(s.description);
+  s.description = cleanIfString(s.description);
   s.projects = s.projects.map(p => {
     if(p){
-      p.description = useDefaultOrClean(p.description);
+      p.description = cleanIfString(p.description);
       return p;
     }
   }).filter(p=>p);
