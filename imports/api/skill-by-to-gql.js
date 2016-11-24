@@ -14,7 +14,6 @@ const getSkill = gql`
       description
       featuredImage
       projects {
-        _id
         to
         icon
         status

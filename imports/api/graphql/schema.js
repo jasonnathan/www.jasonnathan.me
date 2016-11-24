@@ -1,23 +1,35 @@
 import { Kind } from 'graphql/language';
+import gql from 'graphql-tag';
 import Author from './Author';
 import Post from './Post';
 import Category from './Category';
 import {post, posts,author,categories,getPostsByAuthor,getCategoryById} from './wp-connector';
-import {skills,skill,insertSkill,deleteSkill,updateSkill} from './mongo-connector';
+import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './mongo-connector';
 
 const Skill = `
-  type Skill {
-    _id: ID
-    to: String
-    icon: String
-    status: String
-    title: String
-    type: String
-    category: String
-    description: String
-    featuredImage: String
-    projects: [Skill]
-  }`;
+type Project {
+  to: ID
+  icon: String
+  status: String
+  title: String
+  type: String
+  category: String
+  description: String
+  featuredImage: String
+}
+
+type Skill{
+  _id: ID,
+  to: String
+  icon: String
+  status: String
+  title: String
+  type: String
+  category: String
+  description: String
+  featuredImage: String
+  projects: [Project]
+}`;
 
 const User = `
   type User {
@@ -49,7 +61,7 @@ const RootQuery = `
   type Mutation {
     insertSkill(
       title: String
-      slug: String
+      to: String
       featuredImage: String
       description: String
     ): Skill
@@ -59,7 +71,18 @@ const RootQuery = `
     updateSkill(
       _id: ID
       title: String
-    ): SuccessResponse
+      to: String
+      featuredImage: String
+      description: String
+    ): Skill
+    updateProject(
+      _id: ID
+      to: ID
+      title: String
+      featuredImage: String
+      description: String
+      index: Int
+    ): Project
   }`;
 
 const SchemaDefinition = `
@@ -72,7 +95,6 @@ const SchemaDefinition = `
 const resolvers = {
   Query: {
     user(root, args, context) {
-      // Only return the current user, for security
       if (context && context.userId === args.id) {
         return context.user;
       }
@@ -87,7 +109,8 @@ const resolvers = {
   Mutation:{
     insertSkill,
     deleteSkill,
-    updateSkill
+    updateSkill,
+    updateProject
   },
   User: {
     emails: ({emails}) => emails
@@ -131,4 +154,4 @@ const parseJSONLiteral = (ast) => {
 }
 
 
-export {SchemaDefinition, RootQuery, User, Post, Author, Category, Skill, resolvers}
+export {SchemaDefinition, RootQuery, User, Post, Author, Category, Skill, Project, resolvers}

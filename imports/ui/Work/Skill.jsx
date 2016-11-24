@@ -4,12 +4,13 @@ import {graphql} from 'react-apollo';
 import {StaggeredMotion, spring} from 'react-motion';
 import Loader from 'react-loaders';
 import Helmet from 'react-helmet';
+import { createContainer } from 'meteor/react-meteor-data';
 import {skurl} from '/imports/api/data/skills-data';
 import getSkill from '/imports/api/skill-by-to-gql';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
 import FooterTransition from '../components/FooterTransition.jsx';
-import StaggeredName from '../components/StaggeredName.jsx'
-
+import StaggeredName from '../components/StaggeredName.jsx';
+import SkillEditor from '../components/SkillEditor.jsx';
 
 const skillItem = skill => SkillsData.find(a => a.to === skurl(skill));
 
@@ -26,8 +27,18 @@ class abstractSkill extends Component{
   constructor(props){
     super(props);
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      isLoggedIn: props.userId,
+      editing: false,
+      description: null
     }
+    this.onEdit = () => {
+      this.setState({editing: !this.state.editing});
+    }
+  }
+
+  componentWillReceiveProps(props){
+    console.log("Received", props)
   }
 
   getContainerStyles(skill){
@@ -75,7 +86,7 @@ class abstractSkill extends Component{
 
   navigateToProj(e,p, idx){
     e.preventDefault();
-    this.setState({currentIndex: idx});
+    this.setState({editing:false, currentIndex: idx});
   }
 
   computePositionStyles(idx){
@@ -90,6 +101,24 @@ class abstractSkill extends Component{
       opacity
     }
     return ret;
+  }
+
+  showEditButton(){
+    if(this.props.userId && !this.state.editing)
+      return (
+        <div className="buttons" style={styles.buttons}>
+          <button onClick={this.onEdit} style={styles.edit}>Edit</button>
+        </div>
+      )
+  }
+
+  setEditingState(state){
+    this.setState({editing:state});
+  }
+
+  refreshSkill(){
+    console.log("Data refreshed")
+    this.props.data.refetch();
   }
 
   render(){
@@ -125,39 +154,63 @@ class abstractSkill extends Component{
           ]}
         />
         <div style={this.computePositionStyles(0)} className="content with-breadcrumbs with-footer">
-          <div className="scroll-y">
-            {this.state.currentIndex === 0 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(description))}>
-              {interpolatedStyles =>
-                <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)"}}>
-                  {interpolatedStyles.map((style, i) => (
-                    <p
-                      key={i}
-                      style={this.staggeredStyle(style)}
-                      dangerouslySetInnerHTML={{__html: this.splitOnBreak(description)[i]}}
-                    />
-                  ))}
-                </article>
-              }
-            </StaggeredMotion>}
-          </div>
+          {this.state.currentIndex === 0 && (
+            <div className="scroll-y">
+              {this.showEditButton()}
+              {this.props.userId && this.state.editing ? (
+                <SkillEditor
+                  {...skill}
+                  description={description}
+                  setEditingState={(state) => this.setEditingState(state)}
+                  refreshSkill={() => this.refreshSkill()}
+                />
+              ) : (
+                <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(description))}>
+                  {interpolatedStyles =>
+                    <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)"}}>
+                      {interpolatedStyles.map((style, i) => (
+                        <p
+                          key={i}
+                          style={this.staggeredStyle(style)}
+                          dangerouslySetInnerHTML={{__html: this.splitOnBreak(description)[i]}}
+                        />
+                      ))}
+                    </article>
+                  }
+                </StaggeredMotion>
+              )}
+            </div>
+          )}
         </div>
         {projs.length && projs.map((p, i) => (
           <div key={p.to} style={this.computePositionStyles(i+1)} className="content with-breadcrumbs with-footer">
-            <div className="scroll-y">
-              {this.state.currentIndex === i+1 && <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(p.description))}>
-                {interpolatedStyles =>
-                  <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)", backgroundSize:"cover"}}>
-                    {interpolatedStyles.map((style, x) => (
-                      <p
-                        key={x}
-                        style={this.staggeredStyle(style)}
-                        dangerouslySetInnerHTML={{__html: this.splitOnBreak(p.description)[x]}}
-                      />
-                    ))}
-                  </article>
-                }
-              </StaggeredMotion>}
-            </div>
+            {this.state.currentIndex === i+1 && (
+              <div className="scroll-y">
+                {this.showEditButton()}
+                {this.props.userId && this.state.editing ? (
+                  <SkillEditor
+                    {...p}
+                    _id={skill._id  +"_" + i}
+                    setEditingState={(state) => this.setEditingState(state)}
+                    refreshSkill={() => this.refreshSkill()}
+                  />
+                ) : (
+                  <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(p.description))}>
+                    {interpolatedStyles =>
+                      <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)", backgroundSize:"cover"}}>
+                        {interpolatedStyles.map((style, x) => (
+                          <p
+                            key={x}
+                            style={this.staggeredStyle(style)}
+                            dangerouslySetInnerHTML={{__html: this.splitOnBreak(p.description)[x]}}
+                          />
+                        ))}
+                      </article>
+                    }
+                  </StaggeredMotion>
+                )}
+              </div>
+            )}
           </div>
         ))}
         <FooterTransition>
@@ -183,17 +236,40 @@ class abstractSkill extends Component{
 
 const daysPast = Math.round(Math.abs(new Date() - new Date("2016-10-24")) / 8.64e7);
 const contentPast = Math.round(Math.abs(new Date() - new Date("2016-11-17")) / 8.64e7);
+const styles = {
+  buttons:{
+    margin:0,
+    float:"right"
+  },
+  edit: {
+    backgroundColor: "transparent",
+    color:"orange",
+    border:"none",
+    textAlign: 'right',
+    right:"1rem",
+    top:"1rem",
+    width:"auto",
+    maxWidth:"inherit"
+  }
+}
 
-
-const Skill = graphql(getSkill, {
-  options: ({params}) => {
+const skillWithApollo = graphql(getSkill, {
+  options: ({params, userId}) => {
     let opts = {ssr: true};
     if(!params)
       return opts;
 
     return {
-      ...opts, variables: { to: skurl(params.skill) }
+      ...opts, variables: { to: skurl(params.skill) },
+      pollInterval: 6e4
     }
   }
 })(abstractSkill);
+
+const Skill = createContainer(() => {
+  return {
+    userId: Meteor.userId()
+  };
+}, skillWithApollo);
+
 export default Skill;
