@@ -21,7 +21,7 @@ const isAdmin = ({userId}) => {
 const sanitizeStringFields = (props) => {
   const descriptionOpts = {
       // only allow these tags
-      allowedTags: [ 'b','i','em','strong','a','h2','h3', 'p'],
+      allowedTags: [ 'b','i','em','strong','a','h2','h3', 'p', 'br', 'blockquote'],
       // and these attributes on them
       allowedAttributes: {
         '*': [ 'class', 'alt', 'style', 'title' ],
