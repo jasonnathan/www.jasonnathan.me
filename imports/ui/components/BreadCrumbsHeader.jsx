@@ -85,10 +85,10 @@ export default class Header extends Component {
 const {object, func, array} = PropTypes;
 
 Header.propTypes = {
-  routes: object,
+  routes: array,
   params: object,
   resolver: func,
-  crumbs: array,
+  crumbs: object,
   lastCrumbResolver: func,
   goBack: func,
   style: stylePropType
