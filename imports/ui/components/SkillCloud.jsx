@@ -2,15 +2,15 @@ import React, {PropTypes} from 'react';
 import {TagCloud} from 'react-tagcloud';
 import {Link} from 'react-router';
 import {graphql} from 'react-apollo';
+import Loader from 'react-loaders';
 import getSkills from '/imports/api/skills-query-gql';
-// import {SkillsData} from '/imports/api/data/skills-data';
-import FadeInImage from './FadeInImage.jsx';
+import FadeInSVG from './FadeInSVG.jsx';
 
-const {string, number, arrayOf, shape, func} = PropTypes;
+const {string, number, arrayOf, shape, bool} = PropTypes;
 
 
-export default function SkillCloud(props){
-  if(props.loading)
+function SkillCloud(props){
+  if(props.data.loading)
     return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
       <Loader type="ball-triangle-path" />
     </div>);
@@ -27,7 +27,7 @@ export default function SkillCloud(props){
       }
       return (
         <Link key={tag._id} to={tag.to} title={tag.title} style={_s}>
-          <FadeInImage size="100%" src={tag.icon} />
+          <FadeInSVG src={tag.icon} />
         </Link>
       )
     }
@@ -40,17 +40,16 @@ export default function SkillCloud(props){
 
 
 SkillCloud.propTypes = {
-  minSize: number,
-  maxSize: number,
-  tags: arrayOf(shape({
-    to: string,
-    src: string,
-    title: string,
-    count:number
-  })),
-  onClick: func,
-  rendered: func
+  data: shape({
+    skills: arrayOf(shape({
+      to: string,
+      src: string,
+      title: string,
+      count:number
+    })),
+    loading: bool
+  }),
 }
 
 
-SkillCloud = graphql(getSkills)(SkillCloud);
+export default graphql(getSkills)(SkillCloud);
