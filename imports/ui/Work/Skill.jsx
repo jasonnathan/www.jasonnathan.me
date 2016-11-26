@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {Link, IndexLink} from 'react-router';
 import {graphql} from 'react-apollo';
-import {StaggeredMotion, spring} from 'react-motion';
 import Loader from 'react-loaders';
 import Helmet from 'react-helmet';
 import { createContainer } from 'meteor/react-meteor-data';
 import {skurl} from '/imports/api/data/skills-data';
 import getSkill from '/imports/api/skill-by-to-gql';
+import EditIcon from 'react-icons/lib/md/create';
+import AddIcon from 'react-icons/lib/go/plus';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
 import FooterTransition from '../components/FooterTransition.jsx';
+import StaggeredParagraphs from '../components/StaggeredParagraphs.jsx';
 import StaggeredName from '../components/StaggeredName.jsx';
 import SkillEditor from '../components/SkillEditor.jsx';
 
@@ -26,19 +28,22 @@ const lastCrumbIsString = (link, key, text, index, routes) => {
 class abstractSkill extends Component{
   constructor(props){
     super(props);
+    const {skill={title:"", description:"", projects:[]}} = props.data
     this.state = {
       currentIndex: 0,
       isLoggedIn: props.userId,
       editing: false,
-      description: null
+      skill
     }
     this.onEdit = () => {
       this.setState({editing: !this.state.editing});
     }
   }
 
-  componentWillReceiveProps(props){
-    console.log("Received", props)
+  componentWillReceiveProps({data: {skill}}){
+    if(skill){
+      this.setState({skill});
+    }
   }
 
   getContainerStyles(skill){
@@ -59,27 +64,6 @@ class abstractSkill extends Component{
     }
   }
 
-  splitOnBreak(content){
-    return content.split("<br />");
-  }
-
-  staggeredProps(contentArr){
-    const p = [...contentArr];
-    const _s = { stiffness: 900, damping: 50, precision:.1 }
-    return {
-      defaultStyles: p.map(() => ({t:50, o:0.1})),
-      styles: prevInterpolatedStyles => prevInterpolatedStyles.map((_,i) => {
-        return i === 0
-              ? {t: spring(0, _s), o:spring(1, _s)}
-              : {t: spring(prevInterpolatedStyles[i - 1].t, _s), o:spring(prevInterpolatedStyles[i - 1].o)}
-      })
-    }
-  }
-
-  staggeredStyle({t,o}){
-    return {transform:`translate3d(0,${t}%,0)`, margin:"1rem auto 0 auto", opacity:o}
-  }
-
   isSelected(idx){
     return this.state.currentIndex === idx ? "selected" : "";
   }
@@ -90,9 +74,7 @@ class abstractSkill extends Component{
   }
 
   computePositionStyles(idx){
-    const ci = this.state.currentIndex,
-          base = 100,
-          opacity = ci === idx ? 1 : .1;
+    const ci = this.state.currentIndex, base = 100, opacity = ci === idx ? 1 : .1;
     let pos, ret;
 
     pos = (-base * (ci-idx)) -50;
@@ -103,11 +85,12 @@ class abstractSkill extends Component{
     return ret;
   }
 
-  showEditButton(){
+  showAdminButtons(){
     if(this.props.userId && !this.state.editing)
       return (
         <div className="buttons" style={styles.buttons}>
-          <button onClick={this.onEdit} style={styles.edit}>Edit</button>
+          <button onClick={this.onEdit} style={styles.edit}><EditIcon /></button>
+          <button onClick={() => this.addProject()} style={styles.edit}><AddIcon /></button>
         </div>
       )
   }
@@ -115,24 +98,44 @@ class abstractSkill extends Component{
   setEditingState(state){
     this.setState({editing:state});
   }
-
   refreshSkill(){
-    console.log("Data refreshed")
     this.props.data.refetch();
+  }
+  getProjectDefaults(p){
+    if(!p)
+      return;
+    if(!p.description){
+      p.description = this.getdefaultDescription();
+    }
+    return p;
+  }
+  getdefaultDescription(){
+    return `<h2 style="text-align:center">WORK IN PROGRESS</h2><br />Development for this website <a target="_blank" href="https://github.com/jasonnathan/jasonnathan-react.com/commit/e563cce22f79f261e06cd155524603974bb4da6a"> began ${daysPast} days ago</a>. The <a href="https://github.com/jasonnathan/jasonnathan-react.com/commit/db81b68dc10aa7f50b4dc73988a55dc14db605d7" target="_blank"> first article was written ${contentPast} days ago</a>.<br />Content is being uploaded everyday, please be patient.<br />In the meantime, look out for items that are marked &check;`
+  }
+
+  addProject(){
+    const {skill} = this.state;
+    const {to, title} = skill;
+    const index = skill.projects.length + 1;
+    const project = {
+      title: `New ${title} Project ${index}`,
+      featuredImage: '/screenshots/work-in-progress.jpg',
+      to:`${to}/new-project-${index}`,
+      description: this.getdefaultDescription()
+    }
+    skill.projects.push(project);
+    this.setState({skill, currentIndex:index});
   }
 
   render(){
-    const {data:{loading, skill, error}, routes, params} = this.props;
+    const {data:{loading, error}, routes, params} = this.props;
     if(loading)
       return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
         <Loader type="ball-triangle-path" />
       </div>);
 
-    const description = skill.description || `<h2 style="text-align:center">WORK IN PROGRESS</h2>
-      <br /> Development for this website <a target="_blank" href="https://github.com/jasonnathan/jasonnathan-react.com/commit/e563cce22f79f261e06cd155524603974bb4da6a">
-        began ${daysPast} days ago</a>. The <a href="https://github.com/jasonnathan/jasonnathan-react.com/commit/db81b68dc10aa7f50b4dc73988a55dc14db605d7" target="_blank">
-      first article was written ${contentPast} days ago</a>.
-      <br />Content is being uploaded everyday, please be patient.<br />In the meantime, look out for items that are marked &check;`;
+    const {skill} = this.state;
+    const description = skill.description || this.getdefaultDescription();
 
     const projs = skill.projects;
 
@@ -156,7 +159,7 @@ class abstractSkill extends Component{
         <div style={this.computePositionStyles(0)} className="content with-breadcrumbs with-footer">
           {this.state.currentIndex === 0 && (
             <div className="scroll-y">
-              {this.showEditButton()}
+              {this.showAdminButtons()}
               {this.props.userId && this.state.editing ? (
                 <SkillEditor
                   {...skill}
@@ -164,55 +167,33 @@ class abstractSkill extends Component{
                   setEditingState={(state) => this.setEditingState(state)}
                   refreshSkill={() => this.refreshSkill()}
                 />
-              ) : (
-                <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(description))}>
-                  {interpolatedStyles =>
-                    <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)"}}>
-                      {interpolatedStyles.map((style, i) => (
-                        <p
-                          key={i}
-                          style={this.staggeredStyle(style)}
-                          dangerouslySetInnerHTML={{__html: this.splitOnBreak(description)[i]}}
-                        />
-                      ))}
-                    </article>
-                  }
-                </StaggeredMotion>
-              )}
+              ) : <StaggeredParagraphs description={description} />}
             </div>
           )}
         </div>
-        {projs.length && projs.map((p, i) => (
-          <div key={p.to} style={this.computePositionStyles(i+1)} className="content with-breadcrumbs with-footer">
-            {this.state.currentIndex === i+1 && (
-              <div className="scroll-y">
-                {this.showEditButton()}
-                {this.props.userId && this.state.editing ? (
-                  <SkillEditor
-                    {...p}
-                    _id={skill._id  +"_" + i}
-                    setEditingState={(state) => this.setEditingState(state)}
-                    refreshSkill={() => this.refreshSkill()}
-                  />
-                ) : (
-                  <StaggeredMotion {...this.staggeredProps(this.splitOnBreak(p.description))}>
-                    {interpolatedStyles =>
-                      <article className="single-post skill-description" style={{backgroundImage:"url(/green-bg.svg)", backgroundSize:"cover"}}>
-                        {interpolatedStyles.map((style, x) => (
-                          <p
-                            key={x}
-                            style={this.staggeredStyle(style)}
-                            dangerouslySetInnerHTML={{__html: this.splitOnBreak(p.description)[x]}}
-                          />
-                        ))}
-                      </article>
-                    }
-                  </StaggeredMotion>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
+        {projs.length && projs.map((p, i) => {
+          p = this.getProjectDefaults(p);
+          if(!p) return null;
+          return (
+            <div key={p.to} style={this.computePositionStyles(i+1)} className="content with-breadcrumbs with-footer">
+              {this.state.currentIndex === i+1 && (
+                <div className="scroll-y">
+                  {this.showAdminButtons()}
+                  {this.props.userId && this.state.editing ? (
+                    <SkillEditor
+                      {...p}
+                      _id={skill._id  +"_" + i}
+                      setEditingState={(state) => this.setEditingState(state)}
+                      refreshSkill={() => this.refreshSkill()}
+                    />
+                  ) : (
+                    <StaggeredParagraphs description={p.description} />
+                  )}
+                </div>
+              )}
+            </div>
+          )
+        })}
         <FooterTransition>
           <ul className="bottom-tabs" style={{maxWidth:`${(projs.length + 1) * 170}px`}}>
             <li>
@@ -238,38 +219,44 @@ const daysPast = Math.round(Math.abs(new Date() - new Date("2016-10-24")) / 8.64
 const contentPast = Math.round(Math.abs(new Date() - new Date("2016-11-17")) / 8.64e7);
 const styles = {
   buttons:{
-    margin:0,
-    float:"right"
+    margin:"1px auto auto",
+    textAlign:"center"
+    // float:"right"
   },
   edit: {
-    backgroundColor: "transparent",
+    backgroundColor: "rgba(0,0,0,.25)",
     color:"orange",
     border:"none",
     textAlign: 'right',
     right:"1rem",
     top:"1rem",
     width:"auto",
-    maxWidth:"inherit"
+    maxWidth:"inherit",
+    cursor:"pointer",
+    padding:".5rem",
+    border:"1px solid rgba(255,255,255,.2)",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "1.5rem"
   }
 }
 
-const skillWithApollo = graphql(getSkill, {
+const Skill = graphql(getSkill, {
   options: ({params, userId}) => {
     let opts = {ssr: true};
     if(!params)
       return opts;
 
     return {
-      ...opts, variables: { to: skurl(params.skill) },
-      pollInterval: 6e4
-    }
+      ...opts, variables: { to: skurl(params.skill) }
+    };
   }
-})(abstractSkill);
-
-const Skill = createContainer(() => {
+})( createContainer( () => {
   return {
     userId: Meteor.userId()
   };
-}, skillWithApollo);
+}, abstractSkill));
+
 
 export default Skill;
