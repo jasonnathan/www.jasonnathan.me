@@ -10,10 +10,7 @@ const getPostBySlug = gql`
       content{
         rendered
       }
-      author {
-        name
-        avatar_urls
-      }
+      author
       categories {
         count
         slug

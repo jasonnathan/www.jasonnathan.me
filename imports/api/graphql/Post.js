@@ -22,7 +22,7 @@ type Post {
   title: RenderedString
   content: RenderedString
   excerpt: RenderedString
-  author: Author
+  author: Int
   categories: [Category]
   comment_status: String
   ping_status: String

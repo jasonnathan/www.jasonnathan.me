@@ -15,11 +15,7 @@ const getPosts = gql`
       categories{
         slug
       }
-      author {
-        id
-        name
-        avatar_urls
-      }
+      author
       featured_media_url
     }
 }`

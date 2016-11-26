@@ -53,7 +53,6 @@ const RootQuery = `
     user(id: String!): User
     post(slug: String): Post
     posts(category: String): [Post]
-    author(id: Int!): Author
     categories: [Category]
     skill(to: String): Skill
     skills: [Skill]
@@ -103,7 +102,6 @@ const resolvers = {
     skills,
     post,
     posts,
-    author,
     categories
   },
   Mutation:{
@@ -120,7 +118,6 @@ const resolvers = {
     title: ({title}) => title,
     content: ({content}) => content,
     excerpt: ({excerpt}) => excerpt,
-    author,
     categories:({categories}) => Promise.await(categories.map(id => getCategoryById(id)))
   },
   Author:{
