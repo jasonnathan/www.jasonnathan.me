@@ -191,7 +191,6 @@ SkillEditor = graphql(updateSkill, {
 })(graphql(updateProject, {
   props: ({mutate, ownProps:{__typename, _id}}) => {
     const index = +_id.split("_")[1];
-    console.log({_id, index});
     return {
       updateProject: (skill) => mutate({ variables: {...skill, index} }),
     }
