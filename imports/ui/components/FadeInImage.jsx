@@ -1,14 +1,18 @@
 /*global window*/
+/**
+ * @class FadeInImage
+ * @extends React.Component
+ * @description a default Image component that fades in an image on load
+ */
 import React, {Component, PropTypes} from 'react';
+import stylePropType from 'react-style-proptype';
 
 export default class FadeInImage extends Component {
   constructor(props) {
     super(props);
     // set defaults if not provided
-    const {size=40, style={}, className = "", noFilter=false} = props;
-    if(noFilter){
-      style.filter = "none";
-    }
+    const {size=40, style={}, className="", noFilter=false} = props;
+    if(noFilter){style.filter = "none";}
     this.state = {
       // it seems counter-intuitive to unset default styles
       // but it works better for my use case
@@ -23,17 +27,17 @@ export default class FadeInImage extends Component {
     }
   }
 
+  /**
+   * A simple way to preload an image
+   */
   componentDidMount(){
     let imgElement = new window.Image();
-
     imgElement.onload = () => this.onImageLoad();
     imgElement.src = this.props.src;
   }
 
   onImageLoad() {
-    return this.setState({
-      style: { ...this.state.style, opacity: 1}
-    })
+    return this.setState({ style: { ...this.state.style, opacity: 1}});
   }
 
   render(){
@@ -50,7 +54,12 @@ export default class FadeInImage extends Component {
 }
 
 FadeInImage.propTypes = {
-  // size: PropTypes.number,
+  size:PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number
+  ]),
+  className: PropTypes.string,
+  noFilter:PropTypes.Boolean,
   src: PropTypes.string,
-  style: PropTypes.object
+  style: stylePropType
 }

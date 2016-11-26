@@ -1,7 +1,12 @@
-import React, {Component} from 'react';
+/**
+ * @class Page
+ * @extends React.PureComponent
+ * @description Global container used for page transisionts
+ */
+import React, {PureComponent, PropTypes} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-export default class Page extends Component{
+export default class Page extends PureComponent{
   constructor(props){
     super(props);
     const {params} = props;
@@ -14,7 +19,6 @@ export default class Page extends Component{
   }
 
   render(){
-    const {className="", style={}} = this.props;
     const name = "fade";
     const timeout = 500;
     return (
@@ -30,4 +34,11 @@ export default class Page extends Component{
       </ReactCSSTransitionGroup>
     )
   }
+}
+
+Page.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }

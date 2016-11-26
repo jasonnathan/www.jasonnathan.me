@@ -1,3 +1,8 @@
+/**
+ * @function MediaElement
+ * @description A simple component for centering an image on top of text below
+ * it
+ */
 import React, {PropTypes} from 'react';
 import FadeInImage from './FadeInImage.jsx'
 

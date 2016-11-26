@@ -1,8 +1,11 @@
+/**
+ * @function MainMenu
+ * @description Main site Navigation
+ */
 import React from 'react';
 import {Link, IndexLink} from 'react-router';
-import {orange, darkOrange} from '/imports/api/colors';
 
-const MainMenu = ({activePath}) => {
+const MainMenu = () => {
 
   let links = [
     {

@@ -7,9 +7,9 @@ import React, {PureComponent, PropTypes} from 'react';
 import stylePropType from 'react-style-proptype';
 import {StaggeredMotion, spring} from 'react-motion';
 
-export default class StaggeredParagraphs extends PureComponent{
+export default class StaggeredParagraphs extends PureComponent {
   /** Default React constructor */
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
@@ -20,7 +20,7 @@ export default class StaggeredParagraphs extends PureComponent{
    * @param {String} a HTML string
    * @returns {Array} of split strings
    */
-  splitOnBreak(content){
+  splitOnBreak(content) {
     return content.split("<br />");
   }
 
@@ -33,31 +33,37 @@ export default class StaggeredParagraphs extends PureComponent{
    * @param {Array} an array of things to animate.
    * @returns {Object} an object containing the required props for the Component
    */
-  staggeredProps(contentArr){
+  staggeredProps(contentArr) {
     const p = [...contentArr];
-    const _s = { stiffness: 900, damping: 50, precision:.1 }
+    const _s = { stiffness: 900, damping: 50, precision: .1}
     return {
-      defaultStyles: p.map(() => ({t:50, o:0.1})),
-      styles: prevInterpolatedStyles => prevInterpolatedStyles.map((_,i) => {
+      defaultStyles: p.map(() => ({t: 50, o: 0.1})),
+      styles: prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
         return i === 0
-              ? {t: spring(0, _s), o:spring(1, _s)}
-              : {t: spring(prevInterpolatedStyles[i - 1].t, _s), o:spring(prevInterpolatedStyles[i - 1].o)}
+          ? {
+            t: spring(0, _s),
+            o: spring(1, _s)
+          }
+          : {
+            t: spring(prevInterpolatedStyles[i - 1].t, _s),
+            o: spring(prevInterpolatedStyles[i - 1].o)
+          }
       })
     }
   }
 
   /**
-   * returns an array of props (normally styles) for use in the parent container
+   * returns props (normally styles) for use in the parent container
    * of the animation. This method retrieves it from props and provides default
    * if none was defined
    *
    * @returns {Object} of props
    */
-  containerProps(){
+  containerProps() {
     const {
       containerProps = {
-        className: "single-post skill-description",
-        style:{backgroundImage: "url(/green-bg.svg)"}
+        className : "single-post skill-description",
+        style : { backgroundImage: "url(/green-bg.svg)"}
       }
     } = this.props;
     return containerProps;
@@ -70,25 +76,25 @@ export default class StaggeredParagraphs extends PureComponent{
    * @param {Oject: {t:Number, o:Number}} the current value of the interpolation
    * @returns {Object:{style:{}}} the style object to use in the elements animating
    */
-  staggeredStyle({t,o}){
-    return {transform:`translate3d(0,${t}%,0)`, margin:"1rem auto 0 auto", opacity:o}
+  staggeredStyle({t, o}) {
+    return {transform: `translate3d(0,${t}%,0)`, margin: "1rem auto 0 auto", opacity: o}
   }
 
-  render(){
+  render() {
     const paragraphs = this.splitOnBreak(this.props.description)
     return (
       <StaggeredMotion {...this.staggeredProps(paragraphs)}>
-        {interpolatedStyles =>
-          <article {...this.containerProps()}>
-            {interpolatedStyles.map((style, i) => (
-              <p
-                key={i}
-                style={this.staggeredStyle(style)}
-                dangerouslySetInnerHTML={{__html: paragraphs[i]}}
-              />
-            ))}
-          </article>
-        }
+        {interpolatedStyles => <article {...this.containerProps()}>
+          {interpolatedStyles.map((style, i) => (
+            <p
+              key={i}
+              style={this.staggeredStyle(style)}
+              dangerouslySetInnerHTML={{
+                __html: paragraphs[i]
+              }}
+            />
+          ))}
+        </article>}
       </StaggeredMotion>
     )
   }

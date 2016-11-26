@@ -1,4 +1,9 @@
-import React, {Component} from 'react';
+/**
+ * @class FooterTransition
+ * @extends React.Component
+ * @description Provides the animated tabs on the Skill footer area
+ */
+import React, {Component, PropTypes} from 'react';
 import {Motion, spring} from 'react-motion';
 
 export default class FooterTransition extends Component{
@@ -28,4 +33,11 @@ export default class FooterTransition extends Component{
       </Motion>
     )
   }
+}
+
+FooterTransition.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }

@@ -1,6 +1,10 @@
+/**
+ * @class FlipBox
+ * @extends React.Component
+ * @description CURRENTLY NOT USED
+ */
 import React, {Component} from 'react';
 import {spring, presets, Motion} from 'react-motion';
-import {Flex, Item} from 'react-flex';
 import tinycolor from 'tinycolor2';
 import * as colors from '/imports/api/colors';
 
@@ -46,7 +50,7 @@ export default class FlipBox extends Component {
     };
   }
 
-  getFilterProps({blur, opacity}){
+  getFilterProps({blur}){
     return{
       filter: `blur(${blur}px)`,
       // opacity: opacity

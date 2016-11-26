@@ -1,3 +1,7 @@
+/**
+ * @function GlowingLine
+ * @description A simple animated HR that grows on mount
+ */
 import React from 'react';
 import stylePropType from 'react-style-proptype';
 import {Motion, spring, presets} from 'react-motion';

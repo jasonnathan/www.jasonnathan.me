@@ -1,6 +1,8 @@
+/**
+ * @function Panel
+ * @description A Panel Component used in About
+ */
 import React, {PropTypes} from 'react';
-import {lightestBlue, lightestCyan} from '/imports/api/colors'
-import tinycolor from 'tinycolor2'
 
 const panelStyles = {
   padding:'.5rem',

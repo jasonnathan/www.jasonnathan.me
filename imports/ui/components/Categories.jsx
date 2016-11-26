@@ -1,3 +1,7 @@
+/**
+ * @function CategoriesList
+ * @description The Category Widget used in Articles
+ */
 import React from 'react';
 import { graphql } from 'react-apollo';
 import {IndexLink, Link} from 'react-router';
@@ -5,7 +9,7 @@ import {spring, presets, StaggeredMotion} from 'react-motion';
 import getCategories from '/imports/api/categories-query-gql';
 import Loader from 'react-loaders';
 
-const abstractCategoriesList = ({data:{loading, categories}}) =>{
+function CategoriesList({data:{loading, categories}}){
   if(loading)
     return (<div className="centered-content" style={{transform:'translateY(-50%)', top:"50%"}}><Loader type="ball-triangle-path" /></div>);
 
@@ -24,7 +28,8 @@ const abstractCategoriesList = ({data:{loading, categories}}) =>{
       {interpolatingStyles => <div className="box"><h4 className="heading">Categories</h4>
         {interpolatingStyles.map((style, i) => {
           let cat = cats[i],
-              catHTML = {__html: `${cat.name} (${cat.count})`}
+              catHTML = {__html: `${cat.name} (${cat.count})`};
+
           return cat.slug === "" ? (
             <IndexLink
               key={cat.slug}
@@ -49,5 +54,4 @@ const abstractCategoriesList = ({data:{loading, categories}}) =>{
   )
 }
 
-const CategoriesList = graphql(getCategories)(abstractCategoriesList);
-export default CategoriesList;
+export default graphql(getCategories)(CategoriesList);
