@@ -8,9 +8,7 @@ import stylePropType from 'react-style-proptype';
 import {StaggeredMotion, spring} from 'react-motion';
 
 export default class StaggeredParagraphs extends PureComponent{
-  /**
-   * Default React constructor
-   */
+  /** Default React constructor */
   constructor(props){
     super(props);
   }
