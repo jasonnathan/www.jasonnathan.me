@@ -59,7 +59,7 @@ FadeInImage.propTypes = {
     React.PropTypes.number
   ]),
   className: PropTypes.string,
-  noFilter:PropTypes.Boolean,
+  noFilter:PropTypes.func,
   src: PropTypes.string,
   style: stylePropType
 }
