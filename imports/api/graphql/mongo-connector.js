@@ -76,8 +76,7 @@ export function skills(_, args, context = {}) {
  * @param  {Object} _            Provided by apollo, not used
  * @param  {Object} args         Variables fed through graphql
  * @return {Object}              The skill if found or null
- * @todo What happens when this query is called by a non-admin and the post is a
- * draft?
+ * @todo What happens when this is called by a non-admin and status is draft?
  */
 export function skill(_, args) {
   // sanitize, why does it sound like sanity?
