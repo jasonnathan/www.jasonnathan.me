@@ -1,9 +1,6 @@
 /* global document*/
-import React, {Component} from 'react';
-import {spring, presets, Motion} from 'react-motion';
-import {Flex, Item} from 'react-flex';
+import React from 'react';
 import Helmet from 'react-helmet';
-import {Meteor} from 'meteor/meteor'
 import { Accounts, STATES } from 'meteor/std:accounts-ui';
 import StaggeredName from './components/StaggeredName.jsx';
 
@@ -12,32 +9,27 @@ Accounts.config({
   forbidClientAccountCreation: true
 });
 
-export default class Login extends Component{
-  constructor(){
-    super();
-  }
-
-  render(){
-    return (<div>
-        <Helmet
-          title={`Area 51 | Jason J. Nathan`}
-          meta={[
-            {"name": "description", "content": "Restricted Area"}
-          ]}
-        />
-        <div role="main">
-          <section className="content" style={{bottom:0}}>
-            <div className="scroll-y">
-              <StaggeredName letters="Area 51">
-                <small>Please enter your credentials to enter restricted areas</small>
-              </StaggeredName>
-              <Accounts.ui.LoginForm state={ STATES.SIGN_IN } />
-            </div>
-          </section>
-        </div>
+export default function Login(){
+  return (
+    <div>
+      <Helmet
+        title={`Area 51 | Jason J. Nathan`}
+        meta={[
+          {"name": "description", "content": "Restricted Area"}
+        ]}
+      />
+      <div role="main">
+        <section className="content" style={{bottom:0}}>
+          <div className="scroll-y">
+            <StaggeredName letters="Area 51">
+              <small>Please enter your credentials to enter restricted areas</small>
+            </StaggeredName>
+            <Accounts.ui.LoginForm state={STATES.SIGN_IN} />
+          </div>
+        </section>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 // import React, {Component} from 'react'

@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import {spring, StaggeredMotion} from 'react-motion';
 import GlowingLine from './GlowingLine.jsx';
 
-export default class StaggeredName extends Component{
+export default class StaggeredName extends PureComponent{
   constructor(props){
     super(props);
   }

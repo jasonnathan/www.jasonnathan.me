@@ -1,5 +1,5 @@
 /* global document*/
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
 import {Meteor} from 'meteor/meteor'
@@ -8,7 +8,7 @@ import StaggeredName from './components/StaggeredName.jsx';
 import MediaElement from './components/MediaElement.jsx';
 
 
-export default class Home extends Component{
+export default class Home extends PureComponent{
   constructor(){
     super();
   }

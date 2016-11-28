@@ -1,14 +1,14 @@
 /*global window*/
 /**
  * @class FadeInSVG
- * @extends React.Component
+ * @extends React.PureComponent
  * @description a default SVG component that fades in an caches SVGs
  */
-import React, {Component, PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import Isvg from 'react-inlinesvg';
 import FadeInImage from './FadeInImage.jsx';
 
-export default class FadeInSVG extends Component {
+export default class FadeInSVG extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

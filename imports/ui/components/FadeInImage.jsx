@@ -1,13 +1,13 @@
 /*global window*/
 /**
  * @class FadeInImage
- * @extends React.Component
+ * @extends React.PureComponent
  * @description a default Image component that fades in an image on load
  */
-import React, {Component, PropTypes} from 'react';
-import stylePropType from 'react-style-proptype';
+import React, {PureComponent} from 'react';
+// import stylePropType from 'react-style-proptype';
 
-export default class FadeInImage extends Component {
+export default class FadeInImage extends PureComponent {
   constructor(props) {
     super(props);
     // set defaults if not provided
@@ -53,13 +53,14 @@ export default class FadeInImage extends Component {
   }
 }
 
-FadeInImage.propTypes = {
-  size:PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
-  className: PropTypes.string,
-  noFilter:PropTypes.func,
-  src: PropTypes.string,
-  style: stylePropType
-}
+// if(process.env.NODE_ENV === 'development'){
+//   const {string, number, func, oneOfType, boolean} = PropTypes;
+//
+//   FadeInImage.propTypes = {
+//     size: oneOfType([ string, number ]),
+//     className: string,
+//     noFilter:oneOfType([ boolean, func ]),
+//     src: string,
+//     style: stylePropType
+//   }
+// }

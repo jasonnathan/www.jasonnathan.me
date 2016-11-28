@@ -1,14 +1,14 @@
 /**
  * @class Header
- * @extends React.Component
+ * @extends React.PureComponent
  * @description Provides BreadCrumbs navigation for Blog and Skills Components
  */
-import React, {Component, PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import {Motion, spring} from 'react-motion';
 import stylePropType from 'react-style-proptype';
 import Breadcrumbs from 'react-router-breadcrumbs';
 
-export default class Header extends Component {
+export default class Header extends PureComponent {
   /**
    * Sets clicked state to false
    */
@@ -82,13 +82,13 @@ export default class Header extends Component {
   }
 }
 
-const {object, func, array} = PropTypes;
+const {object, func, array, string, oneOfType} = PropTypes;
 
 Header.propTypes = {
   routes: array,
   params: object,
   resolver: func,
-  crumbs: object,
+  crumbs: oneOfType([string, object]),
   lastCrumbResolver: func,
   goBack: func,
   style: stylePropType

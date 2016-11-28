@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import {Meteor} from 'meteor/meteor';
 import {graphql} from 'react-apollo';
 import Helmet from 'react-helmet';
@@ -6,10 +6,17 @@ import {Flex, Item} from 'react-flex';
 import Loader from 'react-loaders';
 import {Link} from 'react-router';
 import entities from 'entities';
+import TimeAgo from 'timeago-react';
 import getPostBySlug from '/imports/api/post-by-slug-gql';
 import ReactDisqusThread from './ReactDisqusThread.jsx';
 import CategoriesList from '../components/Categories.jsx';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
+// import Perf from 'react-addons-perf';
+//
+// if(Meteor.isClient){
+//   window.Perf = Perf;
+//   window.Perf.start();
+// }
 
 const postResolver = (key, text) => {
   return props => {
@@ -32,68 +39,82 @@ const lastCrumbIsString = (link, key, text, index, routes) => {
   return <Link to={link} key={key}>{text}</Link>;
 }
 
-const abstractPostWithComments = ({data:{loading, post, error}, location, routes, params, router}) => {
-  const toHtml = (val) => ({__html: val});
-  if(loading)
-    return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
-      <Loader type="ball-triangle-path" />
-    </div>);
-  if(error)
-    throw error
-
-  const crumbs = {
-    title: entities.decodeHTML(post.title.rendered),
-    category: entities.decodeHTML(post.categories[0].name)
+class PostWithComments extends PureComponent{
+  constructor(props){
+    super(props);
   }
+  toHtml(val){return {__html: val}};
+  render(){
+    const {
+      data:{loading, post, error},
+      location, routes, params, router
+    } = this.props;
 
-  return (
-    <div role="main">
-      <BreadCrumbsHeader
-        routes={routes}
-        params={params}
-        goBack={router.goBack}
-        resolver={postResolver}
-        crumbs={crumbs}
-        lastCrumbResolver={lastCrumbIsString}
-      />
-      <Helmet
-        title={`${post.title.rendered}`}
-        meta={[
-          {"name": "description", "content": `${post.content.rendered}`}
-        ]}
-      />
-      <div className="content with-breadcrumbs">
-        <div className="scroll-y">
-          <Flex alignItems="flex-start" className="responsive">
-            <Item className="single-post" flex={2}>
-              <article className="post-content">
-                <header><h3 dangerouslySetInnerHTML={toHtml(post.title.rendered)} /></header>
-                <section dangerouslySetInnerHTML={toHtml(post.content.rendered)} />
-                <ReactDisqusThread
-                  identifier={post.slug}
-                  title={post.title.rendered}
-                  url={`https://dev.jasonnathan.com/${location.pathname}`}
-                />
-              </article>
-            </Item>
-            <Item
-              column
-              wrap
-              alignContent="space-between"
-              justifyContent="space-between"
-              className="hidden-mobile"
-              flex={1}
-            >
-              <CategoriesList />
-            </Item>
-          </Flex>
+    if(error)
+      throw error;
+
+    if(loading)
+      return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
+        <Loader type="ball-triangle-path" />
+      </div>);
+
+    const crumbs = {
+      title: entities.decodeHTML(post.title),
+      category: entities.decodeHTML(post.categories[0].name)
+    }
+
+    return (
+      <div role="main">
+        <BreadCrumbsHeader
+          routes={routes}
+          params={params}
+          goBack={router.goBack}
+          resolver={postResolver}
+          crumbs={crumbs}
+          lastCrumbResolver={lastCrumbIsString}
+        />
+        <Helmet
+          title={`${post.title}`}
+          meta={[
+            {"name": "description", "content": `${post.content}`}
+          ]}
+        />
+        <div className="content with-breadcrumbs">
+          <div className="scroll-y">
+            <div className="responsive" style={{alignItems:"flex-start", display:"flex"}}>
+              <Item className="single-post" flex={2}>
+                <article className="post-content">
+                  <header>
+                    <h3 dangerouslySetInnerHTML={this.toHtml(post.title)} />
+                    <div className="meta">Posted <TimeAgo datetime={post.date} /></div>
+                  </header>
+                  <section dangerouslySetInnerHTML={this.toHtml(post.content)} />
+                  <ReactDisqusThread
+                    identifier={post.slug}
+                    title={post.title}
+                    url={`https://dev.jasonnathan.com/${location.pathname}`}
+                  />
+                </article>
+              </Item>
+              <Item
+                column
+                wrap
+                alignContent="space-between"
+                justifyContent="space-between"
+                className="hidden-mobile"
+                flex={1}
+              >
+                <CategoriesList />
+              </Item>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-const PostWithComments = graphql(getPostBySlug, {
+export default graphql(getPostBySlug, {
   options: ({params}) => {
     let opts = {ssr: true};
     if(!params)
@@ -102,6 +123,6 @@ const PostWithComments = graphql(getPostBySlug, {
     return {
       ...opts, variables: { slug: params.slug }
     }
-  }
-})(abstractPostWithComments);
-export default PostWithComments;
+  },
+  returnPartialData:true
+})(PostWithComments);

@@ -1,14 +1,13 @@
 import {
-  convertToRaw,
   ContentState,
   Editor,
   EditorState
 } from 'draft-js';
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-class SkillEditor extends Component {
+class SkillEditor extends PureComponent {
   constructor(props) {
     super(props);
     const {

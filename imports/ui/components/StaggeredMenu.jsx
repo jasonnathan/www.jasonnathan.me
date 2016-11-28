@@ -1,10 +1,10 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import {Flex, Item} from 'react-flex';
 import {Link} from 'react-router';
 import {spring, presets, StaggeredMotion, Motion} from 'react-motion';
 import GlowingLine from './GlowingLine.jsx';
 
-class TransitionedButton extends Component {
+class TransitionedButton extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

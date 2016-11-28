@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import {Meteor} from 'meteor/meteor'
+import React, {PureComponent} from 'react';
 
 const DISQUS_CONFIG = [
   'shortname',
@@ -26,7 +25,7 @@ function copyProps(context, props, prefix = '') {
   }
 }
 
-export default class ReactDisqusThread extends Component {
+export default class ReactDisqusThread extends PureComponent {
   constructor(props) {
     super(props)
   }
@@ -93,5 +92,4 @@ export default class ReactDisqusThread extends Component {
       </div>
     );
   }
-
 }

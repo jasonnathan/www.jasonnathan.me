@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link, IndexLink} from 'react-router';
+import React, {PureComponent} from 'react';
+import {Link} from 'react-router';
 import {graphql} from 'react-apollo';
 import Loader from 'react-loaders';
 import Helmet from 'react-helmet';
@@ -25,7 +25,7 @@ const lastCrumbIsString = (link, key, text, index, routes) => {
   return <Link to={link} key={key}>{text}</Link>;
 }
 
-class abstractSkill extends Component{
+class Skill extends PureComponent{
   constructor(props){
     super(props);
     const {skill={title:"", description:"", projects:[]}} = props.data
@@ -64,8 +64,25 @@ class abstractSkill extends Component{
     }
   }
 
-  isSelected(idx){
-    return this.state.currentIndex === idx ? "selected" : "";
+  setEditingState(state){
+    this.setState({editing:state});
+  }
+
+  getProjectDefaults(p){
+    if(!p)
+      return;
+    if(!p.description){
+      p.description = this.getdefaultDescription();
+    }
+    return p;
+  }
+
+  getdefaultDescription(){
+    return `<h2 style="text-align:center">WORK IN PROGRESS</h2><br />Development for this website <a target="_blank" href="https://github.com/jasonnathan/jasonnathan-react.com/commit/e563cce22f79f261e06cd155524603974bb4da6a"> began ${daysPast} days ago</a>. The <a href="https://github.com/jasonnathan/jasonnathan-react.com/commit/db81b68dc10aa7f50b4dc73988a55dc14db605d7" target="_blank"> first article was written ${contentPast} days ago</a>.<br />Content is being uploaded everyday, please be patient.<br />In the meantime, look out for items that are marked &check;`
+  }
+
+  refreshSkill(){
+    this.props.data.refetch();
   }
 
   navigateToProj(e,p, idx){
@@ -95,22 +112,8 @@ class abstractSkill extends Component{
       )
   }
 
-  setEditingState(state){
-    this.setState({editing:state});
-  }
-  refreshSkill(){
-    this.props.data.refetch();
-  }
-  getProjectDefaults(p){
-    if(!p)
-      return;
-    if(!p.description){
-      p.description = this.getdefaultDescription();
-    }
-    return p;
-  }
-  getdefaultDescription(){
-    return `<h2 style="text-align:center">WORK IN PROGRESS</h2><br />Development for this website <a target="_blank" href="https://github.com/jasonnathan/jasonnathan-react.com/commit/e563cce22f79f261e06cd155524603974bb4da6a"> began ${daysPast} days ago</a>. The <a href="https://github.com/jasonnathan/jasonnathan-react.com/commit/db81b68dc10aa7f50b4dc73988a55dc14db605d7" target="_blank"> first article was written ${contentPast} days ago</a>.<br />Content is being uploaded everyday, please be patient.<br />In the meantime, look out for items that are marked &check;`
+  isSelected(idx){
+    return this.state.currentIndex === idx ? "selected" : "";
   }
 
   addProject(){
@@ -128,7 +131,7 @@ class abstractSkill extends Component{
   }
 
   render(){
-    const {data:{loading, error}, routes, params} = this.props;
+    const {data:{loading}, routes, params} = this.props;
     if(loading)
       return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
         <Loader type="ball-triangle-path" />
@@ -142,13 +145,13 @@ class abstractSkill extends Component{
     return (
       <div role="main" style={this.getContainerStyles(skill)}>
         <BreadCrumbsHeader
-            routes={routes}
-            params={params}
-            goBack={this.props.router.goBack}
-            resolver={skillResolver}
-            crumbs={skill.title}
-            style={{background:"#111"}}
-            lastCrumbResolver={lastCrumbIsString}
+          routes={routes}
+          params={params}
+          goBack={this.props.router.goBack}
+          resolver={skillResolver}
+          crumbs={skill.title}
+          style={{background:"#111"}}
+          lastCrumbResolver={lastCrumbIsString}
         />
         <Helmet
           title={`Work with ${skill.title} | Singapore`}
@@ -242,8 +245,8 @@ const styles = {
   }
 }
 
-const Skill = graphql(getSkill, {
-  options: ({params, userId}) => {
+export default graphql(getSkill, {
+  options: ({params}) => {
     let opts = {ssr: true};
     if(!params)
       return opts;
@@ -256,7 +259,4 @@ const Skill = graphql(getSkill, {
   return {
     userId: Meteor.userId()
   };
-}, abstractSkill));
-
-
-export default Skill;
+}, Skill));

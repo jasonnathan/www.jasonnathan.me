@@ -1,14 +1,14 @@
 /**
  * @class FlipBox
- * @extends React.Component
+ * @extends React.PureComponent
  * @description CURRENTLY NOT USED
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {spring, presets, Motion} from 'react-motion';
 import tinycolor from 'tinycolor2';
 import * as colors from '/imports/api/colors';
 
-export default class FlipBox extends Component {
+export default class FlipBox extends PureComponent {
   constructor(props){
     super(props);
     this.state = {
