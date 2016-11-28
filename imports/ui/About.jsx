@@ -4,7 +4,6 @@ import Helmet from 'react-helmet';
 import {spring, presets, Motion} from 'react-motion';
 import StaggeredName from './components/StaggeredName.jsx';
 import FadeInImage from './components/FadeInImage.jsx';
-// import FlipBox from '../components/FlipBox.jsx';
 import Panel from './components/Panel.jsx';
 import {person, website, facts} from './about-text';
 
