@@ -11,14 +11,16 @@ import accountMiddleware from '/imports/apolloAccountMiddleWare';
 
 let url = "http://localhost:3000";
 if(Meteor.isClient && process.env.NODE_ENV === 'production'){
-  url = "https://dev.jasonnathan.com";
+  url = "https://www.jasonnathan.com";
 }
 
 let opts = {
     ssrMode: Meteor.isServer,
     networkInterface: createNetworkInterface({credentials: 'same-origin', uri: `${url}/graphql`}),
     dataIdFromObject: (result) => {
-      if(result.__typename){
+      const tn = result.__typename;
+      if(tn){
+        // first find _id for mongodb, slug for most else and id as last resort
         const id = result._id || result.slug || result.id;
         if(id){
           return result.__typename + id
@@ -61,9 +63,10 @@ const htmlHook = html => {
   return html.replace('<head>', '<head>' + h.title + h.base + h.meta + h.link + h.script);
 }
 
-// const props = {onUpdate: () => Meteor.isClient && ga('send', 'pageview')}
+const props = {onUpdate: () => ga('send', 'pageview')}
 
 const clientOptions = {
+  props,
   historyHook,
   wrapperHook,
   rehydrateHook
