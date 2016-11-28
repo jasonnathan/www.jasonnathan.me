@@ -4,7 +4,7 @@ const Category = `
     name: String!
     count: Int
     description: String
-    slug: String!
+    slug: ID!
   }
 `
 export default Category;
