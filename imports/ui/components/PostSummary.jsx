@@ -24,8 +24,8 @@ const PostSummary = ({post, client}) => {
       <article style={{background:`url(${post.featured_media_url})`, backgroundSize:"cover", backgroundPosition:"50% 50%"}}>
         {/* <FadeInImage size="100%" className="bg-image" src={post.featured_media_url} /> */}
         <div className="post-content">
-          <h3 role="heading" id={`#${post.slug}`} dangerouslySetInnerHTML={{__html: post.title.rendered}} />
-          <p dangerouslySetInnerHTML={{__html: truncatise(post.excerpt.rendered, {TruncateLength:40})}} />
+          <h3 role="heading" id={`#${post.slug}`} dangerouslySetInnerHTML={{__html: post.title}} />
+          <p dangerouslySetInnerHTML={{__html: truncatise(post.excerpt, {TruncateLength:40})}} />
         </div>
       </article>
     </a>
