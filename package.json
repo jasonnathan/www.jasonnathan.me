@@ -45,6 +45,7 @@
     "save": "^2.3.0",
     "shortcode-insert": "^1.0.1",
     "shortcode-parser": "git+https://github.com/jasonnathan/shortcode-parser.git",
+    "timeago-react": "^1.0.7",
     "tinycolor2": "^1.4.1",
     "truncatise": "^0.0.5"
   },
@@ -58,7 +59,8 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^6.4.1",
-    "flow-bin": "^0.34.0"
+    "flow-bin": "^0.34.0",
+    "react-addons-perf": "^15.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
