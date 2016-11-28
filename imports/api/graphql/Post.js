@@ -5,23 +5,20 @@ const Post = `
 scalar Date
 scalar JSON
 
-type RenderedString {
-  rendered: String
-}
 
 type Post {
   id: Int!
   date: Date
   date_gmt: Date
-  guid: RenderedString
+  guid: String
   modified: Date
   modified_gmt: Date
   slug: ID!
   type: String
   link: String
-  title: RenderedString
-  content: RenderedString
-  excerpt: RenderedString
+  title: String
+  content: String
+  excerpt: String
   author: Int
   categories: [Category]
   comment_status: String

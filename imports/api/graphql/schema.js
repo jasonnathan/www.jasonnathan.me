@@ -114,16 +114,22 @@ const resolvers = {
     emails: ({emails}) => emails
   },
   Post:{
-    guid: ({guid}) => guid.rendered,
-    title: ({title}) => title,
-    content: ({content}) => content,
-    excerpt: ({excerpt}) => excerpt,
+    guid: ({guid:{rendered}}) => rendered,
+    title: ({title:{rendered}}) => rendered,
+    content: ({content:{rendered}}) => rendered,
+    excerpt: ({excerpt:{rendered}}) => rendered,
+    date: ({date}) => date,
     categories:({categories}) => Promise.await(categories.map(id => getCategoryById(id)))
   },
   Author:{
     posts(_, args){
       return getPostsByAuthor(args.id)
     }
+  },
+  Date: {
+    __parseLiteral: (ast) => new Date(ast.value),
+    __serialize: value => value,
+    __parseValue: value => value
   },
   JSON: {
     __parseLiteral: parseJSONLiteral,

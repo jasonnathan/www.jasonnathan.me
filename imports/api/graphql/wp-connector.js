@@ -48,9 +48,7 @@ const getWP = (endpoint, query) => {
 }
 
 export const post = (_, args) => {
-  const then = (posts) => Promise.resolve(posts.length
-    ? posts[0]
-    : {});
+  const then = (posts) => Promise.resolve(posts.length ? posts[0] : {});
 
   if (args.id) {
     return getWP(`posts/${args.id}`).then(then);

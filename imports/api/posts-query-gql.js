@@ -6,12 +6,8 @@ const getPosts = gql`
     posts(category: $category) {
       id
       slug
-      title {
-        rendered
-      }
-      excerpt {
-        rendered
-      }
+      title
+      excerpt
       categories{
         slug
       }
