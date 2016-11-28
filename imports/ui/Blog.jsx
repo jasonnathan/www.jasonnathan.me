@@ -6,6 +6,12 @@ import StaggeredName from './components/StaggeredName.jsx';
 import MainMenu from './components/MainMenu.jsx';
 import PostsList from './components/Posts.jsx';
 import CategoriesList from './components/Categories.jsx';
+// import Perf from 'react-addons-perf';
+//
+// if(Meteor.isClient){
+//   window.Perf = Perf;
+//   window.Perf.start();
+// }
 
 const Blog = (props) => {
   let title = "All Articles",
