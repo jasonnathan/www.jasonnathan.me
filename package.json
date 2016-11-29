@@ -13,10 +13,9 @@
     "draft-js": "^0.9.1",
     "entities": "^1.1.1",
     "express": "^4.14.0",
-    "graphql": "^0.7.2",
     "graphql-server-express": "^0.4.3",
     "graphql-subscriptions": "^0.2.1",
-    "graphql-tools": "^0.8.0",
+    "graphql-tools": "^0.8.3",
     "graphql-typings": "0.0.1-beta-2",
     "iscroll": "^5.2.0",
     "isomorphic-fetch": "^2.2.1",
@@ -63,7 +62,8 @@
     "react-addons-perf": "^15.4.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "meteor test --once --driver-package dispatch:mocha",
+    "test:watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha"
   },
   "repository": {
     "type": "git",
