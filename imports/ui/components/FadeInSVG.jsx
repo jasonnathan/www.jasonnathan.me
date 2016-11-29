@@ -2,7 +2,7 @@
 /**
  * @class FadeInSVG
  * @extends React.PureComponent
- * @description a default SVG component that fades in an caches SVGs
+ * @description a default SVG component that fades in and caches SVGs
  */
 import React, {PureComponent, PropTypes} from 'react';
 import Isvg from 'react-inlinesvg';

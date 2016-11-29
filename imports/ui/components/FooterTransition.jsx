@@ -23,7 +23,6 @@ export default class FooterTransition extends PureComponent{
   }
 
   render(){
-
     return (
       <Motion {...this.motionProps()}>{({t}) => (
         <footer className="footer scroll-x" style={this.style(t)}>
