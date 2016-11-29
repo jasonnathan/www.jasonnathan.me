@@ -3,12 +3,8 @@ import {withApollo} from 'react-apollo';
 import truncatise from 'truncatise';
 import getPostBySlug from '/imports/api/post-by-slug-gql';
 
-import FadeInImage from './FadeInImage.jsx';
-
-
-const PostSummary = ({post, client}) => {
+function PostSummary({post, client}){
   const getUrl = () => {
-    // console.log(post.categories)
     const cat = post.categories[0].slug;
     return `/article/${cat}/${post.slug}`;
   }
@@ -16,13 +12,11 @@ const PostSummary = ({post, client}) => {
     client.query({
       query: getPostBySlug,
       variables: {slug: post.slug}
-    })
-
+    });
   }
   return(
     <a href={getUrl()} onMouseOver={prefetchPost}>
       <article style={{background:`url(${post.featured_media_url})`, backgroundSize:"cover", backgroundPosition:"50% 50%"}}>
-        {/* <FadeInImage size="100%" className="bg-image" src={post.featured_media_url} /> */}
         <div className="post-content">
           <h3 role="heading" id={`#${post.slug}`} dangerouslySetInnerHTML={{__html: post.title}} />
           <p dangerouslySetInnerHTML={{__html: truncatise(post.excerpt, {TruncateLength:40})}} />
