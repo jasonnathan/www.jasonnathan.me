@@ -1,5 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com/badges/gpa.svg)](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com)
 [![CircleCI](https://circleci.com/gh/jasonnathan/www.jasonnathan.com.svg?style=svg)](https://circleci.com/gh/jasonnathan/www.jasonnathan.com)
+![NPM Dependancies](https://david-dm.org/jasonnathan/www.jasonnathan.com.svg)
 
 # 2016/17 personal site @ https://www.jasonnathan.com
 It's live! Just need to complete the testing
