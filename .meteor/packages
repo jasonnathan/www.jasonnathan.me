@@ -17,7 +17,6 @@ less@2.7.8
 email@1.1.18
 fourseven:scss
 promise@0.8.8
-apollo
 mongo
 jasonnathan:react-router-ssr
 accounts-base
@@ -25,3 +24,6 @@ accounts-password
 std:accounts-ui
 static-html
 react-meteor-data
+dispatch:mocha-phantomjs
+dispatch:mocha
+jasonnathan:apollo

@@ -4,3 +4,6 @@
 [submodule "packages/inject-data"]
 	path = packages/inject-data
 	url = https://github.com/rigconfig/inject-data
+[submodule "packages/meteor-integration"]
+	path = packages/meteor-integration
+	url = https://github.com/jasonnathan/meteor-integration
