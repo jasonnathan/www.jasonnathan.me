@@ -11,10 +11,17 @@ It's live! Just need to complete the testing
 * check `package.json` for specific versions
 
 
+### ENV variables
+```
+# in a bash script somewhere....
+export CLIENT_ID="YOUR-WP.COM-APP-ID"
+export CLIENT_SECRET="YOUR-WP.COM-APP-SECRET"
+export WP_USERNAME="YOUR-WP.COM-USERNAME"
+export WP_PASSWD="YOUR-WP.COM-PASSWORD"
+```
+
 ### Running it
 ```
 meteor npm install
 meteor
 ```
-
-GraphiQL is enabled at [/graphiql](http://localhost:3000/graphiql).
