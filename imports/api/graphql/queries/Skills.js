@@ -1,14 +1,13 @@
 import gql from 'graphql-tag';
 
-
-const getSkills = gql`
-  query {
-    skills {
+export default gql`
+query getSkills{
+  skills {
     _id
     to
     icon
     title
     featuredImage
   }
-}`
-export default getSkills;
+}
+`

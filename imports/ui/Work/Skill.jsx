@@ -5,7 +5,7 @@ import Loader from 'react-loaders';
 import Helmet from 'react-helmet';
 import { createContainer } from 'meteor/react-meteor-data';
 import {skurl} from '/imports/api/data/skills-data';
-import getSkill from '/imports/api/skill-by-to-gql';
+import getSkill from '/imports/api/graphql/queries/Skill';
 import EditIcon from 'react-icons/lib/md/create';
 import AddIcon from 'react-icons/lib/go/plus';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';

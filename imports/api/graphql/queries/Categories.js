@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 
-const getCategories = gql`{
+export default gql`
+query getCategories{
   categories {
     id
     name
@@ -8,5 +9,3 @@ const getCategories = gql`{
     count
   }
 }`
-
-export default getCategories;

@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import sanitizeHtml from 'sanitize-html';
-import Posts from '../collections';
+import Posts from '../../collections';
 
 /**
  * Checks if there is a logged in user and that he is an admin

@@ -7,16 +7,10 @@ import Loader from 'react-loaders';
 import {Link} from 'react-router';
 import entities from 'entities';
 import TimeAgo from 'timeago-react';
-import getPostBySlug from '/imports/api/post-by-slug-gql';
+import getPostBySlug from '/imports/api/graphql/queries/Post';
 import ReactDisqusThread from './ReactDisqusThread.jsx';
 import CategoriesList from '../components/Categories.jsx';
 import BreadCrumbsHeader from '../components/BreadCrumbsHeader.jsx';
-// import Perf from 'react-addons-perf';
-//
-// if(Meteor.isClient){
-//   window.Perf = Perf;
-//   window.Perf.start();
-// }
 
 const postResolver = (key, text) => {
   return props => {

@@ -1,10 +1,10 @@
 import { Kind } from 'graphql/language';
 import gql from 'graphql-tag';
-import Author from './Author';
-import Post from './Post';
-import Category from './Category';
-import {post, posts,author,categories,getPostsByAuthor,getCategoryById} from './wp-connector';
-import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './mongo-connector';
+import Author from './typeDefs/Author';
+import Post from './typeDefs/Post';
+import Category from './typeDefs/Category';
+import {post, posts,categories,getPostsByAuthor,getCategoryById} from './resolvers/wp-connector';
+import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './resolvers/mongo-connector';
 
 const Skill = `
 type Project {

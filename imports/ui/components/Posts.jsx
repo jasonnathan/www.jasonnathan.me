@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import getPosts from '/imports/api/posts-query-gql';
+import getPosts from '/imports/api/graphql/queries/Posts';
 import Loader from 'react-loaders';
 import PostSummary from './PostSummary.jsx'
 

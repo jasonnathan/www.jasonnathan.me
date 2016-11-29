@@ -1,7 +1,7 @@
 import React from 'react';
 import {withApollo} from 'react-apollo';
 import truncatise from 'truncatise';
-import getPostBySlug from '/imports/api/post-by-slug-gql';
+import getPostBySlug from '/imports/api/graphql/queries/Post';
 
 function PostSummary({post, client}){
   const getUrl = () => {

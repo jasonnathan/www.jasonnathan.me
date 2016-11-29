@@ -3,7 +3,7 @@ import {TagCloud} from 'react-tagcloud';
 import {Link} from 'react-router';
 import {graphql} from 'react-apollo';
 import Loader from 'react-loaders';
-import getSkills from '/imports/api/skills-query-gql';
+import getSkills from '/imports/api/graphql/queries/Skills';
 import FadeInSVG from './FadeInSVG.jsx';
 
 const {string, number, arrayOf, shape, bool} = PropTypes;
