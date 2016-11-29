@@ -1,54 +1,23 @@
 import { Kind } from 'graphql/language';
-import gql from 'graphql-tag';
-import Author from './typeDefs/Author';
+import User from './typeDefs/User';
 import Post from './typeDefs/Post';
 import Category from './typeDefs/Category';
-import {post, posts,categories,getPostsByAuthor,getCategoryById} from './resolvers/wp-connector';
-import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './resolvers/mongo-connector';
+import Skill from './typeDefs/Skill';
+import Project from './typeDefs/Project';
+import {post, posts,categories,getCategoryById} from './resolvers/PostsWP';
+import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './resolvers/SkillsMongo';
 
-const Skill = `
-type Project {
-  to: ID
-  icon: String
-  status: String
-  title: String
-  type: String
-  category: String
-  description: String
-  featuredImage: String
-}
-
-type Skill{
-  _id: ID,
-  to: String
-  icon: String
-  status: String
-  title: String
-  type: String
-  category: String
-  description: String
-  featuredImage: String
-  projects: [Project]
-}`;
-
-const User = `
-  type User {
-    emails: [Email]
-    username: String
-    _id: String
-  }`;
 
 const RootQuery = `
   type SuccessResponse {
     # True if it succeeded
     success: Boolean
   }
-  type Email {
-    address: String
-    verified: Boolean
-  }
   ${User}
+  ${Project}
   ${Skill}
+  ${Post}
+  ${Category}
   type Query {
     user(id: String!): User
     post(slug: String): Post
@@ -88,8 +57,7 @@ const SchemaDefinition = `
   schema {
     query: Query
     mutation: Mutation
-  }
-`;
+  }`;
 
 const resolvers = {
   Query: {
@@ -120,11 +88,6 @@ const resolvers = {
     excerpt: ({excerpt:{rendered}}) => rendered,
     date: ({date}) => date,
     categories:({categories}) => Promise.await(categories.map(id => getCategoryById(id)))
-  },
-  Author:{
-    posts(_, args){
-      return getPostsByAuthor(args.id)
-    }
   },
   Date: {
     __parseLiteral: (ast) => new Date(ast.value),
@@ -157,4 +120,4 @@ const parseJSONLiteral = (ast) => {
 }
 
 
-export {SchemaDefinition, RootQuery, User, Post, Author, Category, Skill, Project, resolvers}
+export {SchemaDefinition, RootQuery, resolvers}

@@ -5,8 +5,6 @@ import querystring from 'querystring';
 const url = 'https://public-api.wordpress.com/wp/v2/sites/jasonnathan.wordpress.com';
 const authUrl = 'https://public-api.wordpress.com/oauth2/token';
 let _headers = {
-  // Accept: 'application/json',
-  // 'Content-Type': 'application/json',
   Authorization: null
 };
 

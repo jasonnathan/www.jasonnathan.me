@@ -1,7 +1,4 @@
-import Author from './Author';
-import Category from './Category';
-
-const Post = `
+export default `
 scalar Date
 scalar JSON
 
@@ -28,11 +25,4 @@ type Post {
   meta: JSON
   featured_media_url: String
   _links: JSON
-}
-`
-/**
-  categories: [Category]
-  tags: [Tag]
-  featured_media: Attachment
- */
-export default () => [Post, Author, Category];
+}`

@@ -1,15 +1,14 @@
-import Project from './Project';
-
-const Skill = `
+export default `
   type Skill {
-    _id: ID!
-    to: String!
-    src: String
+    _id: ID,
+    to: String
+    icon: String
+    status: String
     title: String
-    overview: String!
+    type: String
     category: String
+    description: String
+    featuredImage: String
     projects: [Project]
   }
 `
-
-export default () => [Skill, Project];
