@@ -48,13 +48,12 @@ const getWP = (endpoint, query) => {
 }
 
 export const post = (_, args) => {
-  const then = (posts) => Promise.resolve(posts.length ? posts[0] : {});
-
   if (args.id) {
-    return getWP(`posts/${args.id}`).then(then);
+    return getWP(`posts/${args.id}`);
   }
   if (args.slug) {
-    return getWP('posts', `slug=${args.slug}`).then(then);
+    return getWP('posts', `slug=${args.slug}`)
+      .then(posts => Promise.resolve(posts.length ? posts[0] : {}));
   }
 }
 export const posts = (_, {category}) => {
