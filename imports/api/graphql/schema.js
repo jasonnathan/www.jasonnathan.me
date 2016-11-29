@@ -9,55 +9,55 @@ import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './
 
 
 const RootQuery = `
-  type SuccessResponse {
-    # True if it succeeded
-    success: Boolean
-  }
-  ${User}
-  ${Project}
-  ${Skill}
-  ${Post}
-  ${Category}
-  type Query {
-    user(id: String!): User
-    post(slug: String): Post
-    posts(category: String): [Post]
-    categories: [Category]
-    skill(to: String): Skill
-    skills: [Skill]
-  }
-  type Mutation {
-    insertSkill(
-      title: String
-      to: String
-      featuredImage: String
-      description: String
-    ): Skill
-    deleteSkill(
-      _id: ID
-    ): SuccessResponse
-    updateSkill(
-      _id: ID
-      title: String
-      to: String
-      featuredImage: String
-      description: String
-    ): Skill
-    updateProject(
-      _id: ID
-      to: ID
-      title: String
-      featuredImage: String
-      description: String
-      index: Int
-    ): Project
-  }`;
+type SuccessResponse {
+  # True if it succeeded
+  success: Boolean
+}
+${User}
+${Project}
+${Skill}
+${Post}
+${Category}
+type Query {
+  user(id: String!): User
+  post(slug: String): Post
+  posts(category: String): [Post]
+  categories: [Category]
+  skill(to: String): Skill
+  skills: [Skill]
+}
+type Mutation {
+  insertSkill(
+    title: String
+    to: String
+    featuredImage: String
+    description: String
+  ): Skill
+  deleteSkill(
+    _id: ID
+  ): SuccessResponse
+  updateSkill(
+    _id: ID
+    title: String
+    to: String
+    featuredImage: String
+    description: String
+  ): Skill
+  updateProject(
+    _id: ID
+    to: ID
+    title: String
+    featuredImage: String
+    description: String
+    index: Int
+  ): Project
+}`;
 
 const SchemaDefinition = `
-  schema {
-    query: Query
-    mutation: Mutation
-  }`;
+schema {
+  query: Query
+  mutation: Mutation
+}`;
 
 const resolvers = {
   Query: {
@@ -118,6 +118,5 @@ const parseJSONLiteral = (ast) => {
       return null;
   }
 }
-
 
 export {SchemaDefinition, RootQuery, resolvers}
