@@ -51,6 +51,22 @@ const sanitizeStringFields = (props) => {
     return props;
 }
 
+const sanitizeByProperty = (propertyArray, sourceObj) => {
+  if(!propertyArray.length)
+    throw new Meteor.Error(400, "propertyArray needs an array of keys, empty array given");
+
+  try{
+    if(!Object.keys(sourceObj).length){
+      throw new Meteor.Error(400, "sourceObj needs an non-empty object. Empty object given");
+    }
+  } catch(e){
+    throw new Meteor.Error(400, "sourceObj needs to be a valid Object")
+  }
+  let params = {}
+  propertyArray.forEach(k => !!sourceObj[k] && (params[k] = sourceObj[k]));
+  return params;
+}
+
 /**
  * Retrieves an array of skills
  *
@@ -143,11 +159,8 @@ export function updateSkill(_, args, context = {}) {
     // only insert known fields
     fields = ['title', 'to', 'description', 'icon', 'featuredImage'];
 
-  // and empty object to construct args
-  let params = {};
-
   // only add known fields
-  fields.forEach(k => !!args[k] && (params[k] = args[k]));
+  let params = sanitizeByProperty(fields, args);
 
   // perform update
   Posts.update(_id, {$set: params});
@@ -180,16 +193,13 @@ export function updateProject(_, args, context = {}) {
     // extract _id
     _id = args._id.split("_")[0],
     // empty placeholder to construct params to insert
-    params = {},
+    params = sanitizeByProperty(fields, args);,
     // the final set object
     $set = {},
-    // a key for use in mongodb to only work with the project by index
+    // loop through known fields and only add ones that are known
     p = `projects.${index}`,
     // default query
     $query = {_id};
-
-  // loop through known fields and only add ones that are known
-  fields.forEach(k => !!args[k] && (params[k] = args[k]));
 
   // set the update for the project in question
   $set[p] = params
