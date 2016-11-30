@@ -18,7 +18,7 @@ export function sanitizeStringFields(props){
       }
     },
     // text has no html
-    textOpts = { allowedTags: false, allowedAttributes: false};
+    textOpts = { allowedTags: [], allowedAttributes: []};
     // loop through each key of the object
     Object.keys(props).forEach(k => {
         // apply sanitization by key

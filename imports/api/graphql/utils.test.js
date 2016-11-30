@@ -22,6 +22,13 @@ describe("sanitizeByProperty", function(){
     expect(() => sanitizeByProperty(["somekey"], {}))
     .to.throw(Error, "sourceObj needs a non-empty object. Empty object given");
   });
+  it("should return an object with property keys equivalent to the array values", function(){
+    const _keys = ['one', 'two', 'three', 'four'];
+    const _obj = {two: "two val", four: "four val"}
+    const result = sanitizeByProperty(_keys, _obj);
+    // only two and four should be present
+    expect(Object.keys(result)).to.eql(['two', 'four'])
+  });
 });
 
 describe("sanitizeStringFields", function(){
@@ -32,6 +39,20 @@ describe("sanitizeStringFields", function(){
       expect(htmlHasScriptTag(_html.description)).to.equal(0);
       expect(htmlHasScriptTag(_text.title)).to.equal(0);
     });
+  });
+  it("should return no html tags if properties are text only fields", function(){
+    const _obj = {
+      _id: "<p>Some HTML string</p>",
+      title: "<h1>Some HTML string</h1>",
+      to: "<h1>Some HTML <small>string</small></h1>",
+      icon: "<i class='something'>Some HTML string</i>",
+      featuredImage: "<img src='/some/thing' />Some HTML string"
+    }
+    const result = sanitizeStringFields(_obj);
+    Object.keys(result).map(k => {
+      const $ = cheerio.load(result[k])
+      expect($.html()).to.equal($.text())
+    })
   });
 });
 
