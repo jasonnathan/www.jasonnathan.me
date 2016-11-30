@@ -1,4 +1,3 @@
-import {Meteor} from 'meteor/meteor';
 import sanitizeHtml from 'sanitize-html';
 
 /**
@@ -10,7 +9,7 @@ import sanitizeHtml from 'sanitize-html';
 export function sanitizeStringFields(props){
   const descriptionOpts = {
       // only allow these tags
-      allowedTags: [ 'b','i','em','strong','a','h2','h3', 'p', 'br', 'blockquote'],
+      allowedTags: ['b','i','em','strong','a','h2','h3', 'p', 'br', 'blockquote'],
       // and these attributes on them
       allowedAttributes: {
         '*': [ 'class', 'alt', 'style', 'title' ],

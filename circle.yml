@@ -1,10 +1,31 @@
 machine:
   node:
     version: 4.6.0
-dependencies:
-  override:
-    - curl https://install.meteor.com | /bin/sh
-    - npm install
+  environment:
+    COVERAGE_VERBOSE: 1
 checkout:
   post:
     - git submodule update --init
+dependencies:
+  cache_directories:
+     - ~/.npm
+     - ~/.meteor
+     - node_modules
+     - ./.meteor/local/build
+     - ./.meteor/local/bundler-cache
+     - ./.meteor/local/isopacks
+     - ./.meteor/local/plugin-cache
+     - /home/ubuntu/nvm/versions/node/v4.6.0/bin
+     - /home/ubuntu/nvm/versions/node/v4.6.0/lib/node_modules
+  override:
+    - curl https://install.meteor.com | /bin/sh
+    - meteor npm install
+    - meteor npm update
+test:
+   override:
+   pre:
+     - "meteor npm run coverage:app-unit"
+     # Save coverage now
+     - cat .coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true # ignore coveralls error
+     - cat .coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js || true # ignore codecov error
+     - cat .coverage/lcov.info | ./node_modules/codecov.io/bin/codacy-coverage || true # ignore codacy error

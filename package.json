@@ -1,7 +1,7 @@
 {
-  "name": "dev_jasonnathan",
+  "name": "jasonnathan_com",
   "version": "1.0.0",
-  "description": "A simple kit to start experimenting with Apollo, Meteor and React.",
+  "description": "Jason Nathan's portfolio website.",
   "main": "index.js",
   "dependencies": {
     "apollo-client": "^0.5.8",
@@ -36,7 +36,7 @@
     "react-icons": "^2.2.1",
     "react-inlinesvg": "^0.5.4",
     "react-iscroll": "^1.1.1",
-    "react-loaders": "^2.1.1",
+    "react-loaders": "^2.3.0",
     "react-motion": "^0.4.5",
     "react-router": "^3.0.0",
     "react-router-breadcrumbs": "git+https://github.com/nutgaard/react-router-breadcrumbs.git",
@@ -51,7 +51,12 @@
     "truncatise": "^0.0.5"
   },
   "devDependencies": {
+    "bcrypt": "^0.8.7",
     "chai": "^3.5.0",
+    "cheerio": "^0.22.0",
+    "codacy-coverage": "^2.0.0",
+    "codecov.io": "^0.1.6",
+    "coveralls": "^2.11.15",
     "eslint": "^3.8.1",
     "eslint-import-resolver-meteor": "^0.3.3",
     "eslint-plugin-graphql": "^0.2.7",
@@ -60,20 +65,35 @@
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^6.4.1",
     "flow-bin": "^0.36.0",
-    "react-addons-perf": "^15.4.1"
+    "react-addons-perf": "^15.4.1",
+    "spacejam": "^1.6.1"
   },
   "scripts": {
-    "test": "meteor test --once --driver-package dispatch:mocha",
-    "test:watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha"
+    "test": "meteor npm run test:app-unit && meteor npm run test:app-full",
+    "test:watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha",
+    "precoverage": "npm run lint",
+    "coverage": "meteor npm run coverage:app-unit && meteor npm run coverage:app-full",
+    "coverage:app-unit": "spacejam test --coverage 'out_lcovonly out_coverage out_html' --driver-package practicalmeteor:mocha-console-runner",
+    "coverage:app-full": "spacejam test --full-app --coverage 'out_lcovonly out_coverage out_html in_coverage' --driver-package practicalmeteor:mocha-console-runner",
+    "precoverage-watch": "npm run lint",
+    "coverage-watch:app-unit": "meteor test --settings settings.coverage.json --driver-package practicalmeteor:mocha",
+    "coverage-watch:app-full": "meteor test --full-app --settings settings.coverage.json --driver-package practicalmeteor:mocha",
+    "pretest": "npm run lint",
+    "test": "meteor npm run test:app-unit && meteor npm run test:app-full",
+    "test:app-unit": "spacejam test --driver-package practicalmeteor:mocha-console-runner",
+    "test:app-full": "spacejam test --full-app --driver-package practicalmeteor:mocha-console-runner",
+    "pretest-watch": "npm run lint",
+    "test-watch:app-unit": "meteor test --driver-package practicalmeteor:mocha-console",
+    "test-watch:app-full": "meteor test --full-app  --driver-package practicalmeteor:mocha-console"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jasonnathan/jasonnathan-react.com.git"
+    "url": "git+https://github.com/jasonnathan/www.jasonnathan.com.git"
   },
-  "author": "",
+  "author": "Jason Nathan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jasonnathan/jasonnathan-react.com/issues"
+    "url": "https://github.com/jasonnathan/www.jasonnathan.com/issues"
   },
-  "homepage": "https://github.com/jasonnathan/jasonnathan-react.com#readme"
+  "homepage": "https://github.com/jasonnathan/www.jasonnathan.com#readme"
 }

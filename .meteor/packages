@@ -27,3 +27,5 @@ react-meteor-data
 dispatch:mocha-phantomjs
 dispatch:mocha
 apollo
+practicalmeteor:mocha-console-runner
+lmieulet:meteor-coverage
