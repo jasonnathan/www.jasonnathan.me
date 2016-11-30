@@ -11,6 +11,7 @@
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "classnames": "^2.2.5",
+    "codacy-coverage": "^2.0.0",
     "draft-js": "^0.9.1",
     "entities": "^1.1.1",
     "express": "^4.14.0",
@@ -68,18 +69,18 @@
     "eslint-plugin-react": "^6.7.1",
     "flow-bin": "^0.36.0",
     "react-addons-perf": "^15.4.1",
-    "spacejam": "^1.6.1"
+    "spacejam": "https://github.com/serut/spacejam/tarball/windows-suppport-rc4"
   },
   "scripts": {
     "test": "meteor test --once --driver-package dispatch:mocha",
     "test:watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha",
     "coverage": "meteor npm run coverage:app-unit && meteor npm run coverage:app-full",
-    "coverage:app-unit": "spacejam test --coverage 'out_lcovonly out_coverage out_html' --driver-package practicalmeteor:mocha-console-runner",
-    "coverage:app-full": "spacejam test --full-app --coverage 'out_lcovonly out_coverage out_html in_coverage' --driver-package practicalmeteor:mocha-console-runner",
+    "coverage:app-unit": "./node_modules/spacejam/bin/spacejam test --coverage 'out_lcovonly out_coverage out_html' --driver-package practicalmeteor:mocha-console-runner",
+    "coverage:app-full": "./node_modules/spacejam/bin/spacejam test --full-app --coverage 'out_lcovonly out_coverage out_html in_coverage' --driver-package practicalmeteor:mocha-console-runner",
     "coverage-watch:app-unit": "meteor test --settings settings.coverage.json --driver-package practicalmeteor:mocha",
     "coverage-watch:app-full": "meteor test --full-app --settings settings.coverage.json --driver-package practicalmeteor:mocha",
-    "test:app-unit": "spacejam test --driver-package practicalmeteor:mocha-console-runner",
-    "test:app-full": "spacejam test --full-app --driver-package practicalmeteor:mocha-console-runner",
+    "test:app-unit": "./node_modules/spacejam/bin/spacejam test --driver-package practicalmeteor:mocha-console-runner",
+    "test:app-full": "./node_modules/spacejam/bin/spacejam test --full-app --driver-package practicalmeteor:mocha-console-runner",
     "test-watch:app-unit": "meteor test --driver-package practicalmeteor:mocha-console",
     "test-watch:app-full": "meteor test --full-app  --driver-package practicalmeteor:mocha-console"
   },
