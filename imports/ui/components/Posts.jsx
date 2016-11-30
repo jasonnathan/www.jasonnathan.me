@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import getPosts from '/imports/api/graphql/queries/Posts';
-import Loader from 'react-loaders';
+import {Loader} from 'react-loaders';
 import PostSummary from './PostSummary.jsx'
 
 function PostsList({data:{posts, loading, error}, params}){

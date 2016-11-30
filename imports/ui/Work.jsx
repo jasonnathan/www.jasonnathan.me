@@ -3,7 +3,7 @@ import React from 'react';
 import {Flex, Item} from 'react-flex';
 import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
-import Loader from 'react-loaders';
+import {Loader} from 'react-loaders';
 import StaggeredName from './components/StaggeredName.jsx';
 import SkillCloud from './components/SkillCloud.jsx';
 import Page from './components/Page.jsx';

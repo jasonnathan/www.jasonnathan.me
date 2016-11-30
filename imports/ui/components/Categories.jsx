@@ -6,7 +6,7 @@ import React, {PureComponent} from 'react';
 import { graphql } from 'react-apollo';
 import {IndexLink, Link} from 'react-router';
 import {spring, presets, StaggeredMotion} from 'react-motion';
-import Loader from 'react-loaders';
+import {Loader} from 'react-loaders';
 import getCategories from '/imports/api/graphql/queries/Categories';
 
 class CategoriesList extends PureComponent{

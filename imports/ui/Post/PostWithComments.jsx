@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import {graphql} from 'react-apollo';
 import Helmet from 'react-helmet';
 import {Flex, Item} from 'react-flex';
-import Loader from 'react-loaders';
+import {Loader} from 'react-loaders';
 import {Link} from 'react-router';
 import entities from 'entities';
 import TimeAgo from 'timeago-react';

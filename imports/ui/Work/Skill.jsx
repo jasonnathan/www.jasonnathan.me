@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Link} from 'react-router';
 import {graphql} from 'react-apollo';
-import Loader from 'react-loaders';
+import {Loader} from 'react-loaders';
 import Helmet from 'react-helmet';
 import { createContainer } from 'meteor/react-meteor-data';
 import {skurl} from '/imports/api/data/skills-data';
