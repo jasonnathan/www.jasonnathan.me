@@ -15,12 +15,12 @@
  * @param {HTMLElement}   m First script tag in document.
  */
 (function(i, s, o, g, r, a, m){
-  i['GoogleAnalyticsObject'] = r; // Acts as a pointer to support renaming.
+  i["GoogleAnalyticsObject"] = r; // Acts as a pointer to support renaming.
 
   // Creates an initial ga() function.
   // The queued commands will be executed once analytics.js loads.
   i[r] = i[r] || function() {
-    (i[r].q = i[r].q || []).push(arguments)
+    (i[r].q = i[r].q || []).push(arguments);
   },
 
   // Sets the time (as an integer) this tag was executed.
@@ -34,11 +34,11 @@
   m = s.getElementsByTagName(o)[0];
   a.async = 1;
   a.src = g;
-  m.parentNode.insertBefore(a, m)
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  m.parentNode.insertBefore(a, m);
+})(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
 
 // Creates a default tracker with automatic cookie domain configuration.
-ga('create', 'UA-2433084-21', 'auto');
+ga("create", "UA-2433084-21", "auto");
 
 // Sends a pageview hit from the tracker just created.
-ga('send', 'pageview');
+ga("send", "pageview");
