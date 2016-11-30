@@ -1,5 +1,5 @@
-[![Code Climate](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com/badges/gpa.svg)](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com)
-[![CircleCI](https://circleci.com/gh/jasonnathan/www.jasonnathan.com.svg?style=svg)](https://circleci.com/gh/jasonnathan/www.jasonnathan.com)
+[![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg?style=flat-square)](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com)
+[![CircleCI](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg?style=flat-square)](https://circleci.com/gh/jasonnathan/www.jasonnathan.com)
 ![NPM Dependancies](https://david-dm.org/jasonnathan/www.jasonnathan.com.svg)
 
 # 2016/17 personal site @ https://www.jasonnathan.com
