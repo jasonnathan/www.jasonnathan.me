@@ -1,6 +1,7 @@
 [![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg?style=flat-square)](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com)
 [![CircleCI](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg?style=flat-square)](https://circleci.com/gh/jasonnathan/www.jasonnathan.com)
 ![NPM Dependancies](https://david-dm.org/jasonnathan/www.jasonnathan.com.svg)
+[![codecov](https://codecov.io/gh/jasonnathan/www.jasonnathan.com/branch/master/graph/badge.svg)](https://codecov.io/gh/jasonnathan/www.jasonnathan.com)
 
 # 2016/17 personal site @ https://www.jasonnathan.com
 It's live! Just need to complete the testing
