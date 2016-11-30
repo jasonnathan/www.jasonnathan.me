@@ -1,7 +1,8 @@
-[![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg?style=flat-square)](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com)
-[![CircleCI](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg?style=flat-square)](https://circleci.com/gh/jasonnathan/www.jasonnathan.com)
-[![codecov](https://codecov.io/gh/jasonnathan/www.jasonnathan.com/branch/master/graph/badge.svg)](https://codecov.io/gh/jasonnathan/www.jasonnathan.com)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ef761c14bd104656879fe5000e961890)](https://www.codacy.com/app/jjnathanjr/www-jasonnathan-com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jasonnathan/www.jasonnathan.com&amp;utm_campaign=Badge_Grade)
+[![Code Climate](https://img.shields.io/codeclimate/github/jasonnathan/jasonnathan-react.com/badges/gpa.svg?style=flat-square)](https://codeclimate.com/github/jasonnathan/jasonnathan-react.com)
+[![CircleCI](https://img.shields.io/circleci/project/github/jasonnathan/www.jasonnathan.com.svg?style=flat-square)](https://circleci.com/gh/jasonnathan/www.jasonnathan.com)
+[![Codecov](https://img.shields.io/codecov/c/github/jasonnathan/www.jasonnathan.com.svg?style=flat-square)](https://codecov.io/gh/jasonnathan/www.jasonnathan.com)
+[![Codacy grade](https://img.shields.io/codacy/grade/ef761c14bd104656879fe5000e961890.svg?style=flat-square)](https://www.codacy.com/app/jjnathanjr/www-jasonnathan-com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jasonnathan/www.jasonnathan.com&amp;utm_campaign=Badge_Grade)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/ef761c14bd104656879fe5000e961890.svg?style=flat-square)](https://www.codacy.com/app/jjnathanjr/www-jasonnathan-com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jasonnathan/www.jasonnathan.com&amp;utm_campaign=Badge_Coverage)
 
 # 2016/17 personal site @ https://www.jasonnathan.com
 It's live! Just need to complete the testing
