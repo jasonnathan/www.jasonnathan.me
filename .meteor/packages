@@ -26,4 +26,4 @@ static-html
 react-meteor-data
 dispatch:mocha-phantomjs
 dispatch:mocha
-jasonnathan:apollo
+apollo
