@@ -28,4 +28,4 @@ test:
      # Save coverage now
      - cat .coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true # ignore coveralls error
      - cat .coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js || true # ignore codecov error
-     - cat .coverage/lcov.info | ./node_modules/codecov.io/bin/codacy-coverage || true # ignore codacy error
+     - cat .coverage/lcov.info | ./node_modules/.bin/codacy-coverage || true # ignore codacy error
