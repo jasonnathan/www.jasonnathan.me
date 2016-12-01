@@ -2,3 +2,5 @@ node_modules/
 notes.txt
 start.sh
 .deploy
+.coverage
+cover.sh
