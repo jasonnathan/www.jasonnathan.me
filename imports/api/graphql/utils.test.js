@@ -24,7 +24,7 @@ describe("sanitizeByProperty", function(){
   });
   it("should return an object with property keys equivalent to the array values", function(){
     const _keys = ['one', 'two', 'three', 'four'];
-    const _obj = {two: "two val", four: "four val"}
+    const _obj = {two: "two val", four: "four val", six: "six val"}
     const result = sanitizeByProperty(_keys, _obj);
     // only two and four should be present
     expect(Object.keys(result)).to.eql(['two', 'four'])

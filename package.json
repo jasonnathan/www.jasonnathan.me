@@ -72,8 +72,7 @@
     "spacejam": "https://github.com/serut/spacejam/tarball/windows-suppport-rc4"
   },
   "scripts": {
-    "test": "meteor test --once --driver-package dispatch:mocha",
-    "test:watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha",
+    "test:watch": "./start.sh test --driver-package practicalmeteor:mocha-console-runner",
     "coverage": "meteor npm run coverage:app-unit && meteor npm run coverage:app-full",
     "coverage:app-unit": "./node_modules/spacejam/bin/spacejam test --coverage 'out_lcovonly out_coverage out_html' --driver-package practicalmeteor:mocha-console-runner",
     "coverage:app-full": "./node_modules/spacejam/bin/spacejam test --full-app --coverage 'out_lcovonly out_coverage out_html in_coverage' --driver-package practicalmeteor:mocha-console-runner",
@@ -82,7 +81,7 @@
     "test:app-unit": "./node_modules/spacejam/bin/spacejam test --driver-package practicalmeteor:mocha-console-runner",
     "test:app-full": "./node_modules/spacejam/bin/spacejam test --full-app --driver-package practicalmeteor:mocha-console-runner",
     "test-watch:app-unit": "meteor test --driver-package practicalmeteor:mocha-console",
-    "test-watch:app-full": "meteor test --full-app  --driver-package practicalmeteor:mocha-console"
+    "test-watch:app-full": "meteor test --full-app --driver-package practicalmeteor:mocha-console"
   },
   "repository": {
     "type": "git",
