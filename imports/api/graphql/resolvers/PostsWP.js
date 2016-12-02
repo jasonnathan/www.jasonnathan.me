@@ -14,7 +14,7 @@ const auth = new WPAuth({
 
 
 export const getWP = (endpoint, query) => {
-  let ep = `${url}/${endpoint}`;
+  let ep = `${WP_URL}/${endpoint}`;
   ep += query ? `?${query}` : '';
   return auth
   .access_token()
