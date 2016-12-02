@@ -1,18 +1,25 @@
-/*globals fetch*/
+/*globals fetch, Promise*/
 import 'isomorphic-fetch';
 import querystring from 'querystring';
 
 export default class {
 
-  constructor({username, password, client_secret, client_id, grant_type="password"}){
+  constructor(props = {}){
+    const {grant_type = "password"} = props;
     this.props = {
-      username, password, client_secret, client_id, grant_type,
+      ...props,
+      grant_type,
       authUrl: 'https://public-api.wordpress.com/oauth2/token'
     }
-    this.state = {
-      token: null,
-      response: null
+
+    this.state = { token: null, response: null}
+
+    this.setState = (obj) => {
+      if(typeof obj === 'object'){
+        this.state = {...this.state, ...obj};
+      }
     }
+
   }
 
   get authUrl(){
@@ -23,22 +30,23 @@ export default class {
     return this.state.token;
   }
 
-  json(response){
+  static json(response){
     if(typeof response.json !== "function"){
+      // this will mean there is an error with the response from WordPress
       return Promise.reject(new Error("Response object was magically returned without a json method"))
     }
     return response.json(); // promise
   }
 
-  storeTokenAndResolve({error, error_description, access_token}){
+  static storeTokenAndResolve({error, error_description, access_token}, setState = newState => newState){
     if(error){
       return Promise.reject(new Error(error_description))
     }
-    this.state.token = access_token;
-    return Promise.resolve(this.token);
+    setState({token: access_token});
+    return Promise.resolve(access_token);
   }
 
-  request(props){
+  static request(props){
     const {
       username, password, client_secret,
       client_id, grant_type, authUrl
@@ -61,6 +69,6 @@ export default class {
     return this
       .request(this.props)
       .then(this.json)
-      .then(this.storeTokenAndResolve)
+      .then(this.storeTokenAndResolve, this.setState)
   }
 }
