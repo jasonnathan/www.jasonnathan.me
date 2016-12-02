@@ -18,9 +18,9 @@ dependencies:
      - /home/ubuntu/nvm/versions/node/v4.6.0/bin
      - /home/ubuntu/nvm/versions/node/v4.6.0/lib/node_modules
   override:
-    - curl https://install.meteor.com | /bin/sh
+    # - curl https://install.meteor.com | /bin/sh
     - meteor npm install
-    - meteor npm update
+    # - meteor npm update
 test:
    override:
    pre:
