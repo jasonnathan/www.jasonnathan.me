@@ -1,7 +1,7 @@
 /*globals describe, it*/
 import chai from 'chai';
-import { sanitizeStringFields, sanitizeByProperty } from './utils';
 import cheerio from 'cheerio';
+import { sanitizeStringFields, sanitizeByProperty } from './utils';
 
 const expect = chai.expect;
 
@@ -33,7 +33,7 @@ describe("sanitizeByProperty", function(){
 
 describe("sanitizeStringFields", function(){
   it("should clean potential XSS threats", function(){
-    const t = xss.forEach(x => {
+    xss.forEach(x => {
       const _html = sanitizeStringFields({description:x});
       const _text = sanitizeStringFields({title:x});
       expect(htmlHasScriptTag(_html.description)).to.equal(0);
