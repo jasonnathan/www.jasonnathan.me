@@ -1,7 +1,7 @@
 /*globals describe, it*/
 import chai from 'chai';
 import chaiAsPromised from "chai-as-promised";
-import WPAuth from '../Wordpress';
+import WPAuth from '../WPAtuh';
 
 chai.use(chaiAsPromised);
 
@@ -18,6 +18,15 @@ let auth,
   };
 
 describe("Wordpress", function() {
+
+  describe(".setState()", function(){
+    it("should store merge a given object to the instance state", function(){
+      auth = new WPAuth();
+      const newState = {token: "two"};
+      expect(auth.state).to.eql(newState)
+    });
+  });
+
   describe(".request()", function() {
     it("should return an a request object with a json property", function() {
       auth = new WPAuth();
@@ -27,6 +36,7 @@ describe("Wordpress", function() {
       })).to.eventually.have.property('json');
     });
   });
+
   describe(".json()", function() {
     it("should throw an error if there was a problem with the request", function() {
       auth = new WPAuth();
@@ -39,6 +49,7 @@ describe("Wordpress", function() {
       expect(json).to.eventually.be.rejectedWith(Error, 'Unknown client_id.');
     });
   });
+
   describe(".storeTokenAndResolve()", function() {
     it("should return a promise that resolves to a string token", function() {
       auth = new WPAuth();
@@ -47,7 +58,7 @@ describe("Wordpress", function() {
         authUrl: auth.authUrl
       })
       .then(auth.json)
-      .then(auth.storeTokenAndResolve, auth.setState);
+      .then(auth.storeTokenAndResolve(auth.setState));
 
       expect(token).to.eventually.be.ok;
     });
@@ -60,16 +71,18 @@ describe("Wordpress", function() {
         grant_type: "password"
       })
       .then(auth.json)
-      .then(auth.storeTokenAndResolve, auth.setState)
-      .then((token) => {
+      .then(auth.storeTokenAndResolve(auth.setState))
+      .then(token => {
         expect(auth.token).to.be.equal(token);
       });
     });
-  })
+  });
+
   describe(".access_token()", function() {
     it("should return an access_token when called", function() {
       auth = new WPAuth(props);
       expect(auth.access_token()).to.eventually.be.ok;
     });
-  })
+  });
+
 });
