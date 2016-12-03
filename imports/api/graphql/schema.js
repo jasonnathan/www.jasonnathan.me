@@ -4,7 +4,7 @@ import Post from './typeDefs/Post';
 import Category from './typeDefs/Category';
 import Skill from './typeDefs/Skill';
 import Project from './typeDefs/Project';
-import {post, posts,categories,getCategoryById} from './resolvers/WPPosts';
+import {post, posts,categories,category} from './resolvers/WP/WPPosts';
 import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './resolvers/SkillsMongo';
 
 
@@ -87,7 +87,7 @@ const resolvers = {
     content: ({content:{rendered}}) => rendered,
     excerpt: ({excerpt:{rendered}}) => rendered,
     date: ({date}) => date,
-    categories:({categories}) => Promise.await(categories.map(id => getCategoryById(id)))
+    categories:({categories}) => Promise.await(categories.map(id => category(id)))
   },
   Date: {
     __parseLiteral: (ast) => new Date(ast.value),

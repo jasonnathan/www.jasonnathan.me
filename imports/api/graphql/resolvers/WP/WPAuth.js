@@ -5,21 +5,17 @@
  * an auth request or from it's internal state. This class should only ever
  * be instantiated once in a lifecycle of a program because of its internal
  * state.
- * @class Wordpress Auth
+ * @class WPAbstract
+ * @author Jason Nathan
  */
 
-/**
- * Creates a fetch global
- */
+/** Creates a fetch global */
 import 'isomorphic-fetch';
 
-/**
- * used to format the url params
- */
-import querystring from 'querystring';
+/** Base utility class */
+import WPAbstract from './WPAbstract';
 
-export default class {
-
+export default class extends WPAbstract{
   /**
    * Constructs this class with initial properties and creates the initial state
    * @type {Object} = [{
@@ -30,6 +26,7 @@ export default class {
    *   }]
    */
   constructor(props = {}){
+    super(props);
     const {grant_type = "password"} = props;
     this.props = {
       ...props,
@@ -75,34 +72,24 @@ export default class {
    * @returns {Promise}
    */
   request(props){
-    const {
-      username, password, client_secret,
-      client_id, grant_type, authUrl
-    } = props;
+    const {authUrl} = props;
+
+    const keys = [
+      "username", "password", "client_secret", "client_id", "grant_type"
+    ];
+
+    if(!props.hasOwnProperty('grant_type') || !props.grant_type){
+      props.grant_type = "password";
+    }
+
+    let queryString = keys.map(k => `${k}=${props[k]}`).join("&");
 
     return fetch(authUrl, {
       headers: {"Content-Type": 'application/x-www-form-urlencoded'},
       method: 'POST',
       compress: !0,
-      body: querystring.stringify({
-        username, password, client_secret, client_id, grant_type
-      })
+      body: queryString
     });
-  }
-
-
-  /**
-   * The first handler for after the initial request
-   *
-   * @type {Object} the Response object from the request above
-   * @returns {Promise}
-   */
-  json(response){
-    if(typeof response.json !== "function"){
-      // this will mean there is an error with the response from WordPress
-      return Promise.reject(new Error("Response object was magically returned without a json method"))
-    }
-    return response.json(); // promise
   }
 
   /**
@@ -136,7 +123,7 @@ export default class {
     }
     return this
       .request(this.props)
-      .then(this.json)
+      .then(super.json)
       .then(this.storeTokenAndResolve(this.setState))
   }
 }

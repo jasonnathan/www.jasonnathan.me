@@ -1,7 +1,7 @@
 /*globals describe, it*/
 import chai from 'chai';
 import chaiAsPromised from "chai-as-promised";
-import WPAuth from '../WPAtuh';
+import WPAuth from '../WPAuth';
 
 chai.use(chaiAsPromised);
 
@@ -23,6 +23,7 @@ describe("Wordpress", function() {
     it("should store merge a given object to the instance state", function(){
       auth = new WPAuth();
       const newState = {token: "two"};
+      auth.setState(newState);
       expect(auth.state).to.eql(newState)
     });
   });
