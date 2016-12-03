@@ -2,6 +2,7 @@
  * @class Page
  * @extends React.PureComponent
  * @description Global container used for page transisionts
+ * @author Jason Nathan
  */
 import React, {PureComponent, PropTypes} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';

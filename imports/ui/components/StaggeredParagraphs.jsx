@@ -2,6 +2,7 @@
  * @class StaggeredParagraphs
  * @extends React.PureComponent
  * @description Presentational Component for animated paragraphs used in Skills
+ * @author Jason Nathan
  */
 import React, {PureComponent, PropTypes} from 'react';
 import stylePropType from 'react-style-proptype';
@@ -89,9 +90,7 @@ export default class StaggeredParagraphs extends PureComponent {
             <p
               key={i}
               style={this.staggeredStyle(style)}
-              dangerouslySetInnerHTML={{
-                __html: paragraphs[i]
-              }}
+              dangerouslySetInnerHTML={{ __html: paragraphs[i]}}
             />
           ))}
         </article>}

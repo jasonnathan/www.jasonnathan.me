@@ -2,6 +2,7 @@
  * @class FlipBox
  * @extends React.PureComponent
  * @description CURRENTLY NOT USED
+ * @author Jason Nathan
  */
 import React, {PureComponent} from 'react';
 import {spring, presets, Motion} from 'react-motion';

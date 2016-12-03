@@ -2,6 +2,7 @@
  * @class Header
  * @extends React.PureComponent
  * @description Provides BreadCrumbs navigation for Blog and Skills Components
+ * @author Jason Nathan
  */
 import React, {PureComponent, PropTypes} from 'react';
 import {Motion, spring} from 'react-motion';
