@@ -81,15 +81,29 @@ class PostWithComments extends PureComponent{
             <div className="responsive" style={{alignItems:"flex-start", display:"flex"}}>
               <Item className="single-post" flex={2}>
                 <article className="post-content" itemScope itemType="http://schema.org/BlogPosting">
+                  <meta itemProp="author" content="Jason Nathan" />
+                  <meta itemProp="datePublished" content={post.date} />
+                  <meta itemProp="dateModified" content={post.modified} />
+                  <div itemProp="image" itemScope itemType="https://schema.org/ImageObject" style={{visibility:"hidden"}}>
+                    <meta itemProp="url" content={post.featured_media_url} />
+                  </div>
+                  <div itemProp="publisher" itemType="http://schema.org/Organization" itemScope style={{visibility:"hidden"}}>
+                    <meta itemProp="name" content="Jason Nathan" />
+                    <div itemProp="logo" itemScope itemType="https://schema.org/ImageObject">
+                      <meta itemProp="url" content="https://www.jasonnathan.com/apple-icon-180x180.png" />
+                      <meta itemProp="width" content="180" />
+                      <meta itemProp="height" content="180" />
+                    </div>
+                  </div>
                   <header>
-                    <h3 dangerouslySetInnerHTML={this.toHtml(post.title)} />
+                    <h3 itemProp="headline" dangerouslySetInnerHTML={this.toHtml(post.title)} />
                     <div className="meta">Posted <TimeAgo datetime={post.date} /></div>
                   </header>
-                  <section dangerouslySetInnerHTML={this.toHtml(post.content)} />
+                  <section dangerouslySetInnerHTML={this.toHtml(post.content)} itemProp="mainEntityOfPage"x />
                   <ReactDisqusThread
                     identifier={post.slug}
                     title={post.title}
-                    url={`https://dev.jasonnathan.com/${location.pathname}`}
+                    url={`https://www.jasonnathan.com/${location.pathname}`}
                   />
                 </article>
               </Item>

@@ -86,11 +86,11 @@ const resolvers = {
     title: ({title:{rendered}}) => rendered,
     content: ({content:{rendered}}) => rendered,
     excerpt: ({excerpt:{rendered}}) => rendered,
-    date: ({date}) => date,
+    // date: ({date}) => date,
     categories:({categories}) => Promise.await(categories.map(id => category(id)))
   },
   Date: {
-    __parseLiteral: (ast) => new Date(ast.value),
+    __parseLiteral: ({value}) => new Date(value),
     __serialize: value => value,
     __parseValue: value => value
   },

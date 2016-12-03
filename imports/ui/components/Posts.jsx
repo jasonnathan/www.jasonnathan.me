@@ -15,11 +15,12 @@ function PostsList({data:{posts, loading, error}, params}){
       {posts.map((post, i) => (
         <li
           itemScope
-          itemProp="blogPosts" 
+          itemProp="blogPosts"
           itemType="http://schema.org/BlogPosting"
-          key={i}>
-            <PostSummary post={post} />
-          </li>
+          key={i}
+        >
+          <PostSummary post={post} />
+        </li>
       ))}
     </ul>
   )

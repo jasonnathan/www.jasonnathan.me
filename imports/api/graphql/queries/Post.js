@@ -8,6 +8,8 @@ query getPostBySlug($slug: String){
     content
     author
     date
+    modified
+    featured_media_url
     categories {
       count
       slug

@@ -7,6 +7,8 @@ query getPosts($category: String){
     slug
     title
     excerpt
+    date
+    modified
     categories{
       slug
     }
