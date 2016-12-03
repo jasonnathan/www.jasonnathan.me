@@ -19,22 +19,20 @@ function About(props) {
           }
           ]}
         />
-        <div role="main">
+        <div role="main" itemScope itemType="http://schema.org/WebPage">
           <section className="content" style={{bottom:0}}>
             <div className="scroll-y">
-              <Motion
-                role="main"
-                defaultStyle={{v: -1}}
-                style={{v: spring(1, {...presets.gentle, precision: .01})}}
+              <header
+                itemScope
+                itemType="http://schema.org/WPHeader"
+                role="banner"
               >
-                {({v}) =>
-                  <StaggeredName letters="About">
-                    <small className="block" style={{opacity: v}}>
-                      A brief introduction about this website and to who I am.
-                    </small>
-                  </StaggeredName>
-                }
-              </Motion>
+                <StaggeredName letters="About">
+                  <small className="block" itemProp="description">
+                    A brief introduction about this website and to who I am.
+                  </small>
+                </StaggeredName>
+              </header>
               <div className="responsive">
                 <Panel header="The Person">{person.map((s, i) => (<p key={i}>{s}</p>))}</Panel>
                 <Panel header="The Website">{website.map((s, i) => (<p key={i}>{s}</p>))}</Panel>

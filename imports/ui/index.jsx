@@ -5,9 +5,8 @@ import Work from './Work.jsx';
 import Contact from './Contact.jsx';
 import Blog from './Blog.jsx';
 import Login from './Login.jsx';
-import PostsByCategory from './PostsByCategory.jsx';
 import Article from './Post/Article.jsx';
-import PostWithComments from './Post/PostWithComments.jsx';
+// import PostWithComments from './Post/PostWithComments.jsx';
 import Skill from './Work/Skill.jsx';
 
-export {App, Home, About, Work, Skill, Contact, Blog, Article, PostsByCategory, PostWithComments, Login}
+export {App, Home, About, Work, Skill, Contact, Blog, Article, Login}

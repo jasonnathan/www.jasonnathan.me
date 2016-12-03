@@ -58,7 +58,7 @@ class PostWithComments extends PureComponent{
     }
 
     return (
-      <div role="main">
+      <div role="main" itemScope itemType="http://schema.org/WebPage">
         <BreadCrumbsHeader
           routes={routes}
           params={params}
@@ -70,14 +70,17 @@ class PostWithComments extends PureComponent{
         <Helmet
           title={`${post.title}`}
           meta={[
-            {"name": "description", "content": `${post.content}`}
+            {"name": "description", "content": `${post.excerpt}`},
+            {"itemprop": "description", "content": `${post.excerpt}`},
+            {"itemprop": "author", "content": "Jason J. Nathan"},
+            {"name": "name", "content": `${post.title}`}
           ]}
         />
         <div className="content with-breadcrumbs">
           <div className="scroll-y">
             <div className="responsive" style={{alignItems:"flex-start", display:"flex"}}>
               <Item className="single-post" flex={2}>
-                <article className="post-content">
+                <article className="post-content" itemScope itemType="http://schema.org/BlogPosting">
                   <header>
                     <h3 dangerouslySetInnerHTML={this.toHtml(post.title)} />
                     <div className="meta">Posted <TimeAgo datetime={post.date} /></div>

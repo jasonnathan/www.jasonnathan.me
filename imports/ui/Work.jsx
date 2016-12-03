@@ -6,7 +6,6 @@ import Helmet from 'react-helmet';
 import {Loader} from 'react-loaders';
 import StaggeredName from './components/StaggeredName.jsx';
 import SkillCloud from './components/SkillCloud.jsx';
-import Page from './components/Page.jsx';
 
 export default function Work(props){
   return (
@@ -17,7 +16,7 @@ export default function Work(props){
           {"name": "description", "content": "A collection of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP"}
         ]}
       />
-      <div role="main" style={{height:"100%"}}>
+      <div role="main" style={{height:"100%"}} itemScope itemType="http://schema.org/WebPage">
         <section className="content" style={{bottom:0}}>
           <div className="scroll-y">
             <Motion

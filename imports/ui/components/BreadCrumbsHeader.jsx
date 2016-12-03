@@ -63,7 +63,7 @@ export default class Header extends PureComponent {
       display: "flex"
     }
     return (
-      <header className="header breadcrumb-container" style={_s}>
+      <header className="header breadcrumb-container" style={_s} itemProp="breadcrumb">
         {/* Animation for back button slide in */}
         <Motion {...this.motionProps()}>{({t}) => (
           <a

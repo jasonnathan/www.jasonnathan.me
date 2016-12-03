@@ -48,6 +48,7 @@ export default class StaggeredName extends PureComponent{
       >
         {interpolatingStyles => (
           <h1
+            itemProp="headline"
             style={{margin:'2rem auto 3rem auto', textAlign:'center', fontSize:'2rem'}}
             role="heading group"
             className="staggered-name"

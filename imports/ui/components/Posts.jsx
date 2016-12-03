@@ -11,8 +11,16 @@ function PostsList({data:{posts, loading, error}, params}){
     throw(error)
   }
   return (
-    <ul className="responsive" style={{padding:0}}>
-      {posts.map((post, i) => <li key={i}><PostSummary post={post} /></li>)}
+    <ul className="responsive" style={{padding:0}} itemScope itemType="http://schema.org/Blog">
+      {posts.map((post, i) => (
+        <li
+          itemScope
+          itemProp="blogPosts" 
+          itemType="http://schema.org/BlogPosting"
+          key={i}>
+            <PostSummary post={post} />
+          </li>
+      ))}
     </ul>
   )
 }

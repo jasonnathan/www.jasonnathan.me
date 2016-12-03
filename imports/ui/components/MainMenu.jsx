@@ -27,7 +27,7 @@ const MainMenu = () => {
 
   function HomeIcon(){
     return (
-      <svg width="100%" height="100%">
+      <svg width="100%" height="100%" itemProp="image">
         <title>Home</title>
         <desc>Back to JasonNathan.com&apos;s home page</desc>
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -40,15 +40,15 @@ const MainMenu = () => {
   const labelOrImg = (link, i) => {
     const {img=false, label, path} = link;
     return img ? (
-      <IndexLink key={i} activeClassName="active" to={`/${path}`}><HomeIcon /></IndexLink>
+      <IndexLink key={i} activeClassName="active" to={`/${path}`} itemProp="url"><HomeIcon /></IndexLink>
     ) : (
-      <Link key={i} activeClassName="active" to={`/${path}`}>{label}</Link>
+      <Link key={i} activeClassName="active" to={`/${path}`} itemProp="url">{label}</Link>
     )
   }
 
   return (
-    <nav role="navigation" className="mainNav">
-        {links.map((link, i) => labelOrImg(link, i))}
+    <nav role="navigation" className="mainNav" itemScope itemType="http://schema.org/SiteNavigationElement">
+      {links.map((link, i) => labelOrImg(link, i))}
     </nav>
   );
 }

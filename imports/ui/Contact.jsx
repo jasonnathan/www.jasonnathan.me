@@ -19,22 +19,20 @@ const Contact = () => {
           {"name": "description", "content": "Contact me for freelance projects, work or just for a chat"}
         ]}
       />
-      <div role="main">
+      <div role="main" itemScope itemType="http://schema.org/WebPage">
         <section className="content" style={{bottom:0}}>
           <div className="scroll-y">
-            <Motion
-              role="main"
-              defaultStyle={{v: -1}}
-              style={{v: spring(1, {...presets.gentle, precision: .01})}}
+            <header
+              itemScope
+              itemType="http://schema.org/WPHeader"
+              role="banner"
             >
-              {({v}) =>
-                <StaggeredName letters="Contact">
-                  <small className="block" style={{opacity: v}}>
-                    Contact me for freelance projects, consultation or just for a chat.
-                  </small>
-                </StaggeredName>
-              }
-            </Motion>
+              <StaggeredName letters="Contact">
+                <small className="block" itemProp="description">
+                  Contact me for freelance projects, consultation or just for a chat.
+                </small>
+              </StaggeredName>
+            </header>
             <div itemScope itemType="http://schema.org/Person" className="contact-links" style={{display:"flex", justifyContent:"center", maxWidth:"320px", margin:"auto", fontSize:"2rem", flexDirection:"column"}}>
               <h1 itemProp="name" style={{textIndent:"-10000px"}}>Jason Nathan</h1>
               <span itemProp="telephone">
@@ -46,7 +44,7 @@ const Contact = () => {
               <span itemProp="email">
                 <a href="mailto:jjnathanjr+web@gmail.com?subject=Hi+there" style={{flex:1,display:"flex"}}><EmailIcon /><small>jjnathanjr+web@gmail.com</small></a>
               </span>
-              <span itemProp="chat">
+              <span>
                 <a target="_blank" rel="nofollow noopener noreferrer" title="Click here to connect via slack" href="https://jaystalk.slack.com/messages" style={{flex:1,display:"flex"}}><SlackIcon /><small>Slack</small></a>
               </span>
             </div>

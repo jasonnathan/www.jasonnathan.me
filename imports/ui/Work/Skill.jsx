@@ -143,7 +143,7 @@ class Skill extends PureComponent{
     const projs = skill.projects;
 
     return (
-      <div role="main" style={this.getContainerStyles(skill)}>
+      <div role="main" style={this.getContainerStyles(skill)} itemScope itemType="http://schema.org/WebPage">
         <BreadCrumbsHeader
           routes={routes}
           params={params}

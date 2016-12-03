@@ -24,15 +24,26 @@ const Blog = (props) => {
     <Helmet
       title={`${title} | Jason J. Nathan`}
       meta={[
-        {"name": "description", "content": description}
+        {"name": "description", "content": description},
+        {"itemprop": "description", "content": description},
+        {"itemprop": "creator", "content": "Jason J. Nathan"},
+        {"name": "name", "content": `${title} | Jason J. Nathan`}
       ]}
     />
-    <div role="main">
+    <div role="main" itemScope itemType="http://schema.org/WebPage">
       <section className="content" style={{bottom:0}}>
         <div className="scroll-y">
-          <StaggeredName letters={title}>
-            <small>Engineering Journal, Guides, Freebies and other musings</small>
-          </StaggeredName>
+          <header
+            itemScope
+            itemType="http://schema.org/WPHeader"
+            role="banner"
+          >
+            <StaggeredName letters={title}>
+              <small itemProp="description">
+                Engineering Journal, Guides, Freebies and other musings
+              </small>
+            </StaggeredName>
+          </header>
           <Flex alignItems="flex-start" className="posts-container responsive">
             <Item flex={2}><PostsList {...props} /></Item>
             <Item column wrap alignContent="space-between" justifyContent="space-between" className="hidden-mobile" flex={1}>

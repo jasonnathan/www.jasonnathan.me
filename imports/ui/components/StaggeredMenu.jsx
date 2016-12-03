@@ -62,6 +62,7 @@ class TransitionedButton extends PureComponent {
             >
               <GlowingLine className={this.getHRClassName()} style={{top:'1px'}} />
               <span
+                itemProp="name"
                 style={{
                   color: this.getColor(percent),
                   textShadow: '-1px -1px 3px rgba(0,0,0,.5)'
@@ -89,7 +90,7 @@ export default function StaggeredMenu({items}) {
     o: spring(i === 0 ? 1 : prevStyles[i - 1].o, { precision:.01 })
   }));
   const menuItem = ({s,o}, i) => (
-    <Item wrap role="menuitem" key={`${i}Button`}>
+    <Item wrap role="menuitem" key={`${i}Button`} itemProp="url">
       <Link
         role="menuitem"
         to={items[i].route}

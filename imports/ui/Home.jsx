@@ -19,7 +19,7 @@ export default class Home extends PureComponent{
 
   render(){
     return (
-      <div>
+      <div role="main" itemScope itemType="http://schema.org/WebPage">
         <Helmet
           title="Home | Jason J. Nathan"
           meta={[
@@ -32,21 +32,19 @@ export default class Home extends PureComponent{
           file="/profile.jpg"
           dim={110}
         >
-          <Motion
-            role="main"
-            defaultStyle={{v: -1}}
-            style={{v: spring(1, {...presets.gentle, precision: .01})}}
+          <header
+            itemScope
+            itemType="http://schema.org/WPHeader"
+            role="banner"
           >
-            {({v}) =>
-              <StaggeredName letters="Jason Nathan">
-                <small className="block" style={{opacity: v}}>
-                  A Senior Web & Mobile Software Engineer based in Singapore
-                </small>
-              </StaggeredName>
-            }
-          </Motion>
+            <StaggeredName letters="Jason Nathan">
+              <small className="block">
+                A Senior Web & Mobile Software Engineer based in Singapore
+              </small>
+            </StaggeredName>
+          </header>
         </MediaElement>
-        <nav role="navigation" className="bottom-box">
+        <nav role="navigation" className="bottom-box" itemScope itemType="http://schema.org/SiteNavigationElement">
           <StaggeredMenu />
           <h6 style={{margin:"auto", textAlign:"center"}}>
             <a href="/area51">Area 51</a>
