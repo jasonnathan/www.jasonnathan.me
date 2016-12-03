@@ -1,27 +1,26 @@
 /*globals fetch*/
 import 'isomorphic-fetch';
 import querystring from 'querystring';
-import WPAuth from './Wordpress';
+import WPAuth from './WPAuth';
 
-const resolve = (h) => Promise.resolve(h);
 const {CLIENT_ID, CLIENT_SECRET, WP_USERNAME, WP_PASSWD, WP_URL} = process.env;
+
 const auth = new WPAuth({
   username: WP_USERNAME,
   password: WP_PASSWD,
   client_secret: CLIENT_SECRET,
   client_id: CLIENT_ID
-})
+});
+
+const resolve = (h) => Promise.resolve(h);
 
 
-export const getWP = (endpoint, query) => {
+const getWP = (endpoint, query) => {
   let ep = `${WP_URL}/${endpoint}`;
   ep += query ? `?${query}` : '';
   return auth
   .access_token()
-  .then(token => fetch(ep, {
-    Authorization:`Bearer ${token}`,
-    compress: !0
-  })
+  .then(token => fetch(ep, { Authorization:`Bearer ${token}`, compress: !0 })
   .then(res => {
     const totalPosts = res.headers.get('x-wp-total');
     if (totalPosts)

@@ -4,7 +4,7 @@ import Post from './typeDefs/Post';
 import Category from './typeDefs/Category';
 import Skill from './typeDefs/Skill';
 import Project from './typeDefs/Project';
-import {post, posts,categories,getCategoryById} from './resolvers/PostsWP';
+import {post, posts,categories,getCategoryById} from './resolvers/WPPosts';
 import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './resolvers/SkillsMongo';
 
 
