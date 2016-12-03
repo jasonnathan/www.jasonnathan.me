@@ -24,6 +24,7 @@
     "isomorphic-fetch": "^2.2.1",
     "loaders.css": "^0.1.2",
     "meteor-node-stubs": "^0.2.4",
+    "peacock": "^0.3.1",
     "pusher": "^1.5.0",
     "react": "^15.4.1",
     "react-addons-css-transition-group": "^15.3.2",
@@ -72,6 +73,7 @@
     "spacejam": "https://github.com/serut/spacejam/tarball/windows-suppport-rc4"
   },
   "scripts": {
+    "test": "meteor test --once --driver-package dispatch:mocha",
     "test:watch": "./start.sh test --driver-package dispatch:mocha",
     "coverage": "meteor npm run coverage:app-unit && meteor npm run coverage:app-full",
     "coverage:app-unit": "./node_modules/spacejam/bin/spacejam test --coverage 'out_lcovonly out_coverage out_html' --driver-package practicalmeteor:mocha-console-runner",
