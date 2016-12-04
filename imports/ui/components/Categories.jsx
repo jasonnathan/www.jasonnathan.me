@@ -16,13 +16,16 @@ class CategoriesList extends PureComponent{
     this.state = { loading, categories:this.getAllCategories(categories)}
   }
 
-  componentWillReceiveProps(newProps){
-    const {data:{loading, categories=[]}} = newProps;
-    this.setState({ loading, categories:this.getAllCategories(categories)})
-  }
+  // componentWillReceiveProps(newProps){
+  //   const {data:{loading, categories=[]}} = newProps;
+  //   this.setState({ loading, categories:this.getAllCategories(categories)})
+  // }
 
   getAllCategories(categories){
-    const count = categories.length ? categories.reduce((prev, curr) => prev.count + curr.count) : 0;
+    const count = categories.length
+                  ? categories.reduce((p, c) => ({count:p.count + c.count})).count
+                  : 0;
+
     return [{slug:"", name:"All", count}, ...categories]
   }
 

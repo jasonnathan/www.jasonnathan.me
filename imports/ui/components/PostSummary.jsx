@@ -8,7 +8,6 @@ function PostSummary({post, client}){
     const cat = post.categories[0].slug;
     return `/article/${cat}/${post.slug}`;
   }
-  console.log(post)
   const prefetchPost = () => {
     client.query({
       query: getPostBySlug,
