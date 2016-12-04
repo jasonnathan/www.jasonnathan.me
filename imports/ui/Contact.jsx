@@ -1,7 +1,6 @@
 /* global document*/
 import React from 'react';
 import {Flex} from 'react-flex';
-import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
 import EmailIcon from 'react-icons/lib/fa/envelope-o';
 import PhoneIcon from 'react-icons/lib/fa/phone';

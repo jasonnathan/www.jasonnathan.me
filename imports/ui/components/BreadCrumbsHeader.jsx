@@ -77,7 +77,12 @@ export default class Header extends PureComponent {
           </a>
           )}</Motion>
         {/*Original breadcrumbs component*/}
-        <Breadcrumbs routes={routes} params={params} createLink={lastCrumbResolver} resolver={(key, text) => resolver(key, text)(crumbs)}/>
+        <Breadcrumbs
+          routes={routes}
+          params={params}
+          createLink={lastCrumbResolver}
+          resolver={(key, text) => resolver(key, text)(crumbs)}
+        />
       </header>
     )
   }

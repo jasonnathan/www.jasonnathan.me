@@ -5,7 +5,7 @@ import {graphql} from 'react-apollo';
 import {Loader} from 'react-loaders';
 import getSkills from '/imports/api/graphql/queries/Skills';
 import FadeInSVG from './FadeInSVG.jsx';
-console.log(typeof Loader)
+
 const {string, number, arrayOf, shape, bool} = PropTypes;
 
 

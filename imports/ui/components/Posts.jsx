@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { graphql } from 'react-apollo';
 import getPosts from '/imports/api/graphql/queries/Posts';
 import {Loader} from 'react-loaders';
@@ -25,6 +25,16 @@ function PostsList({data:{posts, loading, error}, params}){
     </ul>
   )
 }
+
+// {data:{posts, loading, error}, params}
+// const {shape, bool, object, arrayOf} = PropTypes;
+//
+// PostsList.propTypes = {
+//  data: shape({
+//    loading: bool.isRequired,
+//    posts: arrayOf(object),
+//  }).isRequired,
+// };
 
 export default graphql(getPosts, {options: ({params:{category}}) => {
   let _opts = {ssr: true};

@@ -1,8 +1,7 @@
-import React, {PureComponent, PropTypes} from 'react';
-import {Meteor} from 'meteor/meteor';
+import React, {PureComponent} from 'react';
 import {graphql} from 'react-apollo';
 import Helmet from 'react-helmet';
-import {Flex, Item} from 'react-flex';
+import {Item} from 'react-flex';
 import {Loader} from 'react-loaders';
 import {Link} from 'react-router';
 import entities from 'entities';
@@ -37,7 +36,7 @@ class PostWithComments extends PureComponent{
   constructor(props){
     super(props);
   }
-  toHtml(val){return {__html: val}};
+  toHtml(val){return {__html: val}}
   render(){
     const {
       data:{loading, post, error},

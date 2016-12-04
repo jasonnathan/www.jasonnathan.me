@@ -2,7 +2,7 @@
  * @function CategoriesList
  * @description The Category Widget used in Articles
  */
-import React, {PureComponent} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import { graphql } from 'react-apollo';
 import {IndexLink, Link} from 'react-router';
 import {spring, presets, StaggeredMotion} from 'react-motion';
@@ -69,6 +69,19 @@ class CategoriesList extends PureComponent{
       </StaggeredMotion>
     )
   }
+}
+
+const {shape, boolean, string, number} = PropTypes;
+
+CategoriesList.propTypes = {
+  data: shape({
+    loading: boolean,
+    category: shape({
+      count: number,
+      name: string,
+      slug: string
+    })
+  })
 }
 
 export default graphql(getCategories)(CategoriesList);

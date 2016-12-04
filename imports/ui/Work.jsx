@@ -1,13 +1,12 @@
 /* global document*/
 import React from 'react';
-import {Flex, Item} from 'react-flex';
+import {Flex} from 'react-flex';
 import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
-import {Loader} from 'react-loaders';
 import StaggeredName from './components/StaggeredName.jsx';
 import SkillCloud from './components/SkillCloud.jsx';
 
-export default function Work(props){
+export default function Work(){
   return (
     <Flex row alignItems="center" className="noscroll" justifyContent="center" style={{height: '100%'}}>
       <Helmet

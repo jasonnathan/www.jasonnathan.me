@@ -37,9 +37,9 @@ export default class Page extends PureComponent{
   }
 }
 
+const {node, string, arrayOf, shape, oneOfType} = PropTypes;
+
 Page.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ])
+  params: shape({ slug: string, skill: string}),
+  children: oneOfType([ arrayOf(node), node ])
 }

@@ -50,10 +50,8 @@ class SkillEditor extends PureComponent {
     let _vars = {description: content.getPlainText("<br />")};
 
     keys.map(k => _vars[k] = this.state[k]);
-    console.log(_vars);
     submit(_vars)
-    .then(result => {
-      console.log("Submission results", result)
+    .then(() => {
       this.cancelEdit();
       if(__typename === "Project"){
         this.state.refreshSkill();
@@ -61,7 +59,7 @@ class SkillEditor extends PureComponent {
     })
     .catch(e => console.error(e));
 
-  };
+  }
   handleInput(e, k){
     const _ = {}
     _[k] = e.target.value.trim();
@@ -75,7 +73,7 @@ class SkillEditor extends PureComponent {
           <input
             type="text"
             value={title}
-            onChange={(e) => handleInput(e, "title")}
+            onChange={(e) => this.handleInput(e, "title")}
           />
         </div>
         <div style={styles.editor} onClick={this.focus}>
@@ -181,19 +179,17 @@ const updateProject = gql`
 `;
 
 
-SkillEditor = graphql(updateSkill, {
-  props: ({mutate, ownProps:{__typename, _id}}) => {
+export default graphql(updateSkill, {
+  props: ({mutate}) => {
     return{
       updateSkill: (skill) => mutate({ variables: skill }),
     }
   },
 })(graphql(updateProject, {
-  props: ({mutate, ownProps:{__typename, _id}}) => {
+  props: ({mutate, ownProps:{_id}}) => {
     const index = +_id.split("_")[1];
     return {
       updateProject: (skill) => mutate({ variables: {...skill, index} }),
     }
   },
 })(SkillEditor));
-
-export default SkillEditor;

@@ -1,8 +1,6 @@
 /* global document*/
 import React, {PureComponent} from 'react';
-import {spring, presets, Motion} from 'react-motion';
 import Helmet from 'react-helmet';
-import {Meteor} from 'meteor/meteor'
 import StaggeredMenu from './components/StaggeredMenu.jsx';
 import StaggeredName from './components/StaggeredName.jsx';
 import MediaElement from './components/MediaElement.jsx';

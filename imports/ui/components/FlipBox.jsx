@@ -4,7 +4,7 @@
  * @description CURRENTLY NOT USED
  * @author Jason Nathan
  */
-import React, {PureComponent} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import {spring, presets, Motion} from 'react-motion';
 import tinycolor from 'tinycolor2';
 import * as colors from '/imports/api/colors';
@@ -174,3 +174,14 @@ export const SVGCircleText = ({num}) => (
     </g>
   </svg>
 );
+const {string, oneOfType, number} = PropTypes
+
+SVGCircleText.propTypes = {
+  num: oneOfType([string, number])
+}
+
+FlipBox.propTypes = {
+  numText: string,
+  bottomLabelText: string,
+  topLabelText: string
+}

@@ -1,9 +1,8 @@
 /* global document*/
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Flex, Item} from 'react-flex';
 import Helmet from 'react-helmet';
 import StaggeredName from './components/StaggeredName.jsx';
-import MainMenu from './components/MainMenu.jsx';
 import PostsList from './components/Posts.jsx';
 import CategoriesList from './components/Categories.jsx';
 // import Perf from 'react-addons-perf';
@@ -56,4 +55,11 @@ const Blog = (props) => {
   </div>
   )
 }
+
+Blog.propTypes = {
+  params: PropTypes.shape({
+    category: PropTypes.string
+  })
+}
+
 export default Blog;

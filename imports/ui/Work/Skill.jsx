@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import {Meteor} from 'meteor/meteor';
 import {Link} from 'react-router';
 import {graphql} from 'react-apollo';
 import {Loader} from 'react-loaders';
@@ -13,8 +14,6 @@ import FooterTransition from '../components/FooterTransition.jsx';
 import StaggeredParagraphs from '../components/StaggeredParagraphs.jsx';
 import StaggeredName from '../components/StaggeredName.jsx';
 import SkillEditor from '../components/SkillEditor.jsx';
-
-const skillItem = skill => SkillsData.find(a => a.to === skurl(skill));
 
 const skillResolver = (key, text) => skill => key === ':skill' ? skill : text;
 
@@ -229,7 +228,6 @@ const styles = {
   edit: {
     backgroundColor: "rgba(0,0,0,.25)",
     color:"orange",
-    border:"none",
     textAlign: 'right',
     right:"1rem",
     top:"1rem",
