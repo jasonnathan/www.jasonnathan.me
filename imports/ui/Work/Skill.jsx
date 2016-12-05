@@ -28,6 +28,7 @@ class Skill extends PureComponent{
   constructor(props){
     super(props);
     const {skill={title:"", description:"", projects:[]}} = props.data
+    console.log(props.params, props.location, props.route)
     this.state = {
       currentIndex: 0,
       isLoggedIn: props.userId,
@@ -38,12 +39,12 @@ class Skill extends PureComponent{
       this.setState({editing: !this.state.editing});
     }
   }
-
-  componentWillReceiveProps({data: {skill}}){
-    if(skill){
-      this.setState({skill});
-    }
-  }
+  //
+  // componentWillReceiveProps({data: {skill}}){
+  //   if(skill){
+  //     this.setState({skill});
+  //   }
+  // }
 
   getContainerStyles(skill){
     const ci = this.state.currentIndex;
@@ -69,7 +70,7 @@ class Skill extends PureComponent{
 
   getProjectDefaults(p){
     if(!p)
-      return;
+      return p;
     if(!p.description){
       p.description = this.getdefaultDescription();
     }
