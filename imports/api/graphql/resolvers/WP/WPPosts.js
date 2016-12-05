@@ -1,5 +1,6 @@
 /*globals fetch*/
 import 'isomorphic-fetch';
+import {highlight} from '../../resolvers/PostSyntaxHighlighter';
 import WPAuth from './WPAuth';
 import WPRequest from './WPRequest';
 
@@ -51,7 +52,14 @@ export const post = (_, {id, slug}) => {
   }
   if (slug) {
     return WP.fetch('posts', `slug=${slug}`)
-      .then(posts => Promise.resolve(posts.length ? posts[0] : {}));
+      .then(posts => {
+        let post = {}
+        if(posts.length){
+          post = posts[0];
+          post.content.rendered = highlight(post.content.rendered);
+        }
+        return Promise.resolve(post)
+      });
   }
 }
 
