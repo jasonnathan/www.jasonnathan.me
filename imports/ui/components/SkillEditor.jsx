@@ -63,7 +63,7 @@ class SkillEditor extends PureComponent {
   handleInput(e, k){
     const _ = {}
     _[k] = e.target.value.trim();
-    this.setState(_)
+    this.setState(_);
   }
   render() {
     const {editorState, title, featuredImage, to} = this.state;
@@ -89,7 +89,7 @@ class SkillEditor extends PureComponent {
             type="text"
             className="url"
             value={to}
-            onChange={(e) => this.handleInput(e, "url")}
+            onChange={(e) => this.handleInput(e, "to")}
           />
           <input
             type="text"
