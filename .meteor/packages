@@ -28,5 +28,4 @@ dispatch:mocha-phantomjs
 dispatch:mocha
 apollo
 lmieulet:meteor-coverage
-practicalmeteor:mocha@2.4.5_6
 practicalmeteor:mocha-console-runner
