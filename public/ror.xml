@@ -6,7 +6,7 @@
 
 <item>
      <link>https://www.jasonnathan.com/</link>
-     <title></title>
+     <title>Freelance Software Engineer</title>
      <description>A senior software engineer, writer, teacher and leader based in Singapore.</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>0</ror:sortOrder>
@@ -14,7 +14,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/about</link>
-     <title></title>
+     <title>Freelance web developer</title>
      <description>A senior software engineer, writer, teacher and team-lead based in Singapore.</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>1</ror:sortOrder>
@@ -22,7 +22,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work</link>
-     <title></title>
+     <title>My Work</title>
      <description>A collection of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>1</ror:sortOrder>
@@ -30,7 +30,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/contact</link>
-     <title></title>
+     <title>Contcact Page</title>
      <description>Contact me for freelance projects, work or just for a chat</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>1</ror:sortOrder>
@@ -38,23 +38,15 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/articles</link>
-     <title></title>
+     <title>Blog</title>
      <description>Engineering Journal, Guides, Freebies and other musings</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>1</ror:sortOrder>
      <ror:resourceOf>sitemap</ror:resourceOf>
 </item>
 <item>
-     <link>https://www.jasonnathan.com/area51</link>
-     <title></title>
-     <description>Restricted Area</description>
-     <ror:updatePeriod>daily</ror:updatePeriod>
-     <ror:sortOrder>1</ror:sortOrder>
-     <ror:resourceOf>sitemap</ror:resourceOf>
-</item>
-<item>
      <link>https://www.jasonnathan.com/work/reactjs</link>
-     <title></title>
+     <title>Work > ReactJS</title>
      <description>Have a look at stuff I&amp;#x27;ve done with ReactJS</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -62,7 +54,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/d3</link>
-     <title></title>
+     <title>Work > D3</title>
      <description>Have a look at stuff I&amp;#x27;ve done with D3</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -70,7 +62,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/knockout</link>
-     <title></title>
+     <title>Work > KnockoutJS</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Knockout Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -78,7 +70,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/less</link>
-     <title></title>
+     <title>Work > Less</title>
      <description>Have a look at stuff I&amp;#x27;ve done with LESS</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -86,7 +78,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/javascript</link>
-     <title></title>
+     <title>Work > JavaScript</title>
      <description>Have a look at stuff I&amp;#x27;ve done with JavaScript Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -94,7 +86,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/php</link>
-     <title></title>
+     <title>Work > Php</title>
      <description>Have a look at stuff I&amp;#x27;ve done with PHP Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -102,7 +94,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/nodejs</link>
-     <title></title>
+     <title>Work > NodeJS</title>
      <description>Have a look at stuff I&amp;#x27;ve done with NodeJS</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -110,7 +102,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/codeigniter</link>
-     <title></title>
+     <title>Work > Codeigniter</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Codeigniter PHP</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -118,7 +110,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/kohana</link>
-     <title></title>
+     <title>Work > Kohana</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Kohana PHP</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -126,7 +118,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/meteor</link>
-     <title></title>
+     <title>Work > Meteor JS</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Meteor Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -134,7 +126,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/sailsjs</link>
-     <title></title>
+     <title>Work > SailsJS</title>
      <description>Have a look at stuff I&amp;#x27;ve done with SailsJS Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -142,7 +134,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/cordova</link>
-     <title></title>
+     <title>Work > Cordova</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Cordova Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -150,7 +142,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/aws</link>
-     <title></title>
+     <title>Work > AWS</title>
      <description>Have a look at stuff I&amp;#x27;ve done with AWS</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -158,7 +150,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/digitalocean</link>
-     <title></title>
+     <title>Work > Digital Ocean</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Digital Ocean</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -166,7 +158,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/graphql</link>
-     <title></title>
+     <title>Work > GraphQL</title>
      <description>Have a look at stuff I&amp;#x27;ve done with GraphQL</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -174,7 +166,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/socketio</link>
-     <title></title>
+     <title>Work > SocketIO</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Socket IO</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -182,7 +174,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/apollostack</link>
-     <title></title>
+     <title>Work > ApolloStack</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Apollo Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -190,7 +182,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/redux</link>
-     <title></title>
+     <title>Work > Redux</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Redux Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -198,7 +190,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/mocha</link>
-     <title></title>
+     <title>Work > Mocha</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Mocha Testing</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -206,7 +198,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/jenkins</link>
-     <title></title>
+     <title>Work > Jenkins</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Jenkins CI</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -214,7 +206,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/strider</link>
-     <title></title>
+     <title>Work > Strider</title>
      <description>Have a look at stuff I&amp;#x27;ve done with Strider CD Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -222,7 +214,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/git</link>
-     <title></title>
+     <title>Work > Git</title>
      <description>Have a look at stuff I&amp;#x27;ve done with GIT</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -326,7 +318,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/articles/ramblings</link>
-     <title></title>
+     <title>Work > Articles > Ramblings</title>
      <description>Articles filed in &amp;#x27;RAMBLINGS&amp;#x27;</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -334,7 +326,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/articles/reactjs</link>
-     <title></title>
+     <title>Work > Articles > ReactJS</title>
      <description>Articles filed in &amp;#x27;REACTJS&amp;#x27;</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -342,7 +334,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/articles/wordpress</link>
-     <title></title>
+     <title>Work > Articles > WordPress</title>
      <description>Articles filed in &amp;#x27;WORDPRESS&amp;#x27;</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>2</ror:sortOrder>
@@ -350,7 +342,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/reactjs/docviser</link>
-     <title></title>
+     <title>Work > ReactJS > Heardable</title>
      <description>Have a look at stuff I&amp;#x27;ve done with ReactJS</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>3</ror:sortOrder>
@@ -358,7 +350,7 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/d3/heardable</link>
-     <title></title>
+     <title>Work > D3 > Heardable</title>
      <description>Have a look at stuff I&amp;#x27;ve done with D3</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>3</ror:sortOrder>
@@ -366,23 +358,23 @@
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/php/ppsg</link>
-     <title></title>
-     
+     <title>Work > PHP > Private Property Singapore</title>
+
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>3</ror:sortOrder>
      <ror:resourceOf>sitemap</ror:resourceOf>
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/php/realtasia</link>
-     <title></title>
-     
+     <title>Work > PHP > RealtAsia</title>
+
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>3</ror:sortOrder>
      <ror:resourceOf>sitemap</ror:resourceOf>
 </item>
 <item>
      <link>https://www.jasonnathan.com/work/php/heardable</link>
-     <title></title>
+     <title>Work > PHP > Heardable</title>
      <description>Have a look at stuff I&amp;#x27;ve done with PHP Projects</description>
      <ror:updatePeriod>daily</ror:updatePeriod>
      <ror:sortOrder>3</ror:sortOrder>
@@ -390,4 +382,3 @@
 </item>
 </channel>
 </rss>
-  
