@@ -4,8 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 <url>
   <loc>https://www.jasonnathan.com/</loc>
   <changefreq>daily</changefreq>
@@ -28,6 +26,11 @@
 </url>
 <url>
   <loc>https://www.jasonnathan.com/articles</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.jasonnathan.com/area51</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
@@ -167,17 +170,37 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>https://www.jasonnathan.com/article/ramblings/remote-work-for-the-best-freelancers</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://www.jasonnathan.com/article/reactjs/how-to-ssr-with-apollostack-and-meteor-react-router-ssr</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.jasonnathan.com/article/ramblings/a-wordpress-blog-well-kinda</loc>
+  <loc>https://www.jasonnathan.com/article/wordpress/a-wordpress-blog-well-kinda</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.jasonnathan.com/article/gsap/building-a-zoomable-user-interface-with-meteorjs-gsap</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.jasonnathan.com/article/wordpress/wordpress-mvc-plugin-development</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.jasonnathan.com/articles/</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.jasonnathan.com/articles/gsap</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
@@ -188,6 +211,11 @@
 </url>
 <url>
   <loc>https://www.jasonnathan.com/articles/reactjs</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.jasonnathan.com/articles/wordpress</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
@@ -212,7 +240,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.jasonnathan.com/work/php/Heardable</loc>
+  <loc>https://www.jasonnathan.com/work/php/heardable</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
