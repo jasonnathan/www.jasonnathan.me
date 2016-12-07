@@ -28,9 +28,10 @@ class Skill extends PureComponent{
   constructor(props){
     super(props);
     const {skill={title:"", description:"", projects:[]}} = props.data
+    const {location} = props;
+
     this.state = {
-      currentIndex: 0,
-      isLoggedIn: props.userId,
+      currentIndex: skill ? this.getCurrentIndex(skill, location) : 0,
       editing: false,
       skill
     }
@@ -39,13 +40,17 @@ class Skill extends PureComponent{
     }
   }
 
+  getCurrentIndex(skill, location){
+    let match = location.pathname;
+    return Number(skill.projects.map((p,i) => p.to === match ? i+1 : 0).join(""));
+  }
+
   componentWillReceiveProps({data: {skill}, location}){
     if(skill){
       this.setState({skill});
-      let match = location.pathname;
-      let currentIndex = skill.projects.map((p,i) => p.to === match ? i+1 : null).join("");
+      let currentIndex = this.getCurrentIndex(skill, location)
       if(currentIndex){
-        this.setState({currentIndex})
+        this.setState({currentIndex});
       }
     }
   }
@@ -89,8 +94,8 @@ class Skill extends PureComponent{
     this.props.data.refetch();
   }
 
-  navigateToProj(e,p, idx){
-    e.preventDefault();
+  navigateToProj(e, idx){
+    e && e.preventDefault();
     this.setState({editing:false, currentIndex: idx});
   }
 
@@ -171,7 +176,7 @@ class Skill extends PureComponent{
                 <SkillEditor
                   {...skill}
                   description={description}
-                  setEditingState={(state) => this.setEditingState(state)}
+                  cancelEdit={() => this.setEditingState(false)}
                   refreshSkill={() => this.refreshSkill()}
                 />
               ) : <StaggeredParagraphs description={description} />}
@@ -190,7 +195,7 @@ class Skill extends PureComponent{
                     <SkillEditor
                       {...p}
                       _id={skill._id  +"_" + i}
-                      setEditingState={(state) => this.setEditingState(state)}
+                      cancelEdit={() => this.setEditingState(false)}
                       refreshSkill={() => this.refreshSkill()}
                     />
                   ) : (
@@ -204,13 +209,13 @@ class Skill extends PureComponent{
         <FooterTransition>
           <ul className="bottom-tabs" style={{maxWidth:`${(projs.length + 1) * 170}px`}}>
             <li>
-              <a href={skill.to} className={this.isSelected(0)} onClick={(e) => this.navigateToProj(e, skill, 0)}>
+              <a href={skill.to} className={this.isSelected(0)} onClick={(e) => this.navigateToProj(e, 0)}>
                 Overview
               </a>
             </li>
             {projs.map((p, i) => (
               <li key={p.to}>
-                <a className={this.isSelected(i+1)} onClick={(e) => this.navigateToProj(e,p, i+1)} href={p.to}>
+                <a className={this.isSelected(i+1)} onClick={(e) => this.navigateToProj(e, i+1)} href={p.to}>
                   {p.title}
                 </a>
               </li>

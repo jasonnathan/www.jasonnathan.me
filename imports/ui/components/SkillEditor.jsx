@@ -16,31 +16,27 @@ class SkillEditor extends PureComponent {
       description="Please enter text",
       title="New Title",
       featuredImage,
-      setEditingState,
       refreshSkill
     } = props;
 
     this.state = {
       editorState: EditorState.createWithContent(ContentState.createFromText(description, "<br />")),
-      _id, to, title, featuredImage, setEditingState, refreshSkill
+      _id, to, title, featuredImage, refreshSkill
     };
 
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => this.setState({editorState});
   }
-  componentWillReceiveProps({description, _id, to, title, featuredImage, setEditingState, refreshSkill}){
+  componentWillReceiveProps({description, _id, to, title, featuredImage, refreshSkill}){
     if(description){
       const content = ContentState.createFromText(description, "<br />");
       this.setState({
         editorState:EditorState.createWithContent(content),
-        _id, to, title, featuredImage, setEditingState, refreshSkill
+        _id, to, title, featuredImage, refreshSkill
       })
     }
   }
 
-  cancelEdit(){
-    this.state.setEditingState(false)
-  }
 
   logState(){
     const content = this.state.editorState.getCurrentContent();
@@ -52,7 +48,7 @@ class SkillEditor extends PureComponent {
     keys.map(k => _vars[k] = this.state[k]);
     submit(_vars)
     .then(() => {
-      this.cancelEdit();
+      this.props.cancelEdit();
       if(__typename === "Project"){
         this.state.refreshSkill();
       }
