@@ -40,11 +40,6 @@ class Skill extends PureComponent{
     }
   }
 
-  getCurrentIndex(skill, location){
-    let match = location.pathname;
-    return Number(skill.projects.map((p,i) => p.to === match ? i+1 : 0).join(""));
-  }
-
   componentWillReceiveProps({data: {skill}, location}){
     if(skill){
       this.setState({skill});
@@ -54,6 +49,19 @@ class Skill extends PureComponent{
       }
     }
   }
+
+  getCurrentIndex(skill, location){
+    const match = location.pathname;
+    const { projects } = skill;
+    let idx = 0;
+    projects.forEach( (p,i) => {
+      if(p.to === match) {
+        idx = i;
+      }
+    });
+    return idx;
+  }
+
 
   getContainerStyles(skill){
     const ci = this.state.currentIndex;
