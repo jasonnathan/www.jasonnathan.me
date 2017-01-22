@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import {Meteor} from 'meteor/meteor';
 import {Link} from 'react-router';
 import {graphql} from 'react-apollo';
@@ -15,6 +15,8 @@ import StaggeredParagraphs from '../components/StaggeredParagraphs.jsx';
 import StaggeredName from '../components/StaggeredName.jsx';
 import SkillEditor from '../components/SkillEditor.jsx';
 
+import { getCurrentIndex, getdefaultDescription } from '../../utils';
+
 const skillResolver = (key, text) => skill => key === ':skill' ? skill : text;
 
 const lastCrumbIsString = (link, key, text, index, routes) => {
@@ -27,45 +29,25 @@ const lastCrumbIsString = (link, key, text, index, routes) => {
 class Skill extends PureComponent{
   constructor(props){
     super(props);
-    const {skill={title:"", description:"", projects:[]}} = props.data
+    const { skill={ title:"", description:"", projects:[] } } = props.data
     const {location} = props;
 
     this.state = {
-      currentIndex: skill ? this.getCurrentIndex(skill, location) : 0,
-      editing: false,
-      skill
-    }
-    this.onEdit = () => {
-      this.setState({editing: !this.state.editing});
+      currentIndex: getCurrentIndex(skill, location), editing: false, skill
     }
   }
 
   componentWillReceiveProps({data: {skill}, location}){
     if(skill){
-      this.setState({skill});
-      let currentIndex = this.getCurrentIndex(skill, location)
-      if(currentIndex){
-        this.setState({currentIndex});
-      }
+      this.setState({skill, currentIndex: getCurrentIndex(skill, location)});
     }
   }
 
-  getCurrentIndex(skill, location){
-    const match = location.pathname;
-    const { projects } = skill;
-    let idx = 0;
-    projects.forEach( (p,i) => {
-      if(p.to === match) {
-        idx = i;
-      }
-    });
-    return idx;
-  }
-
-
   getContainerStyles(skill){
-    const ci = this.state.currentIndex;
-    let img = ci === 0 ? skill.featuredImage : skill.projects[ci-1].featuredImage;
+    const { projects } = skill;
+    const { currentIndex } = this.state;
+    const ci = currentIndex > projects.length ? 0 : currentIndex;
+    let img = ci === 0 ? skill.featuredImage : projects[ci-1].featuredImage;
     img = img || '/screenshots/work-in-progress.jpg';
     return {
       position:"fixed",
@@ -81,25 +63,9 @@ class Skill extends PureComponent{
     }
   }
 
-  setEditingState(state){
-    this.setState({editing:state});
-  }
-
-  getProjectDefaults(p){
-    if(!p)
-      return p;
-    if(!p.description){
-      p.description = this.getdefaultDescription();
-    }
-    return p;
-  }
-
-  getdefaultDescription(){
-    return `<h2 style="text-align:center">WORK IN PROGRESS</h2><br />Development for this website <a target="_blank" href="https://github.com/jasonnathan/jasonnathan-react.com/commit/e563cce22f79f261e06cd155524603974bb4da6a"> began ${daysPast} days ago</a>. The <a href="https://github.com/jasonnathan/jasonnathan-react.com/commit/db81b68dc10aa7f50b4dc73988a55dc14db605d7" target="_blank"> first article was written ${contentPast} days ago</a>.<br />Content is being uploaded everyday, please be patient.<br />In the meantime, look out for items that are marked &check;`
-  }
-
-  refreshSkill(){
-    this.props.data.refetch();
+  getProjectDefaults(p = {}){
+    const { description = getdefaultDescription() } = p;
+    return { ...p, description };
   }
 
   navigateToProj(e, idx){
@@ -120,13 +86,21 @@ class Skill extends PureComponent{
   }
 
   showAdminButtons(){
-    if(this.props.userId && !this.state.editing)
-      return (
-        <div className="buttons" style={styles.buttons}>
-          <button onClick={this.onEdit} style={styles.edit}><EditIcon /></button>
-          <button onClick={() => this.addProject()} style={styles.edit}><AddIcon /></button>
-        </div>
-      )
+    const { userId } =  this.props;
+    const { editing } = this.state;
+    if(!userId || editing)
+      return null;
+
+    return (
+      <div className="buttons" style={styles.buttons}>
+        <button onClick={() => this.setState({editing: !editing})} style={styles.edit}>
+          <EditIcon />
+        </button>
+        <button onClick={() => this.addProject()} style={styles.edit}>
+          <AddIcon />
+        </button>
+      </div>
+    )
   }
 
   isSelected(idx){
@@ -141,21 +115,21 @@ class Skill extends PureComponent{
       title: `New ${title} Project ${index}`,
       featuredImage: '/screenshots/work-in-progress.jpg',
       to:`${to}/new-project-${index}`,
-      description: this.getdefaultDescription()
+      description: getdefaultDescription()
     }
     skill.projects.push(project);
     this.setState({skill, currentIndex:index});
   }
 
   render(){
-    const {data:{loading}, routes, params} = this.props;
+    const {data: {loading, refetch}, routes, params} = this.props;
     if(loading)
       return (<div className="centered-loader" style={{paddingTop:'25vh'}}>
         <Loader type="ball-triangle-path" />
       </div>);
 
-    const {skill} = this.state;
-    const description = skill.description || this.getdefaultDescription();
+    const { skill } = this.state;
+    const description = skill.description || getdefaultDescription();
 
     const projs = skill.projects;
 
@@ -184,8 +158,8 @@ class Skill extends PureComponent{
                 <SkillEditor
                   {...skill}
                   description={description}
-                  cancelEdit={() => this.setEditingState(false)}
-                  refreshSkill={() => this.refreshSkill()}
+                  cancelEdit={() => this.setState({editing:false})}
+                  refreshSkill={() => refetch()}
                 />
               ) : <StaggeredParagraphs description={description} />}
             </div>
@@ -203,8 +177,8 @@ class Skill extends PureComponent{
                     <SkillEditor
                       {...p}
                       _id={skill._id  +"_" + i}
-                      cancelEdit={() => this.setEditingState(false)}
-                      refreshSkill={() => this.refreshSkill()}
+                      cancelEdit={() => this.setState({editing:false})}
+                      refreshSkill={() => refetch()}
                     />
                   ) : (
                     <StaggeredParagraphs description={p.description} />
@@ -235,8 +209,17 @@ class Skill extends PureComponent{
   }
 }
 
-const daysPast = Math.round(Math.abs(new Date() - new Date("2016-10-24")) / 8.64e7);
-const contentPast = Math.round(Math.abs(new Date() - new Date("2016-11-17")) / 8.64e7);
+const { shape, string, array, func, bool, object } = PropTypes;
+
+Skill.propTypes = {
+  data: shape({ loading: bool, refetch: func, skill: object }),
+  params: shape({ skill: string }),
+  userId: string,
+  location: shape({pathname: string}),
+  routes: array,
+  router: shape({ goBack: func })
+}
+
 const styles = {
   buttons:{
     margin:"1px auto auto",
@@ -262,17 +245,7 @@ const styles = {
 }
 
 export default graphql(getSkill, {
-  options: ({params}) => {
-    let opts = {ssr: true};
-    if(!params)
-      return opts;
-
-    return {
-      ...opts, variables: { to: skurl(params.skill) }
-    };
-  }
-})( createContainer( () => {
-  return {
-    userId: Meteor.userId()
-  };
-}, Skill));
+  options: ({ params: { skill } }) => skill
+    ? { ssr: true, variables: { to: skurl(skill) } }
+    : { ssr: true }
+})(createContainer(() => ({ userId: Meteor.userId() }), Skill));
