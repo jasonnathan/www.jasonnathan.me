@@ -16,10 +16,10 @@ class CategoriesList extends PureComponent{
     this.state = { loading, categories:this.getAllCategories(categories)}
   }
 
-  // componentWillReceiveProps(newProps){
-  //   const {data:{loading, categories=[]}} = newProps;
-  //   this.setState({ loading, categories:this.getAllCategories(categories)})
-  // }
+  componentWillReceiveProps(newProps){
+    const {data:{loading, categories=[]}} = newProps;
+    this.setState({ loading, categories:this.getAllCategories(categories)})
+  }
 
   getAllCategories(categories){
     const count = categories.length
