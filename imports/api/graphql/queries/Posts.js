@@ -13,7 +13,9 @@ query getPosts($category: String){
       slug
     }
     author
-    featured_media_url
+    featuredImage {
+      uri
+    }
   }
 }
 `
