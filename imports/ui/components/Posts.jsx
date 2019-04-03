@@ -26,16 +26,6 @@ function PostsList({data:{posts, loading, error}, params}){
   )
 }
 
-// {data:{posts, loading, error}, params}
-// const {shape, bool, object, arrayOf} = PropTypes;
-//
-// PostsList.propTypes = {
-//  data: shape({
-//    loading: bool.isRequired,
-//    posts: arrayOf(object),
-//  }).isRequired,
-// };
-
 export default graphql(getPosts, {options: ({params:{category}}) => {
   let _opts = {ssr: true};
   if(category){
