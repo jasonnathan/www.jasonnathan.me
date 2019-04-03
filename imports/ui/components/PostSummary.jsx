@@ -21,7 +21,7 @@ function PostSummary({post, client}){
         <meta itemProp="datePublished" content={post.date} />
         <meta itemProp="dateModified" content={post.modified} />
         <div itemProp="image" itemScope itemType="https://schema.org/ImageObject" style={{visibility:"hidden"}}>
-          <meta itemProp="url" content={post.featured_media_url} />
+          <meta itemProp="url" content={post.featuredImage.uri} />
         </div>
         <div itemProp="publisher" itemType="http://schema.org/Organization" itemScope style={{visibility:"hidden"}}>
           <meta itemProp="name" content="Jason Nathan" />
