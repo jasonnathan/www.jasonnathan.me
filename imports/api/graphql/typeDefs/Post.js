@@ -23,6 +23,7 @@ type Post {
   sticky: Boolean
   format: String
   meta: JSON
+  featuredImage: JSON
   featured_media_url: String
   _links: JSON
 }`
