@@ -1,6 +1,8 @@
-node_modules/
+node_modules
 notes.txt
 start.sh
 .deploy
 .coverage
 cover.sh
+npm-debug.log
+.vscode
