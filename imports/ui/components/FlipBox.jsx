@@ -4,7 +4,8 @@
  * @description CURRENTLY NOT USED
  * @author Jason Nathan
  */
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {spring, presets, Motion} from 'react-motion';
 import tinycolor from 'tinycolor2';
 import * as colors from '/imports/api/colors';

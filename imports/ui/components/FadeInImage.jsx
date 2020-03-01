@@ -5,7 +5,8 @@
  * @description a default Image component that fades in an image on load
  * @author Jason Nathan
  */
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import stylePropType from 'react-style-proptype';
 
 export default class FadeInImage extends PureComponent {

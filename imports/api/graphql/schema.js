@@ -7,6 +7,23 @@ import Project from './typeDefs/Project';
 import {post, posts,categories,category} from './resolvers/WP/WPPosts';
 import {skills,skill,insertSkill,deleteSkill,updateSkill,updateProject} from './resolvers/SkillsMongo';
 
+const parseJSONLiteral = (ast) => {
+  switch (ast.kind) {
+    case Kind.STRING:
+    case Kind.BOOLEAN:
+      return ast.value;
+    case Kind.INT:
+    case Kind.FLOAT:
+      return parseFloat(ast.value);
+    case Kind.OBJECT: {
+      return Object.create(null);
+    }
+    case Kind.LIST:
+      return ast.values.map(parseJSONLiteral);
+    default:
+      return null;
+  }
+}
 
 const RootQuery = `
 type SuccessResponse {
@@ -98,24 +115,6 @@ const resolvers = {
     __parseLiteral: parseJSONLiteral,
     __serialize: value => value,
     __parseValue: value => value,
-  }
-}
-
-const parseJSONLiteral = (ast) => {
-  switch (ast.kind) {
-    case Kind.STRING:
-    case Kind.BOOLEAN:
-      return ast.value;
-    case Kind.INT:
-    case Kind.FLOAT:
-      return parseFloat(ast.value);
-    case Kind.OBJECT: {
-      return Object.create(null);
-    }
-    case Kind.LIST:
-      return ast.values.map(parseJSONLiteral);
-    default:
-      return null;
   }
 }
 

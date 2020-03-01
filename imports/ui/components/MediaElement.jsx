@@ -3,7 +3,8 @@
  * @description A simple component for centering an image on top of text below
  * it
  */
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import FadeInImage from './FadeInImage.jsx'
 
 const MediaElement = ({

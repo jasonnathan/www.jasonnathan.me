@@ -4,7 +4,8 @@
  * @description Provides the animated tabs on the Skill footer area
  * @author Jason Nathan
  */
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {Motion, spring} from 'react-motion';
 
 export default class FooterTransition extends PureComponent{
