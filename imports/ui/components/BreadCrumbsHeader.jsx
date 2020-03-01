@@ -4,7 +4,8 @@
  * @description Provides BreadCrumbs navigation for Blog and Skills Components
  * @author Jason Nathan
  */
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {Motion, spring} from 'react-motion';
 import stylePropType from 'react-style-proptype';
 import Breadcrumbs from 'react-router-breadcrumbs';

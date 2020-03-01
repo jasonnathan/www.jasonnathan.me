@@ -1,5 +1,6 @@
 /* global document*/
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Flex, Item} from 'react-flex';
 import Helmet from 'react-helmet';
 import StaggeredName from './components/StaggeredName.jsx';

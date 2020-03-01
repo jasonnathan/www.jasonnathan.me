@@ -4,7 +4,8 @@
  * @description Presentational Component for animated paragraphs used in Skills
  * @author Jason Nathan
  */
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import stylePropType from 'react-style-proptype';
 import {StaggeredMotion, spring} from 'react-motion';
 

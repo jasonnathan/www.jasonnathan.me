@@ -2,7 +2,8 @@
  * @function Panel
  * @description A Panel Component used in About
  */
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const panelStyles = {
   padding:'.5rem',

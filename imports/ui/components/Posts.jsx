@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import getPosts from '/imports/api/graphql/queries/Posts';
 import {Loader} from 'react-loaders';

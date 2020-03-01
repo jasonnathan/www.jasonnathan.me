@@ -2,7 +2,8 @@
  * @function CategoriesList
  * @description The Category Widget used in Articles
  */
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import {IndexLink, Link} from 'react-router';
 import {spring, presets, StaggeredMotion} from 'react-motion';

@@ -5,7 +5,8 @@
  * @description a default SVG component that fades in and caches SVGs
  * @author Jason Nathan
  */
-import React, {PureComponent, PropTypes} from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import Isvg from 'react-inlinesvg';
 import FadeInImage from './FadeInImage.jsx';
 
