@@ -1,4 +1,3 @@
-[![Code Climate](https://img.shields.io/codeclimate/github/jasonnathan/www.jasonnathan.com/badges/gpa.svg?style=flat-square)](https://codeclimate.com/github/jasonnathan/www.jasonnathan.com)
 ![Node.js CI](https://github.com/jasonnathan/www.jasonnathan.com/workflows/Node.js%20CI/badge.svg)
 [![CircleCI](https://img.shields.io/circleci/project/github/jasonnathan/www.jasonnathan.com.svg?style=flat-square)](https://circleci.com/gh/jasonnathan/www.jasonnathan.com)
 [![Codacy grade](https://img.shields.io/codacy/grade/ef761c14bd104656879fe5000e961890.svg?style=flat-square)](https://www.codacy.com/app/jjnathanjr/www-jasonnathan-com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jasonnathan/www.jasonnathan.com&amp;utm_campaign=Badge_Grade)
