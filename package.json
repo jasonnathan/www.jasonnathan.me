@@ -74,7 +74,7 @@
     "spacejam": "^1.6.1"
   },
   "scripts": {
-    "test": "meteor test --once --driver-package dispatch:mocha",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
     "test:watch": "./start.sh test --driver-package dispatch:mocha",
     "coverage": "meteor npm run coverage:app-unit && meteor npm run coverage:app-full",
     "coverage:app-unit": "./node_modules/spacejam/bin/spacejam test --coverage 'out_lcovonly out_coverage out_html' --driver-package practicalmeteor:mocha-console-runner",

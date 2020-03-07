@@ -31,3 +31,4 @@ practicalmeteor:mocha-console-runner
 practicalmeteor:mocha
 dynamic-import
 fourseven:scss
+meteortesting:mocha
