@@ -31,7 +31,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Install Meteor
       run: curl https://install.meteor.com | /bin/sh
-
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
@@ -41,3 +40,10 @@ jobs:
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         WP_USERNAME: ${{ secrets.WP_USERNAME }}
         WP_PASSWD: ${{ secrets.WP_PASSWD }}
+    - name: Build package
+      run: npm run compile
+    - name: Upload Artefact
+      uses: actions/upload-artifact@v1
+      with:
+        name: bundle
+        path: ./www.jasonnathan.com.tar.gz
