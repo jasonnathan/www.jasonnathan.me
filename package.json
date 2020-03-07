@@ -84,7 +84,8 @@
     "test:app-unit": "./node_modules/spacejam/bin/spacejam test --driver-package practicalmeteor:mocha-console-runner",
     "test:app-full": "./node_modules/spacejam/bin/spacejam test --full-app --driver-package practicalmeteor:mocha-console-runner",
     "test-watch:app-unit": "meteor test --driver-package practicalmeteor:mocha-console",
-    "test-watch:app-full": "meteor test --full-app --driver-package practicalmeteor:mocha-console"
+    "test-watch:app-full": "meteor test --full-app --driver-package practicalmeteor:mocha-console",
+    "compile": "npm install --production && meteor build ./ --architecture os.linux.x86_64"
   },
   "repository": {
     "type": "git",
