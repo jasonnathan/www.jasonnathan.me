@@ -16,12 +16,12 @@ function PostSummary({post, client}){
   }
   return(
     <a href={getUrl()} onMouseOver={prefetchPost} itemProp="mainEntityOfPage">
-      <article style={{background:`url(${post.featured_media_url})`, backgroundSize:"cover", backgroundPosition:"50% 50%"}}>
+      <article style={{background:`url(${post.jetpack_featured_media_url})`, backgroundSize:"cover", backgroundPosition:"50% 50%"}}>
         <meta itemProp="author" content="Jason Nathan" />
         <meta itemProp="datePublished" content={post.date} />
         <meta itemProp="dateModified" content={post.modified} />
         <div itemProp="image" itemScope itemType="https://schema.org/ImageObject" style={{visibility:"hidden"}}>
-          <meta itemProp="url" content={post.featuredImage.uri} />
+          <meta itemProp="url" content={post.jetpack_featured_media_url} />
         </div>
         <div itemProp="publisher" itemType="http://schema.org/Organization" itemScope style={{visibility:"hidden"}}>
           <meta itemProp="name" content="Jason Nathan" />

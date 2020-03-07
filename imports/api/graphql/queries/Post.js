@@ -9,9 +9,7 @@ query getPostBySlug($slug: String){
     author
     date
     modified
-    featuredImage {
-      uri
-    }
+    jetpack_featured_media_url
     categories {
       count
       slug

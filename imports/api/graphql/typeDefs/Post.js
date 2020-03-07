@@ -23,7 +23,7 @@ type Post {
   sticky: Boolean
   format: String
   meta: JSON
-  featuredImage: JSON
+  jetpack_featured_media_url: String
   featured_media_url: String
   _links: JSON
 }`

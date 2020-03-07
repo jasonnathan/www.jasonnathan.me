@@ -13,9 +13,7 @@ query getPosts($category: String){
       slug
     }
     author
-    featuredImage {
-      uri
-    }
+    jetpack_featured_media_url
   }
 }
 `
