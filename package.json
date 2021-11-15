@@ -41,7 +41,7 @@
     "react-loaders": "^2.3.0",
     "react-motion": "^0.4.5",
     "react-router": "^3.0.0",
-    "react-router-breadcrumbs": "git+https://github.com/nutgaard/react-router-breadcrumbs.git",
+    "react-router-breadcrumbs": "^2.1.2",
     "react-style-proptype": "^1.2.0",
     "react-tagcloud": "^1.0.0",
     "sanitize-html": "^1.13.0",
