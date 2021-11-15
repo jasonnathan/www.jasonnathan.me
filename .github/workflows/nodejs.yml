@@ -31,7 +31,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Install Meteor
       run: curl https://install.meteor.com | /bin/sh
-    - run: meteor npm ci
+    - run: meteor npm install
     - run: meteor npm run build --if-present
     - run: meteor npm test
       env:
