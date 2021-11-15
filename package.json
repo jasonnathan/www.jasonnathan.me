@@ -80,7 +80,7 @@
     "coverage:watch": "BABEL_ENV=COVERAGE COVERAGE=1 COVERAGE_VERBOSE=1 COVERAGE_APP_FOLDER=$PWD/ TEST_WATCH=1 meteor test --driver-package meteortesting:mocha",
     "test-watch:app-unit": "meteor test --driver-package practicalmeteor:mocha-console",
     "test-watch:app-full": "meteor test --full-app --driver-package practicalmeteor:mocha-console",
-    "compile": "npm install --production && meteor build ./ --architecture os.linux.x86_64"
+    "compile": "NODE_TLS_REJECT_UNAUTHORIZED=0 npm install --production && meteor build ./ --architecture os.linux.x86_64"
   },
   "repository": {
     "type": "git",
