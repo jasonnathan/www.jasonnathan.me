@@ -7,7 +7,7 @@ const Projects = [
   {"name":"RTA Market Report","skills":["d3","javascript","mongodb","neo4j"]},
   {"name":"Upscore","skills":["aws","digitalocean","javascript","less","meteor","mocha","mongodb"]},
   {"name":"Jason Nathan","skills":["apollostack","digitalocean","graphql","javascript","less","meteor","mocha","reactjs","redux"]},
-  {"name":"Docviser","skills":["cordova","digitalocean","javascript","less","meteor","mocha","reactjs","strider"]}
+  {"name":"SpeeDoc","skills":["digitalocean","javascript","less","meteor","mocha","react-native","redux"]},
 ];
 
 export default Projects;
