@@ -31,7 +31,7 @@
     "react-addons-pure-render-mixin": "^15.4.1",
     "react-addons-transition-group": "^15.3.2",
     "react-apollo": "^0.6.0",
-    "react-disqus-thread": "git+https://github.com/mzabriskie/react-disqus-thread.git",
+    "react-disqus-thread": "^0.4.0",
     "react-dom": "^15.4.1",
     "react-flex": "^2.2.7",
     "react-helmet": "^3.1.0",

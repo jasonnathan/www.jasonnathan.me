@@ -35,7 +35,7 @@ const Contact = () => {
             <div itemScope itemType="http://schema.org/Person" className="contact-links" style={{display:"flex", justifyContent:"center", maxWidth:"320px", margin:"auto", fontSize:"2rem", flexDirection:"column"}}>
               <h1 itemProp="name" style={{textIndent:"-10000px"}}>Jason Nathan</h1>
               <span itemProp="telephone">
-                <a title="Click here to make a call if you are on mobile" href="tel:+6590220964" style={{flex:1,display:"flex"}}><PhoneIcon /><small>+65 90220964</small></a>
+                <a title="Click here to make a call if you are on mobile" href="tel:+6592320417" style={{flex:1,display:"flex"}}><PhoneIcon /><small>+65 92320417</small></a>
               </span>
               <span itemProp="telephone">
                 <a rel="nofollow noopener noreferrer" title="Click here to start a skype call" href="skype:jason.nathan?call" style={{flex:1,display:"flex"}}><SkypeIcon /><small>jason.nathan</small></a>
