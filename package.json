@@ -44,7 +44,7 @@
     "react-router-breadcrumbs": "^2.1.2",
     "react-style-proptype": "^1.2.0",
     "react-tagcloud": "^1.0.0",
-    "sanitize-html": "^1.13.0",
+    "sanitize-html": "^2.3.2",
     "save": "^2.3.0",
     "shortcode-insert": "^1.0.1",
     "shortcode-parser": "git+https://github.com/jasonnathan/shortcode-parser.git",
