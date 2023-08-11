@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:ror="http://rorweb.com/0.1/" >
+<channel>
+  <title>ROR Sitemap for https://www.jasonnathan.com/</title>
+  <link>https://www.jasonnathan.com/</link>
+
+<item>
+     <link>https://www.jasonnathan.com/</link>
+     <title>Freelance Software Engineer</title>
+     <description>A senior software engineer, writer, teacher and leader based in Singapore.</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>0</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/about</link>
+     <title>Freelance web developer</title>
+     <description>A senior software engineer, writer, teacher and team-lead based in Singapore.</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work</link>
+     <title>My Work</title>
+     <description>A collection of some of my professional work and other side projects with React, Meteor and NodeJS. Oh! And PHP</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/contact</link>
+     <title>Contcact Page</title>
+     <description>Contact me for freelance projects, work or just for a chat</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/articles</link>
+     <title>Blog</title>
+     <description>Engineering Journal, Guides, Freebies and other musings</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/reactjs</link>
+     <title>Work > ReactJS</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with ReactJS</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/d3</link>
+     <title>Work > D3</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with D3</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/knockout</link>
+     <title>Work > KnockoutJS</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Knockout Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/less</link>
+     <title>Work > Less</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with LESS</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/javascript</link>
+     <title>Work > JavaScript</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with JavaScript Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/php</link>
+     <title>Work > Php</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with PHP Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/nodejs</link>
+     <title>Work > NodeJS</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with NodeJS</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/codeigniter</link>
+     <title>Work > Codeigniter</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Codeigniter PHP</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/kohana</link>
+     <title>Work > Kohana</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Kohana PHP</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/meteor</link>
+     <title>Work > Meteor JS</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Meteor Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/sailsjs</link>
+     <title>Work > SailsJS</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with SailsJS Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/cordova</link>
+     <title>Work > Cordova</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Cordova Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/aws</link>
+     <title>Work > AWS</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with AWS</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/digitalocean</link>
+     <title>Work > Digital Ocean</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Digital Ocean</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/graphql</link>
+     <title>Work > GraphQL</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with GraphQL</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/socketio</link>
+     <title>Work > SocketIO</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Socket IO</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/apollostack</link>
+     <title>Work > ApolloStack</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Apollo Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/redux</link>
+     <title>Work > Redux</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Redux Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/mocha</link>
+     <title>Work > Mocha</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Mocha Testing</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/jenkins</link>
+     <title>Work > Jenkins</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Jenkins CI</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/strider</link>
+     <title>Work > Strider</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Strider CD Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/git</link>
+     <title>Work > Git</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with GIT</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/mercurial</link>
+     <title></title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Mercurial</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/mongodb</link>
+     <title></title>
+     <description>Have a look at stuff I&amp;#x27;ve done with MongoDB</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/mysql</link>
+     <title></title>
+     <description>Have a look at stuff I&amp;#x27;ve done with MySQL</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/neo4j</link>
+     <title></title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Neo4j</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/analytics</link>
+     <title></title>
+     <description>Have a look at stuff I&amp;#x27;ve done with Analytics</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/article/ramblings/remote-work-for-the-best-freelancers</link>
+     <title></title>
+     <description>undefined</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/article/reactjs/how-to-ssr-with-apollostack-and-meteor-react-router-ssr</link>
+     <title></title>
+     <description>undefined</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/article/wordpress/a-wordpress-blog-well-kinda</link>
+     <title></title>
+     <description>undefined</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/article/gsap/building-a-zoomable-user-interface-with-meteorjs-gsap</link>
+     <title></title>
+     <description>undefined</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/article/wordpress/wordpress-mvc-plugin-development</link>
+     <title></title>
+     <description>undefined</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/articles/</link>
+     <title></title>
+     <description>Engineering Journal, Guides, Freebies and other musings</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/articles/gsap</link>
+     <title></title>
+     <description>Articles filed in &amp;#x27;GSAP&amp;#x27;</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/articles/ramblings</link>
+     <title>Work > Articles > Ramblings</title>
+     <description>Articles filed in &amp;#x27;RAMBLINGS&amp;#x27;</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/articles/reactjs</link>
+     <title>Work > Articles > ReactJS</title>
+     <description>Articles filed in &amp;#x27;REACTJS&amp;#x27;</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/articles/wordpress</link>
+     <title>Work > Articles > WordPress</title>
+     <description>Articles filed in &amp;#x27;WORDPRESS&amp;#x27;</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/reactjs/docviser</link>
+     <title>Work > ReactJS > Heardable</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with ReactJS</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>3</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/d3/heardable</link>
+     <title>Work > D3 > Heardable</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with D3</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>3</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/php/ppsg</link>
+     <title>Work > PHP > Private Property Singapore</title>
+
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>3</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/php/realtasia</link>
+     <title>Work > PHP > RealtAsia</title>
+
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>3</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>https://www.jasonnathan.com/work/php/heardable</link>
+     <title>Work > PHP > Heardable</title>
+     <description>Have a look at stuff I&amp;#x27;ve done with PHP Projects</description>
+     <ror:updatePeriod>daily</ror:updatePeriod>
+     <ror:sortOrder>3</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+</channel>
+</rss>

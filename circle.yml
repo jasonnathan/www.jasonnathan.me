@@ -1,0 +1,31 @@
+machine:
+  node:
+    version: 4.6.0
+  environment:
+    COVERAGE_VERBOSE: 1
+    CODECLIMATE_REPO_TOKEN: 6437067900e04c00a9b637e3a49a26aba8c7a6093394044ed7fb511c3902621d
+checkout:
+  post:
+    - git submodule update --init
+dependencies:
+  cache_directories:
+     - ~/.npm
+     - ~/.meteor
+     - node_modules
+     - ./.meteor/local/build
+     - ./.meteor/local/bundler-cache
+     - ./.meteor/local/isopacks
+     - ./.meteor/local/plugin-cache
+     - /home/ubuntu/nvm/versions/node/v4.6.0/bin
+     - /home/ubuntu/nvm/versions/node/v4.6.0/lib/node_modules
+  override:
+    - curl https://install.meteor.com | /bin/sh
+    - meteor npm install
+test:
+   override:
+   pre:
+     #- "meteor npm run coverage:app-unit"
+     # Save coverage now
+     #- cat .coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true # ignore coveralls error
+     #- cat .coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js || true # ignore codecov error
+     #- cat .coverage/lcov.info | ./node_modules/.bin/codacy-coverage || true # ignore codacy error

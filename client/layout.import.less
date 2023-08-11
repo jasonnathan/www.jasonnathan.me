@@ -1,0 +1,295 @@
+html,body{overflow:hidden;box-sizing: border-box;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;width:100%}
+body { margin: 0; -webkit-text-size-adjust: 100%; color:#eee;
+  background-color: fade(black, 90%)
+  // background-image: url(http://orig04.deviantart.net/312a/f/2013/042/c/3/gradient_toshiba_background_by_daproba-d5uo24e.png);
+  // background-position: center center;
+}
+#react-app{
+  height:100vh;
+  max-height:100vh;
+  width:100vw;
+  position: absolute;
+}
+.header, .footer, .content, .footer-halved{
+  position:absolute; width: 100%; left:0;
+  &.fixed{
+    // background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.7));
+  }
+}
+.header{ top:0; height:@header-height;}
+.footer{ bottom:0; height:@footer-height; line-height: @footer-height}
+.footer-halved{ bottom:0; height:@footer-halved; line-height: @footer-halved}
+.content{
+  top:0;
+  bottom:0;
+  [role=main]{
+    height: 100vh;
+    // background-size: cover !important;
+    // background-position:0% -50% !important;
+    // background-repeat: no-repeat !important;
+  }
+  &.with-footer{
+    bottom:@footer-height;
+    [role=main]{
+      height: ~"calc(100vh - @{footer-height})";
+    }
+  }
+  &.with-footer-halved{
+    bottom:@footer-halved;
+    [role=main]{
+      height: ~"calc(100vh - @{footer-halved})";
+    }
+  }
+  &.with-header{
+    top:@header-height;
+    [role=main]{
+      height: ~"calc(100vh - @{header-height})";
+    }
+  }
+  &.with-header.with-footer{
+    [role=main]{
+      height: ~"calc(100vh - @{header-footer-height})";
+    }
+  }
+  &.with-header.with-footer-halved{
+    bottom:@footer-halved;
+    [role=main]{
+      height: ~"calc(100vh - @{header-footer-halved})";
+    }
+  }
+  &.with-breadcrumbs{
+    top:@header-height+10;
+    left:50%;
+    width:100%;
+    transform:translate3d(-50%,0,0);
+  }
+}
+@sidebar-header-height: @header-height - 10px;
+@rotated-height: @header-height *.55;
+
+.page{
+  height:100vh;
+  width:100vw;
+  overflow: hidden;
+  position: absolute;
+}
+.scroll-y, .scroll-x{-webkit-overflow-scrolling: touch;}
+.scroll-y{overflow-y:auto;overflow-x:hidden;height:100%}
+.scroll-x{overflow-x:auto;overflow-y:hidden;min-width:100%}
+.react-flex.responsive{
+  flex-basis:100%;
+}
+h4{margin:0;}
+
+/**
+ * MOBILE FIRST - DEFAULTS
+ */
+.responsive{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &.center{
+    justify-content: center;
+  }
+  max-width: 639px;
+  margin: auto 2%;
+  > .panel{
+    margin-bottom: 1rem;
+    width: 99%;
+    max-width: 99%;
+  }
+  > .box{
+    flex:1;
+    max-width: 150px;
+    padding:0;
+    > div{
+      -webkit-backface-visibility: visible; /* Chrome, Safari, Opera */
+     	backface-visibility: visible;
+    }
+  }
+}
+.centered-loader, .absolute-center{
+  position:absolute;
+  top:10%;
+  left:50%;
+  transform: translate(-50%,0);
+}
+.absolute-center{
+  width:100%;
+}
+.centered-content{
+  display:block;
+  margin:auto;
+}
+.tag-cloud{
+  max-width:310px;
+  -moz-column-width: 150px;
+  -webkit-column-width: 150px;
+  column-width: 150px;
+  margin:auto 10px;
+}
+.header.breadcrumb-container{
+  height:@header-height;
+  .breadcrumbs{
+    max-width: 100%;
+    margin-left:5px;
+    flex:1;
+    height:@header-height;
+    line-height: @header-height;
+    h1.staggered-name{
+      margin:auto !important;
+      max-height:@header-height;
+      line-height: 25px;
+      max-width: 100%;
+    }
+    > span{
+      display: inline-block;
+      max-width:186px;
+    }
+  }
+  .back-button{
+    flex: 1;
+    max-width: 64px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.posts-container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin:auto;
+}
+.bottom-box{
+  > .react-flex > div {
+    box-sizing: border-box;
+    max-width: 50%;
+    min-width: 25%;
+    width:100%;
+  }
+}
+.bottom-tabs li a {
+  font-size: .8rem;
+  // text-shadow:-1px -1px 1px black !important;
+  // color:@orange !important;
+  // font-family:Audiowide;
+}
+/**
+ * Width starting from 640px onwards
+ */
+@media (min-width:640px){
+  .responsive{
+    max-width: 640px; margin: auto;
+    > .item{
+      flex:1;
+      flex-basis:auto;
+      width: 47%;
+      max-width: 47%;
+      &:nth-child(odd){
+        margin-left: 1.5%;
+      }
+      &:nth-child(even){
+        margin-right: 1.5%;
+      }
+    }
+  }
+  .tag-cloud{
+    max-width:640px; column-width: 210px;
+  }
+}
+
+/**
+ * Width starting from 768px onwards
+ */
+@media (min-width:768px){
+  .responsive{
+    max-width:100vw;
+    padding: 0 5vw;
+    margin: auto;
+    > .item{
+      flex:1;
+      flex-basis:auto;
+      width: 49%;
+      max-width: 50%;
+      &:nth-child(odd){
+        margin-left: auto;
+      }
+      &:nth-child(even){
+        margin-right: auto;
+      }
+    }
+  }
+  .header.breadcrumb-container{
+    height: @header-height + 10px;
+    .breadcrumbs{
+      margin-left:5px;
+      overflow: hidden;
+      flex:1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      height:@header-height + 10px;
+      display: flex;
+      align-items: center;
+      h1.staggered-name{
+        transform: translateX(-20px);
+        font-size: 1.8rem;
+        span{
+          font-size: 1.4rem;
+        }
+      }
+    }
+    .back-button{
+      max-width:78px; height: @header-height + 10px; line-height:@header-height + 10px;
+    }
+  }
+  .tag-cloud{
+    max-width:100vw; padding: 0 5vw;
+  }
+  .bottom-tabs li a {
+    font-size: .9rem;
+  }
+}
+
+/**
+ * Width starting from 960px onwards
+ */
+@media (min-width:960px){
+  .responsive, .content.with-breadcrumbs, .posts-container{
+    max-width:100vw; padding: 0 10vw;
+  }
+  .tag-cloud{
+    max-width:100vw;
+    padding: 0 10vw;
+    column-width: 190px;
+  }
+  .bottom-box{
+    margin:auto;
+    > .react-flex {
+      margin:auto;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
+    }
+  }
+  .bottom-tabs li a {
+    // font-size: 1rem;
+  }
+}
+
+/**
+ * Width starting from 1280px onwards
+ */
+@media (min-width:1280px){
+  .responsive, .content.with-breadcrumbs, .posts-container{
+    max-width:100vw;
+    padding: 0 10vw;
+  }
+  .tag-cloud{
+    max-width:100vw;
+    column-width: 190px;
+    padding: 0 10vw;
+  }
+}
