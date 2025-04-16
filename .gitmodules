@@ -1,6 +1,6 @@
 [submodule "packages/meteor-react-router-ssr"]
 	path = packages/meteor-react-router-ssr
-	url = https://github.com/jasonnathan/meteor-react-router-ssr
+	url = git@github.com:jasonnathan/meteor-react-router-ssr.git
 [submodule "packages/inject-data"]
 	path = packages/inject-data
 	url = https://github.com/rigconfig/inject-data

@@ -1,7 +1,7 @@
 {
   "name": "jasonnathan_com",
   "version": "1.0.0",
-  "description": "Jason Nathan's portfolio website.",
+  "description": "Personal WordPress site built with Apollo Server, React, and Meteor",
   "main": "index.js",
   "dependencies": {
     "apollo-client": "^0.5.8",
@@ -26,7 +26,7 @@
     "prop-types": "^15.7.2",
     "pusher": "^1.5.0",
     "ramda": "^0.23.0",
-    "react": "^15.4.1",
+    "react": "^16.14.0",
     "react-addons-css-transition-group": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.4.1",
     "react-addons-transition-group": "^15.3.2",
