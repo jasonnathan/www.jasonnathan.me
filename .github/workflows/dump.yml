@@ -1,0 +1,27 @@
+name: Dump GitHub Secrets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    env:
+      CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      WP_USERNAME: ${{ secrets.WP_USERNAME }}
+      WP_PASSWD: ${{ secrets.WP_PASSWD }}
+
+    steps:
+      - name: Create .env file
+        run: |
+          echo "CLIENT_ID=$CLIENT_ID" >> secrets.env
+          echo "CLIENT_SECRET=$CLIENT_SECRET" >> secrets.env
+          echo "WP_USERNAME=$WP_USERNAME" >> secrets.env
+          echo "WP_PASSWD=$WP_PASSWD" >> secrets.env
+
+      - name: Upload secrets.env as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-secrets
+          path: secrets.env
