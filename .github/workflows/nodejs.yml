@@ -26,22 +26,13 @@ jobs:
       - name: Install NPM Packages
         run: meteor npm install
 
-      - name: Build Meteor App (Bundle)
-        run: meteor build ../output --directory
-        env:
-          CI: true
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          WP_USERNAME: ${{ secrets.WP_USERNAME }}
-          WP_PASSWD: ${{ secrets.WP_PASSWD }}
-
-      - name: Compress Bundle
+      - name: Build Meteor App (Server Bundle)
         run: |
-          cd ../output
-          tar -czf ../bundle.tar.gz .
-
+          meteor build ./build-output --architecture os.linux.x86_64
+          ls -lh ./build-output
+      
       - name: Upload Bundle Artifact
         uses: actions/upload-artifact@v4
         with:
           name: meteor-bundle
-          path: bundle.tar.gz
+          path: build-output/*.tar.gz
