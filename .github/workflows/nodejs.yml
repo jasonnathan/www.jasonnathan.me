@@ -5,7 +5,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  workflow_dispatch: # 👈 Allows manual triggering
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,8 +20,28 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install Meteor 1.8.0
-        run: curl curl https://install.meteor.com/?release=1.8.2 | sh
+      - name: Cache Meteor Tool (~/.meteor)
+        uses: actions/cache@v3
+        with:
+          path: ~/.meteor
+          key: meteor-tool-${{ runner.os }}-1.8.2
+
+      - name: Cache node_modules and Meteor local build
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .meteor/local
+          key: ${{ runner.os }}-meteor-${{ hashFiles('package.json', 'package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-meteor-
+
+      - name: Install Meteor 1.8.2 if not cached
+        run: |
+          if [ ! -x "$HOME/.meteor/meteor" ]; then
+            curl https://install.meteor.com/?release=1.8.2 | sh
+          fi
+          echo "$HOME/.meteor" >> $GITHUB_PATH
 
       - name: Install NPM Packages
         run: meteor npm install
@@ -30,7 +50,7 @@ jobs:
         run: |
           meteor build ./build-output --architecture os.linux.x86_64
           ls -lh ./build-output
-      
+
       - name: Upload Bundle Artifact
         uses: actions/upload-artifact@v4
         with:
