@@ -41,7 +41,7 @@ jobs:
           tar -czf ../bundle.tar.gz .
 
       - name: Upload Bundle Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: meteor-bundle
           path: bundle.tar.gz
