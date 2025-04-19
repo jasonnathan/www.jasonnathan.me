@@ -20,8 +20,11 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install Meteor
-        run: curl https://install.meteor.com/?release=1.8.0 | sh
+      - name: Install Meteor 1.8.0
+        run: |
+          curl https://install.meteor.com | sed 's/^RELEASE=.*/RELEASE="1.8.0"/' > meteor-installer.sh
+          chmod +x meteor-installer.sh
+          ./meteor-installer.sh
 
       - name: Install NPM Packages
         run: meteor npm install
