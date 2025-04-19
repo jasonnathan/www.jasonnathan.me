@@ -22,7 +22,7 @@
     "iscroll": "^5.2.0",
     "isomorphic-fetch": "^2.2.1",
     "loaders.css": "^0.1.2",
-    "meteor-node-stubs": "^0.2.4",
+    "meteor-node-stubs": "^0.3.2",
     "prop-types": "^15.7.2",
     "pusher": "^1.5.0",
     "ramda": "^0.23.0",
